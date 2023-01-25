@@ -1,49 +1,90 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container_">
+      <div class="forms-container">
+        <div class="signin-signup">
 
-/** @var yii\web\View $this */
-/** @var yii\bootstrap5\ActiveForm $form */
-/** @var app\models\LoginForm $model */
-
-use yii\bootstrap5\ActiveForm;
-use yii\bootstrap5\Html;
-
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>Please fill out the following fields to login:</p>
-
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n{input}\n{error}",
-            'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
-            'inputOptions' => ['class' => 'col-lg-3 form-control'],
-            'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
-        ],
-    ]); ?>
-
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-        <?= $form->field($model, 'password')->passwordInput() ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"offset-lg-1 col-lg-3 custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
-
-        <div class="form-group">
-            <div class="offset-lg-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+          <form action="#" class="sign-in-form">
+            <h2 class="title">Kirish</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Login" />
             </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Parol" />
+            </div>
+            <input type="submit" value="Kirish" class="btn solid" />
+          </form>
+
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Ro'yxatdan o'tish</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Ism" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Familiya" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Sharif" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Login" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Parol" />
+            </div>
+            <input type="submit" class="btn" value="Yuborish" />
+          </form>
+
         </div>
+      </div>
 
-    <?php ActiveForm::end(); ?>
-
-    <div class="offset-lg-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Ro'yxatdan o'tganmisiz ?</h3>
+            <p>
+             Agar ro'yxatdan o'tmagan bo'lsangiz tizimga kirolmaysiz!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Ro'yxatdan o'tish
+            </button>
+          </div>
+          <img src="<?=Yii::getAlias('@img')?>/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Ilgari ro`yxatdan o`tganmisiz ? </h3>
+            <p>
+              Agar oldin ro`yxatdan o`tgan bo`lsangiz kirish bo`limiga o`ting.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Kirish
+            </button>
+          </div>
+          <img src="<?=Yii::getAlias('@img')?>/register.svg" class="image" alt="" />
+        </div>
+      </div>
     </div>
-</div>
+
+  </body>
+</html>
