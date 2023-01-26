@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Sinf $model */
+/** @var app\models\TestsNames $model */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Sinfs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tests Names', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="sinf-view">
+<div class="tests-names-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,6 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
+            'test_name',
+            'classes_id',
+            'sciences_id',
         ],
     ]) ?>
 

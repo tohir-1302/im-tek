@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Sinf;
+use app\models\TestsNames;
 
 /**
- * SinfSearch represents the model behind the search form of `app\models\Sinf`.
+ * TestsNamesSearch represents the model behind the search form of `app\models\TestsNames`.
  */
-class SinfSearch extends Sinf
+class TestsNamesSearch extends TestsNames
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class SinfSearch extends Sinf
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'classes_id', 'sciences_id'], 'integer'],
+            [['name', 'test_name'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class SinfSearch extends Sinf
      */
     public function search($params)
     {
-        $query = Sinf::find();
+        $query = TestsNames::find();
 
         // add conditions that should always apply here
 
@@ -59,9 +59,12 @@ class SinfSearch extends Sinf
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'classes_id' => $this->classes_id,
+            'sciences_id' => $this->sciences_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'test_name', $this->test_name]);
 
         return $dataProvider;
     }

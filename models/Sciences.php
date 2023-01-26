@@ -5,22 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "sinf".
+ * This is the model class for table "sciences".
  *
  * @property int $id
  * @property string|null $name
  *
- * @property Fan[] $fans
- * @property User[] $users
+ * @property TestsNames[] $testsNames
  */
-class Sinf extends \yii\db\ActiveRecord
+class Sciences extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'sinf';
+        return 'sciences';
     }
 
     /**
@@ -45,22 +44,12 @@ class Sinf extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Fans]].
+     * Gets query for [[TestsNames]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getFans()
+    public function getTestsNames()
     {
-        return $this->hasMany(Fan::class, ['sinf_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Users]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUsers()
-    {
-        return $this->hasMany(User::class, ['sinf_id' => 'id']);
+        return $this->hasMany(TestsNames::class, ['sciences_id' => 'id']);
     }
 }
