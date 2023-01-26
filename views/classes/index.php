@@ -14,15 +14,8 @@ $this->title = 'Classes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="classes-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Classes', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_form', ['model' => $model]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,10 +23,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             [
                 'class' => ActionColumn::className(),
+                'template' => '{delete}',
                 'urlCreator' => function ($action, Classes $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }

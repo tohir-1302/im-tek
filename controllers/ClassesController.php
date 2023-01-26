@@ -39,11 +39,13 @@ class ClassesController extends Controller
     public function actionIndex()
     {
         $searchModel = new ClassesSearch();
+        $model = new Classes();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 

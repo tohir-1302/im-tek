@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Sciences;
+use Codeception\Util\Template;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -15,14 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sciences-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Sciences', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?php  echo $this->render('_form', ['model' => $model]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             [
                 'class' => ActionColumn::className(),
+                'template' => '{delete}',
                 'urlCreator' => function ($action, Sciences $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
