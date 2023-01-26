@@ -39,10 +39,12 @@ class SciencesController extends Controller
     public function actionIndex()
     {
         $searchModel = new SciencesSearch();
+        $model = new Sciences();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
+            'model' => $model,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -71,7 +73,7 @@ class SciencesController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
