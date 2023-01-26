@@ -1,26 +1,27 @@
 <?php
 
-use app\models\Sinf;
+use app\models\Sciences;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-
+use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var app\models\SinfSearch $searchModel */
+/** @var app\models\SciencesSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Sinfs';
+$this->title = 'Sciences';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="sinf-index">
+<div class="sciences-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Sinf', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Sciences', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
@@ -33,12 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Sinf $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Sciences $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],
     ]); ?>
 
+    <?php Pjax::end(); ?>
 
 </div>
