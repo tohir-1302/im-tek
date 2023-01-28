@@ -18,7 +18,7 @@ class TestsNamesSearch extends TestsNames
     {
         return [
             [['id', 'classes_id', 'sciences_id'], 'integer'],
-            [['name', 'test_name'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -63,8 +63,7 @@ class TestsNamesSearch extends TestsNames
             'sciences_id' => $this->sciences_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'test_name', $this->test_name]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
