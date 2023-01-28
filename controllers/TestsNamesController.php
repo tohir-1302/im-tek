@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
+use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -39,8 +41,19 @@ class TestsNamesController extends Controller
     public function actionIndex()
     {
         $searchModel = new TestsNamesSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $query = TestsNames::find()
+        ->select('tests_names.*, s.name as s_name, c.name as c_name')
+        ->leftJoin('sciences s','s.id = tests_names.sciences_id')
+        ->leftJoin('classes c','c.id = tests_names.classes_id')
+        ->asArray()->all();
+      
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $query,
 
+            'pagination' => [
+                'pageSize' => 1110,
+            ],
+        ]);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

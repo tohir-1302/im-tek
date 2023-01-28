@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string|null $name
+ * @property string|null $sciences_name
  * @property string|null $test_namecol
  * @property int $classes_id
  * @property int $sciences_id
@@ -69,7 +70,7 @@ class TestsNames extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getSciences()
+    public function Sciences()
     {
         return $this->hasOne(Sciences::class, ['id' => 'sciences_id']);
     }

@@ -13,6 +13,13 @@ $config = [
         '@img'   => '/img/',
     ],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'kartik\form\ActiveFormAsset' => [
+                    'bsDependencyEnabled' => false // do not load bootstrap assets for a specific asset bundle
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'M1IHnyRVw1xWoPnfGe_MPjSw2Etbn_Jk',
@@ -44,15 +51,30 @@ $config = [
         ],
         'db' => $db,
         
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
+        // 'urlManager' => [
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        //     'rules' => [
+        //     ],
+        // ],
         
     ],
+    'modules' => [
+        'gridview' =>  [
+             'class' => '\kartik\grid\Module'
+             // enter optional module parameters below - only if you need to  
+             // use your own export download action or custom translation 
+             // message source
+             // 'downloadAction' => 'gridvi3ew/export/download',
+             // 'i18n' => []
+        ],
+        'gridviewKrajee' =>  [
+            'class' => '\kartik\grid\Module',
+            // your other grid module settings
+        ]
+        ],
     'params' => $params,
+
 ];
 
 if (YII_ENV_DEV) {

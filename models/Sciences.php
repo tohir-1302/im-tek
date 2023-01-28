@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "sciences".
@@ -51,5 +52,11 @@ class Sciences extends \yii\db\ActiveRecord
     public function getTestsNames()
     {
         return $this->hasMany(TestsNames::class, ['sciences_id' => 'id']);
+    }
+
+    public static function getList(){
+        $model = self::find()->asArray()->all();
+        $result = ArrayHelper::map($model, 'id', 'name');
+        return $result;
     }
 }
