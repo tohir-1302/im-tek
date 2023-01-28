@@ -8,46 +8,48 @@ use kartik\select2\Select2;
 /** @var yii\web\View $this */
 /** @var app\models\TestsNames $model */
 /** @var yii\widgets\ActiveForm $form */
-$data = [
-    "red" => "red",
-    "green" => "green",
-    "blue" => "blue",
-    "orange" => "orange",
-    "white" => "white",
-    "black" => "black",
-    "purple" => "purple",
-    "cyan" => "cyan",
-    "teal" => "teal"
-];
 ?>
 
 <div class="tests-names-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    <p>Test nomi</p>
-    <math-field id ="mf" virtual-keyboard-mode="manual" class="form_input_styles__">
+    <!-- <math-field id ="mf" virtual-keyboard-mode="manual" class="form_input_styles__">
         salom&ensp;salom
-    </math-field>
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
-
-    <?= $form->field($model, 'classes_id')->widget(Select2::classname(), [
-                'data' => Classes::getList(),
-                'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
-                'pluginOptions' => [
-                    'allowClear' => false
-                ],
+    </math-field> -->
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'classes_id')->widget(Select2::classname(), [
+            'data' => Classes::getList(),
+            'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
+            'pluginOptions' => [
+                'allowClear' => false
+            ],
             ]); ?>
-
-    <?= $form->field($model, 'sciences_id')->widget(Select2::classname(), [
-                'data' => Sciences::getList(),
-                'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
-                'pluginOptions' => [
-                    'allowClear' => false
-                ],
-    ]); ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'sciences_id')->widget(Select2::classname(), [
+                        'data' => Sciences::getList(),
+                        'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
+                        'pluginOptions' => [
+                            'allowClear' => false
+                        ],
+            ]); ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'question_count')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'begin_date')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'time_limit')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

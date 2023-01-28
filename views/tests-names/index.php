@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label'=>'Sinf',
                 'attribute' => 'classes_id',
                 'value' => function ($data) {
-                    return $data['classes_id'];
+                    return $data['c_name'];
                 },
                 'filter' => Classes::getList(),
             ],
@@ -51,16 +51,30 @@ $this->params['breadcrumbs'][] = $this->title;
             
             [
                 'class' => ActionColumn::className(),
-                'template' => '{update}',
+                'template' => '{view}{update} {delete}',
                 'buttons'=>[
-                    'update' => function ($url, $data) {
+                    'view' => function ($url, $data) 
+                    {
                         return \yii\helpers\Html::a(
-                            'salom',
-                            \Yii::$app->getUrlManager()->createUrl(
-                                array('tests-names/delete', 'id' => $data["id"])
-                            )
-                        );
+                            'Kirish',
+                            Url::to(['tests-names/create-questions', 'id' => $data["id"]]),
+                            ['class' => 'btn btn-success']);
                     },
+                    'update' => function ($url, $data) 
+                    {
+                        return \yii\helpers\Html::a(
+                            'Tahrirlash',
+                            Url::to(['tests-names/update', 'id' => $data["id"]]),
+                            ['class' => 'btn btn-info']);
+                    },
+                    'delete' => function ($url, $data) 
+                    {
+                        return \yii\helpers\Html::a(
+                            'O`chiqish',
+                            Url::to(['tests-names/delete', 'id' => $data["id"]]),
+                            ['class' => 'btn btn-warning', 'data-confirm' => 'Вы действительно хотите удалить?', 'data-method' => 'post']);
+                    },
+                  
                 ]
             ],
         ],

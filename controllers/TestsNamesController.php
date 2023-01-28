@@ -51,7 +51,7 @@ class TestsNamesController extends Controller
             'allModels' => $query,
 
             'pagination' => [
-                'pageSize' => 1110,
+                'pageSize' => 0,
             ],
         ]);
         return $this->render('index', [

@@ -9,14 +9,15 @@ use Yii;
  *
  * @property int $id
  * @property string|null $name
- * @property string|null $sciences_name
- * @property string|null $test_namecol
  * @property int $classes_id
  * @property int $sciences_id
+ * @property int|null $question_count
+ * @property string|null $begin_date
+ * @property string|null $time_limit
  *
  * @property Classes $classes
+ * @property Questions[] $questions
  * @property Sciences $sciences
- * @property Tests[] $tests
  */
 class TestsNames extends \yii\db\ActiveRecord
 {
@@ -35,7 +36,8 @@ class TestsNames extends \yii\db\ActiveRecord
     {
         return [
             [['classes_id', 'sciences_id'], 'required'],
-            [['classes_id', 'sciences_id'], 'integer'],
+            [['classes_id', 'sciences_id', 'question_count'], 'integer'],
+            [['begin_date', 'time_limit'], 'safe'],
             [['name'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],
             [['sciences_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sciences::class, 'targetAttribute' => ['sciences_id' => 'id']],
@@ -49,9 +51,12 @@ class TestsNames extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'classes_id' => 'Classes ID',
-            'sciences_id' => 'Sciences ID',
+            'name' => 'Test nomi',
+            'classes_id' => 'Sinfni tanlang',
+            'sciences_id' => 'Fanni tanlang',
+            'question_count' => 'Test savollar soni',
+            'begin_date' => 'Boshlaninsh vaqti',
+            'time_limit' => 'Davomiyligi (minutda kiritish kerak)',
         ];
     }
 
@@ -66,22 +71,22 @@ class TestsNames extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[Questions]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getQuestions()
+    {
+        return $this->hasMany(Questions::class, ['tests_names_id' => 'id']);
+    }
+
+    /**
      * Gets query for [[Sciences]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function Sciences()
+    public function getSciences()
     {
         return $this->hasOne(Sciences::class, ['id' => 'sciences_id']);
-    }
-
-    /**
-     * Gets query for [[Tests]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTests()
-    {
-        return $this->hasMany(Tests::class, ['tests_names_id' => 'id']);
     }
 }
