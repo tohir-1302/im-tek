@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/admin_style.css',
     ];
     public $js = [
         'js/mathlive.js',

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\TestsNames $model */
 
-$this->title = 'Create Tests Names';
+$this->title = 'Yangi test yaratish';
 $this->params['breadcrumbs'][] = ['label' => 'Tests Names', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
