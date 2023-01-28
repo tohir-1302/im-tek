@@ -35,7 +35,7 @@ class TestsNames extends \yii\db\ActiveRecord
         return [
             [['classes_id', 'sciences_id'], 'required'],
             [['classes_id', 'sciences_id'], 'integer'],
-            [['name', 'test_namecol'], 'string', 'max' => 45],
+            [['name'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],
             [['sciences_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sciences::class, 'targetAttribute' => ['sciences_id' => 'id']],
         ];
@@ -49,7 +49,6 @@ class TestsNames extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'test_namecol' => 'Test Namecol',
             'classes_id' => 'Classes ID',
             'sciences_id' => 'Sciences ID',
         ];

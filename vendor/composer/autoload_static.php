@@ -36,6 +36,11 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
             'yii\\bootstrap5\\' => 15,
             'yii\\' => 4,
         ),
+        'k' => 
+        array (
+            'kartik\\select2\\' => 15,
+            'kartik\\base\\' => 12,
+        ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
@@ -127,6 +132,14 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'kartik\\select2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
+        ),
+        'kartik\\base\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base/src',
+        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
@@ -217,8 +230,8 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -270,9 +283,9 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         ),
         'Codeception\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/stub/src',
-            1 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
-            2 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            0 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            1 => __DIR__ . '/..' . '/codeception/stub/src',
+            2 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
         ),
     );
 
