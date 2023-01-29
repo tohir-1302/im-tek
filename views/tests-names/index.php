@@ -50,6 +50,30 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             
             [
+                'label'=>'Savollan soni',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return $data['question_count'];
+                },
+            ],
+
+            [
+                'label'=>'Boshlanish Vaqti',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return datetimeView($data['begin_date']);
+                },
+            ],
+
+            [
+                'label'=>'Test davomiyligi',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return $data['time_limit'];
+                },
+            ],
+            
+            [
                 'class' => ActionColumn::className(),
                 'template' => '{view}{update} {delete}',
                 'buttons'=>[
@@ -57,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     {
                         return \yii\helpers\Html::a(
                             'Kirish',
-                            Url::to(['tests-names/create-questions', 'id' => $data["id"]]),
+                            Url::to(['questions/index', 'id' => $data["id"]]),
                             ['class' => 'btn btn-success']);
                     },
                     'update' => function ($url, $data) 
@@ -72,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return \yii\helpers\Html::a(
                             'O`chiqish',
                             Url::to(['tests-names/delete', 'id' => $data["id"]]),
-                            ['class' => 'btn btn-warning', 'data-confirm' => 'Вы действительно хотите удалить?', 'data-method' => 'post']);
+                            ['class' => 'btn btn-warning', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
                     },
                   
                 ]

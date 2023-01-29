@@ -2,20 +2,21 @@
 
 use app\models\Classes;
 use app\models\Sciences;
+use kartik\datetime\DateTimePicker;
+use kartik\form\ActiveForm;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use kartik\time\TimePicker;
+
 /** @var yii\web\View $this */
 /** @var app\models\TestsNames $model */
-/** @var yii\widgets\ActiveForm $form */
+/** @var kartik\form\ActiveForm $form */
 ?>
 
 <div class="tests-names-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-    <!-- <math-field id ="mf" virtual-keyboard-mode="manual" class="form_input_styles__">
-        salom&ensp;salom
-    </math-field> -->
+    <?php $form =ActiveForm::begin(); ?>
+
     <div class="row">
         <div class="col-lg-4">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
@@ -42,10 +43,23 @@ use kartik\select2\Select2;
             <?= $form->field($model, 'question_count')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
         </div>
         <div class="col-lg-4">
-            <?= $form->field($model, 'begin_date')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+            <?= $form->field($model, 'begin_date')->widget(DateTimePicker::classname(), [
+                                                    'options' => ['placeholder' => 'Tanlang ...'],
+                                                    'pluginOptions' => [
+                                                        'autoclose' => true
+                                                    ]
+                                                    ]);?>
         </div>
         <div class="col-lg-4">
-            <?= $form->field($model, 'time_limit')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+            <?= $form->field($model, 'time_limit')->widget(TimePicker::classname(),[
+                                                'name' => 't1',
+                                                'pluginOptions' => [
+                                                    'showSeconds' => true,
+                                                    'showMeridian' => false,
+                                                    'minuteStep' => 20,
+                                                    'secondStep' => 13,
+                                                ]])
+             ?>
         </div>
         <div class="col-lg-4">
             <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>

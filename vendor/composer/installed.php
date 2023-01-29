@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-basic',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '1b8157cc330bab398ed8e9433495da2500e3ed45',
+        'reference' => '42230f598b81ff17decf282f3b1feda6803504b8',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -304,6 +304,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'kartik-v/yii2-widget-datetimepicker' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '85b22d38553ca207f86be198f37e6531347e9a23',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-widget-datetimepicker',
+            'aliases' => array(
+                0 => '1.5.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'kartik-v/yii2-widget-select2' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -312,6 +323,17 @@
             'install_path' => __DIR__ . '/../kartik-v/yii2-widget-select2',
             'aliases' => array(
                 0 => '2.2.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'kartik-v/yii2-widget-timepicker' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '680aec2d79846e926c072da455cf6f33e1c3bb12',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-widget-timepicker',
+            'aliases' => array(
+                0 => '1.0.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -960,7 +982,7 @@
         'yiisoft/yii2-app-basic' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '1b8157cc330bab398ed8e9433495da2500e3ed45',
+            'reference' => '42230f598b81ff17decf282f3b1feda6803504b8',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
