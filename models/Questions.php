@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $option_C
  * @property string|null $option_D
  * @property int|null $answer_option 1→A_option; 2→B_option; 3→C_option; 4→D_option
+ * @property string|null $question
  *
  * @property TestsNames $testsNames
  */
@@ -33,9 +34,9 @@ class Questions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tests_names_id'], 'required'],
+            [['tests_names_id', 'question', 'answer_option', 'option_A', 'option_B', 'option_C', 'option_D'], 'required'],
             [['tests_names_id', 'answer_option'], 'integer'],
-            [['option_A', 'option_B', 'option_C', 'option_D'], 'string'],
+            [['option_A', 'option_B', 'option_C', 'option_D', 'question'], 'string'],
             [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']],
         ];
     }
@@ -48,11 +49,12 @@ class Questions extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'tests_names_id' => 'Tests Names ID',
-            'option_A' => 'Option A',
-            'option_B' => 'Option B',
-            'option_C' => 'Option C',
-            'option_D' => 'Option D',
-            'answer_option' => 'Answer Option',
+            'option_A' => 'Variant A',
+            'option_B' => 'Variant B',
+            'option_C' => 'Variant C',
+            'option_D' => 'Variant D',
+            'answer_option' => 'To`g`ri Variant',
+            'question' => 'Savol',
         ];
     }
 

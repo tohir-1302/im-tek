@@ -35,7 +35,7 @@ class TestsNames extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['classes_id', 'sciences_id'], 'required'],
+            [['classes_id', 'sciences_id', 'question_count', 'begin_date', 'time_limit', 'name'], 'required'],
             [['classes_id', 'sciences_id', 'question_count'], 'integer'],
             [['begin_date', 'time_limit'], 'safe'],
             [['name'], 'string', 'max' => 45],
@@ -56,7 +56,7 @@ class TestsNames extends \yii\db\ActiveRecord
             'sciences_id' => 'Fanni tanlang',
             'question_count' => 'Test savollar soni',
             'begin_date' => 'Boshlaninsh vaqti',
-            'time_limit' => 'Davomiyligi (minutda kiritish kerak)',
+            'time_limit' => 'Davomiyligi (H/m/s)',
         ];
     }
 

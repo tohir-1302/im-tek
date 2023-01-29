@@ -4,6 +4,10 @@ namespace app\controllers;
 
 use app\models\Questions;
 use app\models\QuestionsSearch;
+use app\models\TestsNames;
+use Yii;
+use yii\base\Model;
+use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,14 +40,31 @@ class QuestionsController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
         $searchModel = new QuestionsSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $questions = Questions::find()->where(['tests_names_id' => $id])->asArray()->all();
+        $tests_names = TestsNames::find()->where(['id'=>$id])->one();
+        $model = new Questions();
+        $post = Yii::$app->request->post();
+        // prd($post);
+        $model->tests_names_id = $tests_names->id;
+        if ($model->load($this->request->post())) {
+            $model->save();
+            return $this->redirect(['index', 'id' => $id]);
+        }
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $questions,
 
+            'pagination' => [
+                'pageSize' => 0,
+            ],
+        ]);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'tests_names' => $tests_names,
+            'model' => $model
         ]);
     }
 
@@ -111,9 +132,11 @@ class QuestionsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $tests_names_id = $model->tests_names_id;
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', ['id' => $tests_names_id]]);
     }
 
     /**

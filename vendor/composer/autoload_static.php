@@ -42,6 +42,7 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         ),
         'k' => 
         array (
+            'kartik\\time\\' => 12,
             'kartik\\sortable\\' => 16,
             'kartik\\select2\\' => 15,
             'kartik\\mpdf\\' => 12,
@@ -50,6 +51,7 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
             'kartik\\export\\' => 14,
             'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
+            'kartik\\datetime\\' => 16,
             'kartik\\bs5dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
@@ -166,6 +168,10 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
         ),
+        'kartik\\time\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-timepicker/src',
+        ),
         'kartik\\sortable\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable/src',
@@ -197,6 +203,10 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         'kartik\\dialog\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+        ),
+        'kartik\\datetime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datetimepicker/src',
         ),
         'kartik\\bs5dropdown\\' => 
         array (

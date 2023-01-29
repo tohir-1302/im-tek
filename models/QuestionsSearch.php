@@ -18,7 +18,7 @@ class QuestionsSearch extends Questions
     {
         return [
             [['id', 'tests_names_id', 'answer_option'], 'integer'],
-            [['option_A', 'option_B', 'option_C', 'option_D'], 'safe'],
+            [['option_A', 'option_B', 'option_C', 'option_D', 'question'], 'safe'],
         ];
     }
 
