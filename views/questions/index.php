@@ -3,6 +3,7 @@
 use app\models\Questions;
 use Codeception\Util\Template;
 use kartik\form\ActiveForm;
+use kartik\select2\Select2;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Format;
 use PhpOffice\PhpSpreadsheet\Helper\Html as HelperHtml;
 use yii\helpers\Html;
@@ -52,7 +53,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </math-field>
                 </div>
                 <div class="col-sm-2 blox_create">
-                    <?= $form->field($model, 'answer_option')->textInput() ?>
+                    <?= $form->field($model, 'answer_option')->widget(Select2::classname(), [
+                                                'data' => Questions::getAnswerQuestion(),
+                                                'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
+                                                'pluginOptions' => [
+                                                    'allowClear' => false
+                                                ],
+                                                ]); ?>
                 </div>
                 <div class="col-sm-2">
                     <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>

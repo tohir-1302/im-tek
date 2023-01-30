@@ -5,7 +5,6 @@ AvtoCreate('option_b');
 AvtoCreate('option_c');
 AvtoCreate('option_d');
 
-
 function AvtoCreate(element) {
     var question_math = document.querySelector('#'+element+'_math');
     var question = document.querySelector('#questions-'+element);

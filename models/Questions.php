@@ -67,4 +67,15 @@ class Questions extends \yii\db\ActiveRecord
     {
         return $this->hasOne(TestsNames::class, ['id' => 'tests_names_id']);
     }
+
+    public static function getAnswerQuestion(){
+        $result =[
+            1 => 'A',
+            2 => 'B',
+            3 => 'C',
+            4 => 'D',
+        ];
+
+        return $result;
+    }
 }
