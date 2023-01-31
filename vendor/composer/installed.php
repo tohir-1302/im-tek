@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-basic',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '42230f598b81ff17decf282f3b1feda6803504b8',
+        'reference' => 'abdd69a0ba3dc4271603ca2c1a86d8768d3526b5',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -362,6 +362,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../markbaker/matrix',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'mdmsoft/yii2-admin' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '014923cfe159fcd646c03ff5d7f1f8be07836d05',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../mdmsoft/yii2-admin',
+            'aliases' => array(
+                0 => '2.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'mpdf/mpdf' => array(
@@ -982,7 +993,7 @@
         'yiisoft/yii2-app-basic' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '42230f598b81ff17decf282f3b1feda6803504b8',
+            'reference' => 'abdd69a0ba3dc4271603ca2c1a86d8768d3526b5',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
