@@ -6,6 +6,7 @@ use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use PhpOffice\PhpSpreadsheet\Calculation\TextData\Format;
 use PhpOffice\PhpSpreadsheet\Helper\Html as HelperHtml;
+use Symfony\Component\Console\Question\Question;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -17,6 +18,7 @@ use yii\widgets\Pjax;
 
 $this->title = $tests_names->name;
 $this->params['breadcrumbs'][] = $this->title;
+$answer = Questions::getAnswerQuestion();
 ?>
 <div class="questions-index">
 
@@ -24,49 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::begin(); ?>
 
-    <div class="form_create">
-        <?php $form = ActiveForm::begin(); ?>
-            <div class="row">
-                <div class="col-lg-12 blox_create">
-                    <?= $form->field($model, 'question')->textarea(['rows' => 1]) ?>
-                    <math-field id ="question_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
-                    </math-field>
-                </div>
-                <div class="col-sm-2 blox_create ">
-                    <?= $form->field($model, 'option_A')->textarea(['rows' => 1]) ?>
-                    <math-field id ="option_a_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
-                    </math-field>
-                </div>
-                <div class="col-sm-2 blox_create">
-                    <?= $form->field($model, 'option_B')->textarea(['rows' => 1]) ?>
-                    <math-field id ="option_b_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
-                    </math-field>
-                </div>
-                <div class="col-sm-2 blox_create">
-                    <?= $form->field($model, 'option_C')->textarea(['rows' => 1]) ?>
-                    <math-field id ="option_c_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
-                    </math-field>
-                </div>
-                <div class="col-sm-2 blox_create">
-                    <?= $form->field($model, 'option_D')->textarea(['rows' => 1]) ?>
-                    <math-field id ="option_d_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
-                    </math-field>
-                </div>
-                <div class="col-sm-2 blox_create">
-                    <?= $form->field($model, 'answer_option')->widget(Select2::classname(), [
-                                                'data' => Questions::getAnswerQuestion(),
-                                                'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
-                                                'pluginOptions' => [
-                                                    'allowClear' => false
-                                                ],
-                                                ]); ?>
-                </div>
-                <div class="col-sm-2">
-                    <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
-                </div>
-            </div>
-        <?php ActiveForm::end(); ?>
-    </div>
+     <?php  echo $this->render('_form', [
+        'model' => $model
+     ])?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -92,19 +54,49 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label'=>'B variant',
+                'format'=>'raw',
                 // 'attribute' => 'sciences_id',
                 'value' => function ($data) {
-                    return $data['option_B'];
+                    return " <math-field readonly> ". $data['option_B'] . "</math-field>";
+                },
+            ],
+            [
+                'label'=>'C variant',
+                'format'=>'raw',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return " <math-field readonly> ". $data['option_C'] . "</math-field>";
+                },
+            ],
+            [
+                'label'=>'D variant',
+                'format'=>'raw',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return " <math-field readonly> ". $data['option_D'] . "</math-field>";
+                },
+            ],
+            [
+                'label'=>'To`g`ri variant',
+                'format'=>'raw',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) use ($answer){
+                    return " <math-field readonly> ". $answer[$data['answer_option']] . "</math-field>";
                 },
             ],
             [
                 'class' => ActionColumn::className(),
-                'template' => '{delete}',
+                'template' => '{update}{delete}',
                 'buttons' => [
                     'delete' => function($url, $data){
                         return Html::a('O\'chirish',
                         Url::to(['questions/delete', 'id'=> $data['id']]),
                         ['class' => 'btn btn-warning', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
+                    },
+                    'update' => function($url, $data){
+                        return Html::a('Tahrirlash',
+                        Url::to(['questions/update', 'id'=> $data['id']]),
+                        ['class' => 'btn btn-success']);
                     }
                 ]
             ],

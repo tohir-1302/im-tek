@@ -46,8 +46,6 @@ class QuestionsController extends Controller
         $questions = Questions::find()->where(['tests_names_id' => $id])->asArray()->all();
         $tests_names = TestsNames::find()->where(['id'=>$id])->one();
         $model = new Questions();
-        $post = Yii::$app->request->post();
-        // prd($post);
         $model->tests_names_id = $tests_names->id;
         if ($model->load($this->request->post())) {
             $model->save();
@@ -115,7 +113,7 @@ class QuestionsController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->tests_names_id]);
         }
 
         return $this->render('update', [
@@ -136,7 +134,7 @@ class QuestionsController extends Controller
         $tests_names_id = $model->tests_names_id;
         $model->delete();
 
-        return $this->redirect(['index', ['id' => $tests_names_id]]);
+        return $this->redirect(['index', 'id' => $tests_names_id]);
     }
 
     /**

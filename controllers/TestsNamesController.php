@@ -72,7 +72,7 @@ class TestsNamesController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
+ 
     /**
      * Creates a new TestsNames model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -84,12 +84,12 @@ class TestsNamesController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['questions/index', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
-
+        $model->time_limit = '00:20:00';
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -107,7 +107,7 @@ class TestsNamesController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

@@ -40,6 +40,10 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         array (
             'setasign\\Fpdi\\' => 14,
         ),
+        'm' => 
+        array (
+            'mdm\\admin\\' => 10,
+        ),
         'k' => 
         array (
             'kartik\\time\\' => 12,
@@ -167,6 +171,10 @@ class ComposerStaticInitfbe06b588aa20302a628e43965ff3be9
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
+        'mdm\\admin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
         ),
         'kartik\\time\\' => 
         array (
