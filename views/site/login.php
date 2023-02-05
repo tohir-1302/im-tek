@@ -1,3 +1,10 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+
+?>
   <head>
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
@@ -22,7 +29,7 @@
             <input type="submit" value="Kirish" class="btn solid" />
           </form>
 
-          <form action="#" class="sign-up-form">
+          <form action="<?= Url::to(['site/signup']) ?>" class="sign-up-form" method="post">
             <h2 class="title">Ro'yxatdan o'tish</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -30,7 +37,7 @@
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Familiya" />
+              <input type="text" placeholder="Familiya" />r
             </div>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -50,6 +57,25 @@
             </div>
             <input type="submit" class="btn" value="Yuborish" />
           </form>
+
+
+          <?php /* $form = ActiveForm::begin([
+                  'action' => ['signup'],
+                  'method' => 'post',
+                  'class' => 'sign-up-form',
+                  'options' => [
+                      'data-pjax' => 1
+                  ],
+              ]); ?>
+            <div class="input-field">
+              <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'placeholder' => 'login'])->label(false) ?>
+              </div>
+              <div class="form-group">
+                  <?= Html::submitButton('Yuborish', ['class' => 'btn', 'name' => 'signup-button']) ?>
+              </div>
+
+
+          <?php ActiveForm::end();  */?>
 
         </div>
       </div>
