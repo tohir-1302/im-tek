@@ -20,10 +20,10 @@ class ClientAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/client_styles.css',
     ];
     public $js = [
-        'js/mathlive.js',
+        // 'js/mathlive.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

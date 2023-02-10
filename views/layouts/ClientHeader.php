@@ -22,7 +22,21 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body>
+
+<div class="top__menu">
+    <div class="logo__img">
+        <?= Html::a('<h2>Im-<span>TEK</span></h2>', Yii::$app->getUrlManager()->createUrl(['home'])); ?>
+    </div>
+    <div class="buttons_left">
+        <a href="#">Imtihonlar</a>
+        <a href="#">Balans</a>
+        <a href="#">Yordam</a>
+        <a href="#" title="Shaxsiy kabinet" class="kabinet__"><img src="https://img.icons8.com/officel/80/null/administrator-male.png"/> </a>
+
+    </div>
+</div>
+
 <?php $this->beginBody() ?>
         
     <?= $content ?>
@@ -31,3 +45,4 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </body>
 </html>
 <?php $this->endPage() ?>
+

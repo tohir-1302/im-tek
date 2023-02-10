@@ -26,6 +26,15 @@ function AvtoCreate(element) {
     }); 
 
     question.addEventListener('input',(ev) => {
-        question_math.value = question.value;
+        var text = question.value, new_text = '';
+        for (let index = 0; index < text.length; index++) {
+            if (text[index] != ' ') {
+                new_text = new_text + text[index];
+            }else{
+                new_text = new_text + '\\,';
+            }
+        }
+        question.value = new_text;
+        question_math.value = new_text;
     })
 }

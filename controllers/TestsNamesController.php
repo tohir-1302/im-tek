@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
+use Exception;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
@@ -60,6 +61,7 @@ class TestsNamesController extends Controller
         ]);
     }
 
+    
     /**
      * Displays a single TestsNames model.
      * @param int $id ID
