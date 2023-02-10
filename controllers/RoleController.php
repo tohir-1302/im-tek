@@ -8,24 +8,24 @@ use yii\filters\AccessControl;
 
  class RoleController extends Controller
 {
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         'access' => [
+    //             'class' => AccessControl::class,
+    //             'rules' => [
+    //                 [
+    //                     'allow' => true,
+    //                     'roles' => ['@'],
+    //                 ],
+    //             ],
+    //         ],
+    //     ];
+    // }
 
 
     public function actionNewRole() {
-        $model = new User()
+        $model = new User();
         $authorizer = \Yii::$app->getModule('rights')->getAuthorizer();
         $authorizer->authManager->assign('clients', $model->id); 
 

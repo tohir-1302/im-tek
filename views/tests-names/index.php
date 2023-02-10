@@ -66,6 +66,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             [
+                'label'=>'Tugash Vaqti',
+                // 'attribute' => 'sciences_id',
+                'value' => function ($data) {
+                    return datetimeView($data['end_date']);
+                },
+            ],
+
+            [
                 'label'=>'Test davomiyligi',
                 // 'attribute' => 'sciences_id',
                 'value' => function ($data) {

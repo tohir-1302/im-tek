@@ -44,7 +44,15 @@ use kartik\time\TimePicker;
         </div>
         <div class="col-lg-4">
             <?= $form->field($model, 'begin_date')->widget(DateTimePicker::classname(), [
-                                                    'options' => ['placeholder' => 'Tanlang ...'],
+                                                    'options' => ['placeholder' => 'Belgilang ...'],
+                                                    'pluginOptions' => [
+                                                        'autoclose' => true
+                                                    ]
+                                                    ]);?>
+        </div>       
+         <div class="col-lg-4">
+            <?= $form->field($model, 'end_date')->widget(DateTimePicker::classname(), [
+                                                    'options' => ['placeholder' => 'Belgilang ...'],
                                                     'pluginOptions' => [
                                                         'autoclose' => true
                                                     ]
