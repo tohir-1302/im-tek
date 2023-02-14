@@ -36,6 +36,8 @@ class ClassesController extends Controller
      *
      * @return string
      */
+
+     public $layout = 'ClientHeader';
     public function actionIndex()
     {
         $searchModel = new ClassesSearch();

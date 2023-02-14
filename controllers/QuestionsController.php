@@ -40,6 +40,7 @@ class QuestionsController extends Controller
      *
      * @return string
      */
+    public $layout = 'ClientHeader';
     public function actionIndex($id)
     {
         $searchModel = new QuestionsSearch();

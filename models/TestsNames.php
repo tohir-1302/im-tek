@@ -37,7 +37,7 @@ class TestsNames extends \yii\db\ActiveRecord
         return [
             [['classes_id', 'sciences_id', 'question_count', 'begin_date', 'time_limit', 'name', 'end_date'], 'required'],
             [['classes_id', 'sciences_id', 'question_count'], 'integer'],
-            [['begin_date', 'time_limit', 'end_date'], 'safe'],
+            [['begin_date', 'time_limit', 'end_date', 'create_date'], 'safe'],
             [['name'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],
             [['sciences_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sciences::class, 'targetAttribute' => ['sciences_id' => 'id']],

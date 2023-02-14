@@ -39,6 +39,9 @@ class TestsNamesController extends Controller
      *
      * @return string
      */
+
+     public $layout = 'ClientHeader';
+     
     public function actionIndex()
     {
         $searchModel = new TestsNamesSearch();
@@ -85,7 +88,9 @@ class TestsNamesController extends Controller
         $model = new TestsNames();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->create_date = date("Y-m-d H:i:s");
+                $model->save();
                 return $this->redirect(['questions/index', 'id' => $model->id]);
             }
         } else {

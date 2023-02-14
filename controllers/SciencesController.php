@@ -36,6 +36,9 @@ class SciencesController extends Controller
      *
      * @return string
      */
+
+    public $layout = 'ClientHeader';
+
     public function actionIndex()
     {
         $searchModel = new SciencesSearch();
