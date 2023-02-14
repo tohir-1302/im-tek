@@ -21,9 +21,11 @@ class ClientAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/client_styles.css',
+        'css/site.css',
+        'css/admin_style.css',
     ];
     public $js = [
-        // 'js/mathlive.js',
+        'js/mathlive.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
