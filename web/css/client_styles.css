@@ -6,14 +6,15 @@ body{
 
 
     .buttons__{
-        display: grid;
         font-size: 14px;
+        
     }
 
     .buttons__ a{
-        /* padding: 4px; */
-        /* background-color: #F76804; */
         font-style: italic;
+        vertical-align: middle !important;
+        margin-top: 7px;
+
     }
 
     .content__{
