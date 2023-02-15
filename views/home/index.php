@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 $styele_active = ' border-left: 8px solid green; border-right: 8px solid green; ';
 $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black; ';
 ?>
@@ -30,7 +32,7 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                         </div>
                         <div class="buttons__">
                             <a href="#">Ko'rish</a>
-                            <a href="#">Ro'yxatdan o'tish</a>
+                            <?= \yii\helpers\Html::a('Ro\'yxatdan o\'tish',Url::to(['home/sign-up-test', 'test_names_id' => $item["id"]]),['class' => 'btn btn-success', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']); ?>
                             <a href="#">Boshlash</a>
                         </div>
                     </div>
@@ -55,6 +57,11 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                         <div class="buttons__">
                             <a href="#">Ko'rish</a>
                             <a href="#">Ro'yxatdan o'tish</a>
+                            <?= \yii\helpers\Html::a(
+                            'O`chiqish',
+                            Url::to(['home/sign-up-test', 'test_names_id' => $item["id"]]),
+                            ['class' => 'btn btn-warning', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']); 
+                            ?>
                             <a href="#">Boshlash</a>
                         </div>
                     </div>

@@ -1,11 +1,30 @@
 <?php 
 namespace app\controllers;
 
+use app\models\TestSingUp;
 use Yii;
 use yii\base\Controller;
+use yii\filters\VerbFilter;
 
     class HomeController extends Controller
     {
+
+        public function behaviors()
+        {
+            return array_merge(
+                parent::behaviors(),
+                [
+                    'verbs' => [
+                        'class' => VerbFilter::className(),
+                        'actions' => [
+                            'sign-up-test' => ['POST'],
+                        ],
+                    ],
+                ]
+            );
+        }
+    
+
         public $layout = 'ClientHeader';
 
         public function actionIndex(){
@@ -29,5 +48,15 @@ use yii\base\Controller;
             ]);
         }
 
+        public function actionSignUpTest(){
+            if (Yii::$app->request->isPost) {
+               $post = Yii::$app->request->get();
+               if ($post['test_names_id']) {
+                    $tets_names_id = $post['test_names_id'];
+                    $sds = TestSingUp::addSingUp($tets_names_id);
+                    prd($sds);
+               }
+            }
+        }
     }
 ?>

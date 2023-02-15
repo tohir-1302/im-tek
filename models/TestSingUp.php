@@ -2,7 +2,9 @@
 
 namespace app\models;
 
+use Symfony\Component\Console\Question\Question;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "test_sing_up".
@@ -75,5 +77,39 @@ class TestSingUp extends \yii\db\ActiveRecord
     public function getTestsNames()
     {
         return $this->hasOne(TestsNames::class, ['id' => 'tests_names_id']);
+    }
+
+    public static function addSingUp($tests_names_id){
+        $tests_names = TestsNames::find()->where(['id' => $tests_names_id])->asArray()->one();
+        $questions = Questions::find()->where(['tests_names_id' => $tests_names_id])->asArray()->orderBy(['id'=>SORT_DESC])->all();
+        $questions = ArrayHelper::map($questions, 'id', 'answer_option');
+        $question_date = [];
+        $count = 0;
+        while ($count < $tests_names['question_count']) {
+            $question_id = rand(1, array_key_first($questions));
+            if (!isset($question_date[$question_id])) {
+                $question_date[$question_id] = [
+                    "question_id" => $question_id,
+                    "answer_client" => 0,
+                    "answer_success" =>  $questions[$question_id]
+                    ];
+                $count++;
+            }
+        }
+
+        $new_test_sing_up = new TestSingUp();
+        $new_test_sing_up->create_date = date("Y-m-d H:i:s");
+        $new_test_sing_up->user_id = 33;
+        $new_test_sing_up->tests_names_id = $tests_names_id;
+        $new_test_sing_up->questions = json_encode($question_date);
+        
+        if ($new_test_sing_up->save()) {
+           return true;
+        }else{
+            return $new_test_sing_up ->errors();
+        }
+
+        
+
     }
 }
