@@ -3,7 +3,7 @@ namespace app\controllers;
 
 use app\models\TestSingUp;
 use Yii;
-use yii\base\Controller;
+use yii\web\Controller;
 use yii\filters\VerbFilter;
 
     class HomeController extends Controller
@@ -43,20 +43,68 @@ use yii\filters\VerbFilter;
 
             $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
             // prd($result);
+
+            $test_sing_up = TestSingUp::find()->all();
+            // prd($test_sing_up);
+
+            $gibrit = [];
+            foreach ($result as $item) {
+                $gibrit[$item['id']] =[
+                    "id" => $item['id'],
+                    "name" => $item['name'],
+                    "classes_name" => $item['classes_name'],
+                    "sciences_name" => $item['sciences_name'],
+                    "time_limit" => $item['time_limit'],
+                    "question_count" => $item['question_count'],
+                    "begin_date" => $item['begin_date'],
+                    "end_date" => $item['end_date'],
+                    "xolat" => $item['xolat'],
+                    "sing_up_id" => null,
+                    "tests_status" => null
+                ];
+
+                $bor = false;
+                foreach ($test_sing_up as $data) {
+                    if ($data->tests_names_id == $item['id']) {
+                        $bor = true;
+                        if ($item['xolat'] == "passive" && $data->end_date == null) {
+                            $data->tests_status = 4;
+                            $data->save(); 
+                            $gibrit[$item['id']]['sing_up_id'] =$data->id;
+                            $gibrit[$item['id']]['tests_status'] = $data->tests_status;
+                        }else{
+                            $gibrit[$item['id']]['sing_up_id'] =$data->id;
+                            $gibrit[$item['id']]['tests_status'] = $data->tests_status;
+                        }
+                    }
+                }
+
+                if ($item['xolat'] == "passive" && !$bor) {
+                   unset($gibrit[$item['id']]);
+                }
+
+            }
             return $this->render('index',[
-                'tests' => $result
+                'tests' => $gibrit
             ]);
         }
 
-        public function actionSignUpTest(){
+        public function actionSignUpTest()
+        {
             if (Yii::$app->request->isPost) {
                $post = Yii::$app->request->get();
                if ($post['test_names_id']) {
                     $tets_names_id = $post['test_names_id'];
-                    $sds = TestSingUp::addSingUp($tets_names_id);
-                    prd($sds);
+                    $result = TestSingUp::addSingUp($tets_names_id);
+                    if($result){
+                        \Yii::$app->session->setFlash('success', "Ro'yxatdan muvaffaqiyatli o'tdingiz !!!" );
+                        return $this->redirect('index');
+                    }else{
+                        \Yii::$app->session->setFlash('success', "Xatolik !!! Hisobingizni tekshiring!" );
+                        return $this->redirect('index');
+                    }
                }
             }
-        }
+        }       
     }
 ?>
