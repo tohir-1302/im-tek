@@ -113,6 +113,7 @@ class TestSingUp extends \yii\db\ActiveRecord
                     $model->questions_id = $question_id;
                     $model->answer_success = $questions[$question_id];
                     $model->answer_client = 0;
+                    $model->number = $count+1;
                     if($model->save()){
                         $count++;
                     }else{
@@ -125,6 +126,17 @@ class TestSingUp extends \yii\db\ActiveRecord
         }
 
         return true;
+    }
+
+    public static function getSingUpId($tests_names_id){
+        $test_sing_up = TestSingUp::find()->where(['tests_names_id' => $tests_names_id])->one();
+        if ($test_sing_up->tests_status == 1) {
+            $test_sing_up->start_date = date("Y-m-d H:i:s");
+            $test_sing_up->tests_status = 2;
+            $test_sing_up->save();
+        }
+  
+        return $test_sing_up;
     }
 
         

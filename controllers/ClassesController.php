@@ -37,12 +37,12 @@ class ClassesController extends Controller
      * @return string
      */
 
-     public $layout = 'ClientHeader';
+     public $layout = 'main';
     public function actionIndex()
     {
         $searchModel = new ClassesSearch();
         $model = new Classes();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = Classes::find()->asArray()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

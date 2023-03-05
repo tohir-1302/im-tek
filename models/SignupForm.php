@@ -2,9 +2,9 @@
 
 namespace app\models;
 
+use app\models\User;
 use Yii;
 use yii\base\Model;
-use common\models\User;
 
 /**
  * Signup form
@@ -34,7 +34,7 @@ class SignupForm extends Model
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            // ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
         ];
     }
 

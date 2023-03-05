@@ -1,11 +1,12 @@
 <?php 
 namespace app\controllers;
 
+use app\models\TestAnswer;
 use app\models\TestSingUp;
+use app\models\TestsNames;
 use Yii;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-
+use yii\web\Controller;
     class HomeController extends Controller
     {
 
@@ -18,6 +19,7 @@ use yii\filters\VerbFilter;
                         'class' => VerbFilter::className(),
                         'actions' => [
                             'sign-up-test' => ['POST'],
+                            'start-test' => ['POST'],
                         ],
                     ],
                 ]
@@ -25,10 +27,15 @@ use yii\filters\VerbFilter;
         }
     
 
-        public $layout = 'ClientHeader';
-
         public function actionIndex(){
+            $get = Yii::$app->request->get();
+            $type = 'active';
 
+            if (isset($get['type'])) {
+                $type = $get['type'];
+            }
+            if ($type != 'active' && $type != 'registered'  && $type != 'attendees')
+            $user = Yii::$app->user->getId();
             $sql = '
                     SELECT
                     tests_names.*,
@@ -38,7 +45,8 @@ use yii\filters\VerbFilter;
                 FROM tests_names
                 LEFT JOIN classes c ON c.id = tests_names.classes_id
                 LEFT JOIN sciences s ON s.id = tests_names.sciences_id
-                order by tests_names.create_date
+                where tests_names.status = 2
+                order by tests_names.status_date DESC
             ';
 
             $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
@@ -84,15 +92,27 @@ use yii\filters\VerbFilter;
                 }
 
             }
+            $gibrit_new = [];
+            foreach ($gibrit as $item) {
+                if ($type == 'active' && $item['tests_status'] == 0) {
+                    $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);
+                } else if ($type == 'registered' && in_array($item['tests_status'] , [1, 2])) {
+                    $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);
+                }else if ($type == 'attendees' && in_array($item['tests_status'] , [3, 4])) {
+                    $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);
+                }
+            }
+
             return $this->render('index',[
-                'tests' => $gibrit
+                'tests' => $gibrit_new,
+                'type' => $type
             ]);
         }
 
         public function actionSignUpTest()
         {
             if (Yii::$app->request->isPost) {
-               $post = Yii::$app->request->get();
+               $post = Yii::$app->request->post();
                if ($post['test_names_id']) {
                     $tets_names_id = $post['test_names_id'];
                     $result = TestSingUp::addSingUp($tets_names_id);
@@ -100,11 +120,46 @@ use yii\filters\VerbFilter;
                         \Yii::$app->session->setFlash('success', "Ro'yxatdan muvaffaqiyatli o'tdingiz !!!" );
                         return $this->redirect('index');
                     }else{
-                        \Yii::$app->session->setFlash('success', "Xatolik !!! Hisobingizni tekshiring!" );
+                        \Yii::$app->session->setFlash('danger', "Xatolik !!! Hisobingizni tekshiring!" );
                         return $this->redirect('index');
                     }
                }
             }
-        }       
-    }
+        }
+        
+        public function actionTest(){
+            if (Yii::$app->request->isPost) {
+                $post = Yii::$app->request->post();
+                if ($post['test_names_id']) {
+                     $tets_names_id = $post['test_names_id'];
+                     $validateDate = TestsNames::validateDate($tets_names_id);
+                     if($validateDate){
+                        $question_number = isset($post['question_number']) ? $post['question_number'] : 1;
+                        $result = TestAnswer::getOneQuestions($question_number, $tets_names_id);
+                        return $this->render('test',[
+                            'result' => $result,
+                        ]);
+                     }else{
+                         \Yii::$app->session->setFlash('danger', "Test hali boshlanmadi" );
+                         return $this->redirect('index');
+                     }
+                }
+             }
+        }
+
+        public function actionCheckAnswer()
+        {
+            $test_answer_id = $_REQUEST['test_answer_id'];
+            $answer = $_REQUEST['answer'];
+            $test_answer = TestAnswer::findOne(['id' => $test_answer_id]);
+            $test_answer->answer_client = $answer;
+
+            if ( $test_answer->save()) {
+                return json_encode(['status' => true]);
+            }else{
+                return json_encode(['status' => false]);
+            }
+        }
+     
+}
 ?>

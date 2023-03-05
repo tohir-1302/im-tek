@@ -40,7 +40,6 @@ class QuestionsController extends Controller
      *
      * @return string
      */
-    public $layout = 'ClientHeader';
     public function actionIndex($id)
     {
         $searchModel = new QuestionsSearch();
@@ -61,7 +60,7 @@ class QuestionsController extends Controller
         ]);
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $questions,
             'tests_names' => $tests_names,
             'model' => $model
         ]);

@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
 use Exception;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
@@ -40,27 +41,30 @@ class TestsNamesController extends Controller
      * @return string
      */
 
-     public $layout = 'ClientHeader';
      
     public function actionIndex()
     {
+
         $searchModel = new TestsNamesSearch();
         $query = TestsNames::find()
         ->select('tests_names.*, s.name as s_name, c.name as c_name')
         ->leftJoin('sciences s','s.id = tests_names.sciences_id')
-        ->leftJoin('classes c','c.id = tests_names.classes_id')
-        ->asArray()->all();
-      
-        $dataProvider = new ArrayDataProvider([
-            'allModels' => $query,
+        ->leftJoin('classes c','c.id = tests_names.classes_id')->orderBy(['create_date' => SORT_DESC]);
 
-            'pagination' => [
-                'pageSize' => 0,
-            ],
-        ]);
+        if ($searchModel->load(Yii::$app->request->get())) {
+            if ($searchModel->sciences_id) {
+                $query =  $query->where(['s.id' => $searchModel->sciences_id]);
+            }
+            if ($searchModel->classes_id) {
+                $query =  $query->where(['c.id' => $searchModel->classes_id]);
+            }
+        }
+
+        $query = $query->asArray()->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $query,
         ]);
     }
 
@@ -150,5 +154,23 @@ class TestsNamesController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionStatus(){
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->get();
+            if ($post['id']) {
+                 $tets_names_id = $post['id'];
+                 $result = TestsNames::UpdateStatus($tets_names_id);
+
+                 if($result){
+                     \Yii::$app->session->setFlash('success', "Clientga muvaffaqiyatli o'tkazildi !!!" );
+                     return $this->redirect('index');
+                 }else{
+                     \Yii::$app->session->setFlash('danger', "Testlar soni kam!" );
+                     return $this->redirect('index');
+                 }
+            }
+         }
     }
 }

@@ -368,7 +368,6 @@ class Model extends Component implements StaticInstanceInterface, IteratorAggreg
             $validator->validateAttributes($this, $attributeNames);
         }
         $this->afterValidate();
-
         return !$this->hasErrors();
     }
 

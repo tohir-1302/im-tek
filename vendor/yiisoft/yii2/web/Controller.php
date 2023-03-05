@@ -12,6 +12,9 @@ use yii\base\Exception;
 use yii\base\InlineAction;
 use yii\helpers\Url;
 
+date_default_timezone_set('Asia/Tashkent');
+
+
 /**
  * Controller is the base class of web controllers.
  *
@@ -49,6 +52,7 @@ class Controller extends \yii\base\Controller
      * @param array $params the parameters (name-value pairs) that should be made available in the view.
      * @return string the rendering result.
      */
+
     public function renderAjax($view, $params = [])
     {
         return $this->getView()->renderAjax($view, $params, $this);

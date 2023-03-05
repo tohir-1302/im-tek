@@ -19,32 +19,32 @@ use kartik\time\TimePicker;
 
     <div class="row">
         <div class="col-lg-4">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
         </div>
         <div class="col-lg-4">
             <?= $form->field($model, 'classes_id')->widget(Select2::classname(), [
             'data' => Classes::getList(),
-            'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
+            'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__", ],
             'pluginOptions' => [
                 'allowClear' => false
             ],
             ]); ?>
         </div>
         <div class="col-lg-4">
-            <?= $form->field($model, 'sciences_id')->widget(Select2::classname(), [
+            <?= $form->field($model, 'sciences_id')->widget(Select2::className(), [
                         'data' => Sciences::getList(),
-                        'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__"],
+                        'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__" , ],
                         'pluginOptions' => [
                             'allowClear' => false
                         ],
             ]); ?>
         </div>
         <div class="col-lg-4">
-            <?= $form->field($model, 'question_count')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+            <?= $form->field($model, 'question_count')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
         </div>
         <div class="col-lg-4">
             <?= $form->field($model, 'begin_date')->widget(DateTimePicker::classname(), [
-                                                    'options' => ['placeholder' => 'Belgilang ...'],
+                                                    'options' => ['placeholder' => 'Belgilang ...', ],
                                                     'pluginOptions' => [
                                                         'autoclose' => true
                                                     ]
@@ -52,7 +52,7 @@ use kartik\time\TimePicker;
         </div>       
          <div class="col-lg-4">
             <?= $form->field($model, 'end_date')->widget(DateTimePicker::classname(), [
-                                                    'options' => ['placeholder' => 'Belgilang ...'],
+                                                    'options' => ['placeholder' => 'Belgilang ...', ],
                                                     'pluginOptions' => [
                                                         'autoclose' => true
                                                     ]
@@ -61,6 +61,7 @@ use kartik\time\TimePicker;
         <div class="col-lg-4">
             <?= $form->field($model, 'time_limit')->widget(TimePicker::classname(),[
                                                 'name' => 't1',
+                                                'options' => [],
                                                 'pluginOptions' => [
                                                     'showSeconds' => true,
                                                     'showMeridian' => false,
