@@ -30,7 +30,57 @@ $answer = Questions::getAnswerQuestion();
         'model' => $model
      ])?>
 
-    <?= GridView::widget([
+
+    
+
+<div class="white_card_body">
+    <div class="QA_section">
+        <div class="QA_table mb_30">
+            <table class="table lms_table_active ">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Savol</th>
+                        <th scope="col">A variant</th>
+                        <th scope="col">B variant</th>
+                        <th scope="col">C variant</th>
+                        <th scope="col">D variant</th>
+                        <th scope="col">To`g`ri variant</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $number = 1; foreach ($dataProvider as $item) : ?>
+                    <tr>
+                        <th scope="row"> <?= $number ?></th>
+                        <td><?= " <math-field readonly> ". $item['question']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['option_A']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['option_B']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['option_C']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['option_D']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ".  $answer[$item['answer_option']]  . "</math-field>" ?></td>
+                        <td>
+                            <!-- <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i></a> -->
+                            <?= \yii\helpers\Html::a(
+                                '<i class="fas fa-trash"></i>',
+                                Url::to(['questions/delete', 'id' => $item["id"]]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']); ?>
+                            
+                            <?=  Html::a('<i class="far fa-edit"></i>',
+                                Url::to(['questions/update', 'id'=> $item['id']]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px']); ?>
+                        </td>
+                    </tr>
+                    <?php $number++; endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+    <?php /* GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -101,7 +151,7 @@ $answer = Questions::getAnswerQuestion();
                 ]
             ],
         ],
-    ]); ?>
+    ]); */ ?>
 
     <?php Pjax::end(); ?>
 

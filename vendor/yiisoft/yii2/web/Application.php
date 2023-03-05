@@ -31,7 +31,7 @@ class Application extends \yii\base\Application
     /**
      * @var string the default route of this application. Defaults to 'site'.
      */
-    public $defaultRoute = 'site/login';
+    public $defaultRoute = 'home/index';
     /**
      * @var array|null the configuration specifying a controller action which should handle
      * all user requests. This is mainly used when the application is in maintenance mode

@@ -5,6 +5,7 @@
 
 use app\assets\ClientAsset;
 use yii\bootstrap5\Html;
+// prd(Yii::$app->user->identity->getId() );
 
 ClientAsset::register($this);
 
@@ -25,9 +26,14 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
     <!-- on your view layout file HEAD section -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
     <script defer src="//unpkg.com/mathlive"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -43,6 +49,18 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
         <?= Html::a('Balans', Yii::$app->getUrlManager()->createUrl(['home'])); ?>
         <?= Html::a('Yordam', Yii::$app->getUrlManager()->createUrl(['home'])); ?>
         <?= Html::a('<img src="https://img.icons8.com/officel/80/null/administrator-male.png"/>', Yii::$app->getUrlManager()->createUrl(['home']),['title' => 'Shaxsiy kabinet', 'class' => 'kabinet__']); ?>
+        <?php 
+            if (Yii::$app->user->isGuest) {
+                echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
+            } else {
+                echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-link logout text-decoration-none']
+                    )
+                    . Html::endForm();
+            }
+        ?>
     </div>
 </div>
 

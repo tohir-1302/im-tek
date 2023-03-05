@@ -485,7 +485,7 @@ abstract class Application extends Module
      */
     public function setTimeZone($value)
     {
-        date_default_timezone_set($value);
+        date_default_timezone_set('Asia/Tashkent');
     }
 
     /**

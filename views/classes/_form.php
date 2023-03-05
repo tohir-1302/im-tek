@@ -8,7 +8,6 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="classes-form">
 
     <?php $form = ActiveForm::begin([
         'action' => ['create'],
@@ -17,18 +16,15 @@ use yii\widgets\ActiveForm;
             'data-pjax' => 1
         ]
     ]); ?>
-    <div class="row">
-        <div class="col-lg-3">
-            <h1><?= Html::encode($this->title) ?></h1>
+    <div class="serach_field_2">
+        <div class="search_inner">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Yangi sinf qo`shish', 'class' => 'search_field'])->label(false) ?>
         </div>
-        <div class="col-lg-2">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Sinf nomi'])->label(false) ?>
-        </div>
-        <div class="col-lg-2">
-            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
-        </div>
+         <?= Html::submitButton('Saqlash', ['class' => 'btn_1']) ?>
     </div>
+   
+           
+           
     
     <?php ActiveForm::end(); ?>
 
-</div>

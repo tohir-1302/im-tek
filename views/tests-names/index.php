@@ -2,12 +2,10 @@
 
 use app\models\Classes;
 use app\models\Sciences;
-use app\models\TestsNames;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
-use kartik\grid\GridView;
-use yii\grid\GridView as GridGridView;
+use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var app\models\TestsNamesSearch $searchModel */
@@ -19,99 +17,116 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tests-names-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <div class="header_search_create">
+        <p >
+            <?= Html::a('Yangi test yaratish', ['create'], ['class' => 'btn_1']) ?>
+        </p>
+        <div class="search__form">
+            <?php $form = ActiveForm::begin(['action' => ['index'], 'method'=> 'get','options' => ['data-pjax' => 1]]); ?>
+                <div class="row">
+                        <div class="col-lg-4">
+                            <?= $form->field($searchModel, 'classes_id')->widget(Select2::classname(), [
+                                'data' => Classes::getList(),
+                                'options' => ['class'=>"", 'prompt' => 'Все'],
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ]); ?>
+                        </div>
+                        <div class="col-lg-4">
+                            <?= $form->field($searchModel, 'sciences_id')->widget(Select2::className(), [
+                                'data' => Sciences::getList(),
+                                'options' => ['class'=>"" , 'prompt' => 'Все'],
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ]); ?>
+                        </div>
 
-    <p>
-        <?= Html::a('Yangi test yaratish', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                        <div class="col-lg-1 " style="padding-top: 19px;">
+                            <?= Html::submitButton('Izlash  |  <img src="' . Yii::getAlias("@img") .'/icon/icon_search.svg" alt="">', ['class' => 'btn_1']) ?>
+                        </div>
+                </div>
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+    
+   
+    <?php if (Yii::$app->session->hasFlash('success')): ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <?= Yii::$app->session->getFlash('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if (Yii::$app->session->hasFlash('danger')): ?>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <?= Yii::$app->session->getFlash('danger') ?>
+        </div>
+    <?php endif; ?>
 
-    <?= GridGridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'name',
-            [
-                'label'=>'Sinf',
-                'attribute' => 'classes_id',
-                'value' => function ($data) {
-                    return $data['c_name'];
-                },
-                'filter' => Classes::getList(),
-            ],
+<div class="white_card_body">
+    <div class="QA_section">
+        <div class="QA_table mb_30">
+            <table class="table lms_table_active ">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Sinf</th>
+                        <th scope="col">Fanlar</th>
+                        <th scope="col">Savollan soni</th>
+                        <th scope="col">Boshlanish Vaqti</th>
+                        <th scope="col">Tugash Vaqti</th>
+                        <th scope="col">Test davomiyligi</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $number = 1; foreach ($dataProvider as $item) : ?>
+                    <tr>
+                        <th scope="row"> <?= $number ?></th>
+                        <td><?= " <math-field readonly> ". $item['c_name']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['s_name']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". $item['question_count']  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". datetimeView($item['begin_date'])  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ". datetimeView($item['end_date'])  . "</math-field>" ?></td>
+                        <td><?= " <math-field readonly> ".  $item['time_limit']  . "</math-field>" ?></td>
+                        <td>
+                            <!-- <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i></a> -->
+                            <?=  \yii\helpers\Html::a(
+                                '<i class="fas fa-angle-double-right"></i>',
+                                Url::to(['questions/index', 'id' => $item["id"]]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px']); 
+                            ?>
+                            
+                            <?=  \yii\helpers\Html::a(
+                                '<i class="far fa-edit"></i>',
+                                Url::to(['tests-names/update', 'id' => $item["id"]]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px']); 
+                            ?>
 
-            [
-                'label'=>'Fanlar',
-                'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return $data['s_name'];
-                },
-                'filter' => Sciences::getList(),
-            ],
-            
-            [
-                'label'=>'Savollan soni',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return $data['question_count'];
-                },
-            ],
-
-            [
-                'label'=>'Boshlanish Vaqti',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return datetimeView($data['begin_date']);
-                },
-            ],
-
-            [
-                'label'=>'Tugash Vaqti',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return datetimeView($data['end_date']);
-                },
-            ],
-
-            [
-                'label'=>'Test davomiyligi',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return $data['time_limit'];
-                },
-            ],
-            
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{view}{update} {delete}',
-                'buttons'=>[
-                    'view' => function ($url, $data) 
-                    {
-                        return \yii\helpers\Html::a(
-                            'Kirish',
-                            Url::to(['questions/index', 'id' => $data["id"]]),
-                            ['class' => 'btn btn-success']);
-                    },
-                    'update' => function ($url, $data) 
-                    {
-                        return \yii\helpers\Html::a(
-                            'Tahrirlash',
-                            Url::to(['tests-names/update', 'id' => $data["id"]]),
-                            ['class' => 'btn btn-info']);
-                    },
-                    'delete' => function ($url, $data) 
-                    {
-                        return \yii\helpers\Html::a(
-                            'O`chiqish',
-                            Url::to(['tests-names/delete', 'id' => $data["id"]]),
-                            ['class' => 'btn btn-warning', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
-                    },
-                  
-                ]
-            ],
-        ],
-
-    ]); ?>
-
+                            <?= \yii\helpers\Html::a(
+                                '<i class="fas fa-trash"></i>',
+                                Url::to(['tests-names/delete', 'id' => $item["id"]]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
+                            ?>
+                            <?php   if ($item['status'] == 1) {
+                                        echo \yii\helpers\Html::a(
+                                            'Clientga chiqarish',
+                                            Url::to(['tests-names/status', 'id' => $item["id"]]),
+                                            ['class' => 'btn btn-primary', 'data-confirm' => 'Client qismiga chiqarilyapti !!! Orqaga qaytarish Admin tomonidan amalga oshiriladi!', 'data-method' => 'post']);
+                                    }else{
+                                       echo "<span class='btn btn-success'>Clientga chiqarildi !</span>";
+                                    }
+                            ?>
+                        </td>
+                    </tr>
+                    <?php $number++; endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 </div>
