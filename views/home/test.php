@@ -19,7 +19,7 @@ use function PHPSTORM_META\type;
                
             <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
             <?php ActiveForm::end(); ?> 
-        <?= $result['time'] ?></h4>
+        <?= $result['time']?></h4>
     
 </div>
 
@@ -55,18 +55,22 @@ use function PHPSTORM_META\type;
  <input type="radio" name="select" id="option-4" <?= $result['question']['answer_client'] == 4 ? 'checked' : '' ?>>
 
     <label for="option-1" class="option option-1">
+        <div class="dot"></div>
         <span><math-field readonly> <?= $result['question']['option_A'] ?></math-field></span>
     </label>
 
     <label for="option-2" class="option option-2">
+        <div class="dot"></div>
         <span><math-field readonly> <?= $result['question']['option_B'] ?></math-field></span>
     </label>
 
     <label for="option-3" class="option option-3">
+        <div class="dot"></div>
         <span><math-field readonly> <?= $result['question']['option_C'] ?></math-field></span>
     </label>
 
     <label for="option-4" class="option option-4">
+        <div class="dot"></div>
         <span><math-field readonly> <?= $result['question']['option_D'] ?></math-field></span>
     </label>
 
@@ -83,7 +87,6 @@ $this->registerJs($script);
         display: flex;
         justify-content: space-between;
     }
-
     .time__test_name h4 {
         display: flex;
     }
@@ -132,21 +135,21 @@ $this->registerJs($script);
     }
     .wrapper{
         overflow-x: auto;
-
-    display: bloc;
-    background: #fff;
-    height: auto;
-    width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    padding: 20px 15px;
-    box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+        display: bloc;
+        background: #fff;
+        height: auto;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        padding: 20px 15px;
+        padding-right: 50px;
+        box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
     }
     .wrapper .option{
     background: #fff;
     height: 100%;
-    /* width: 100%; */
+    width: 100%;
     display: flex;
     align-items: center;
     /* justify-content: space-evenly; */
@@ -160,6 +163,7 @@ $this->registerJs($script);
     .wrapper .option .dot{
     height: 20px;
     width: 20px;
+    min-width: 20px;
     background: #d9d9d9;
     border-radius: 50%;
     position: relative;
