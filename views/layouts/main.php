@@ -32,6 +32,8 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
     <!-- on your view layout file HEAD section -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
     <script defer src="//unpkg.com/mathlive"></script>
+    <link rel="stylesheet" href="https://unpkg.com/browse/mathlive@0.89.4/dist/mathlive-fonts.css">  
+
     
 
 </head>
@@ -40,8 +42,8 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
 
 <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="index-2.html">IM-TEK</a>
-            <a class="small_logo" href="index-2.html"><img src="<?=Yii::getAlias("@img")?>/logo_im_tek.g" alt=""></a>
+            <a class="large_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/logo.png" alt=""></a>
+            <a class="small_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/mini_logo.png" alt=""></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
@@ -51,7 +53,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
             <li class="">
                 <a class="<?= $url__ ==  'classes/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['classes/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/6.svg" alt="">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/classes.svg" alt="">
                     </div>
                     <div class="nav_title">
                         <span>Sinf</span>
@@ -62,7 +64,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
             <li class="">
                 <a href="<?= Yii::$app->getUrlManager()->createUrl(['sciences/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/11.svg" alt="">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/scines.svg" alt="">
                     </div>
                     <div class="nav_title">
                         <span>Fanlar</span>
@@ -73,7 +75,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
             <li class="">
                 <a href="<?= Yii::$app->getUrlManager()->createUrl(['tests-names/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/6.svg" alt="">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/test_create.svg" alt="">
                     </div>
                     <div class="nav_title">
                         <span>Test yaratish</span>
@@ -84,7 +86,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
             <li class="">
                 <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
-                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/dashboard.svg" alt="">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/test.svg" alt="">
                     </div>
                     <div class="nav_title">
                         <span>Imtihonlar</span>
