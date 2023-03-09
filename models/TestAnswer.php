@@ -95,9 +95,9 @@ class TestAnswer extends \yii\db\ActiveRecord
     }
 
     public static function getOneQuestions($questions_number, $tets_names_id){
-        $test_sing_up = TestSingUp::getSingUpId($tets_names_id);
-        $allQuestions = TestAnswer::getAllQuestions($test_sing_up->id, $questions_number);
         $tets_names = TestsNames::findOne(['id'=>$tets_names_id]);
+        $test_sing_up = TestSingUp::getSingUpId($tets_names_id, $tets_names->time_limit);
+        $allQuestions = TestAnswer::getAllQuestions($test_sing_up->id);
        
         $result = [
             'test_name' => $tets_names->name,
@@ -113,17 +113,7 @@ class TestAnswer extends \yii\db\ActiveRecord
             }
             $result['test_count'][$item['number']] = $item['answer_client'];
         }
-
-        $start_date = new DateTimeImmutable($test_sing_up->start_date);
-        $now_date = new DateTimeImmutable(date("Y-m-d H:i:s"));
-        $interval = new DateTimeImmutable($start_date->diff($now_date)->format("%H:%I:%S")) ;
-        $date_now = new DateTimeImmutable($tets_names->time_limit);
-        if ($interval > $date_now) {
-            $result['time'] = -1;
-        }else{
-            $date_now_ = date_diff($date_now, $interval, true);
-            $result['time'] = $date_now_->format("%H:%I:%S");
-        }
+            $result['time'] = $test_sing_up->end_date;
 
         return $result; 
     }

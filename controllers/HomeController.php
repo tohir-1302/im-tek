@@ -20,6 +20,7 @@ use yii\web\Controller;
                         'actions' => [
                             'sign-up-test' => ['POST'],
                             'start-test' => ['POST'],
+                            'end-test' => ['POST'],
                         ],
                     ],
                 ]
@@ -90,8 +91,8 @@ use yii\web\Controller;
                 if ($item['xolat'] == "passive" && !$bor) {
                    unset($gibrit[$item['id']]);
                 }
-
             }
+
             $gibrit_new = [];
             foreach ($gibrit as $item) {
                 if ($type == 'active' && $item['tests_status'] == 0) {
@@ -147,6 +148,27 @@ use yii\web\Controller;
              }
         }
 
+        /**
+         * test tugatish
+         */
+        public function actionEndTest(){
+            if (Yii::$app->request->isPost) {
+                $post = Yii::$app->request->post();
+                $test_singup_id = $post['test_singup_id'];
+
+                $test_sing_up = TestSingUp::findOne(['id' => $test_singup_id]);
+                $test_sing_up -> end_test_date = date("Y-m-d H:i:s");
+                $test_sing_up -> tests_status = 3;
+                $test_sing_up -> save();
+                return $test_singup_id;
+            }
+        }
+
+
+        /**
+         * test variantlarini belgilashda ishlatildi
+         */
+
         public function actionCheckAnswer()
         {
             $test_answer_id = $_REQUEST['test_answer_id'];
@@ -159,6 +181,14 @@ use yii\web\Controller;
             }else{
                 return json_encode(['status' => false]);
             }
+        }
+
+
+        public function actionView($test_singup_id){
+            $allQuestions = TestAnswer::getAllQuestions($test_singup_id);
+            return $this->render('view',[
+                'allQuestions' => $allQuestions,
+            ]);
         }
      
 }

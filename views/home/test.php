@@ -5,21 +5,43 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 use function PHPSTORM_META\type;
-// prd($result);
 ?>
 <div class="time__test_name">
     <h3><?= $result['test_name'] ?></h3>
-    <h4> 
-        <?php $form = ActiveForm::begin([
-                'action' => ['home/test'],
-                'method'=> 'post',
-                'options' => [
-                    'data-pjax' => 1
-                ]]); ?>
-               
-            <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
+    <div class="right__header">
+      
+        <div class="end__time">
+            <div class="time_" style="display: none;">
+                <?= $result['time'] ?>
+            </div>
+            <br>
+            <br>
+            <div class="hours">
+                00
+            </div>
+            :
+            <div class="minut">
+                00
+            </div>
+            :
+            <div class="secund">
+                00
+            </div>
+        </div>
+
+        <div class="end__test">
+            <?php $form = ActiveForm::begin([
+                    'action' => ['home/test'],
+                    'method'=> 'post',
+                    'options' => [
+                        'data-pjax' => 1
+                    ]]); ?>
+                
+                <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
             <?php ActiveForm::end(); ?> 
-        <?= $result['time']?></h4>
+        </div>
+    </div>
+
     
 </div>
 
@@ -75,6 +97,10 @@ use function PHPSTORM_META\type;
     </label>
 
 </div>
+
+<div class="test_singup_id">
+    <?= $result['question']['test_sing_up_id'] ?>
+</div>
 <?php
 ob_start();
 include "script.js";
@@ -83,6 +109,23 @@ $this->registerJs($script);
 ?>
 
 <style>
+    .end__test{
+        margin: -10px;
+        margin-right: 50px;
+    }
+
+    .end__time{
+        display: flex;
+        margin-right: 100px;
+        font-size: 20px;
+        font-weight: 650;
+        font-family: monospace;
+        color: #A41704 ;
+    }
+    .right__header{
+        display: flex;
+        vertical-align: middle;
+    }
     .time__test_name{
         display: flex;
         justify-content: space-between;
