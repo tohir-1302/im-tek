@@ -92,13 +92,11 @@ function setClock(endtime) {
                 type : "POST",  //type of method
                 url  : "<?= Yii::$app->getUrlManager()->createUrl(['home/end-test'])?>",  //your page
                 data : { test_singup_id : test_singup_id.innerText},// passing the values
-                success: function(test_singup__id){  
-                    window.location.href ="<?= Yii::$app->getUrlManager()->createUrl(['home/view', 'test_singup_id' =>" +  test_singup__id + "])?>"          //do what you want here...
+                success: function(res){  
                         }
             });
 
-            console.log("dwd");
-        }
+        }                        
     }
 }
 
