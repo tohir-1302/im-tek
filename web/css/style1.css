@@ -4298,7 +4298,8 @@ body::-webkit-scrollbar {
 }
 
 .sidebar.dark_sidebar {
-    background: #1e1e2d
+    background: #bebef55d;
+    box-shadow: 0 0 8px #0F00FF  !important;
 }
 
 .sidebar.dark_sidebar .logo {
@@ -4314,8 +4315,9 @@ body::-webkit-scrollbar {
 }
 
 .sidebar.dark_sidebar #sidebar_menu>li>a {
-    color: #fff;
-    background: 0 0
+    color: #0d0144;
+    background: 0 0;
+    font-weight: 650;
 }
 
 a.active {
@@ -11915,7 +11917,7 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li>a:hover,
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li>a:active {
-    background: #1e1e2d
+    background: #899FFF
 }
 
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li.mm-active>a {

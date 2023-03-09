@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use DateInterval;
+use DateTime;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -13,6 +15,7 @@ use yii\helpers\ArrayHelper;
  * @property int $tests_names_id
  * @property string|null $create_date
  * @property string|null $start_date
+ * @property string|null $end_test_date
  * @property string|null $end_date
  *
  * @property MoneyOutput[] $moneyOutputs
@@ -37,7 +40,7 @@ class TestSingUp extends \yii\db\ActiveRecord
         return [
             [['user_id', 'tests_names_id', 'tests_status'], 'integer'],
             [['tests_names_id'], 'required'],
-            [['create_date', 'start_date', 'end_date'], 'safe'],
+            [['create_date', 'start_date', 'end_date', 'end_test_date'], 'safe'],
             [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']],
         ];
     }
@@ -128,11 +131,18 @@ class TestSingUp extends \yii\db\ActiveRecord
         return true;
     }
 
-    public static function getSingUpId($tests_names_id){
+    public static function getSingUpId($tests_names_id, $time_limit){
         $test_sing_up = TestSingUp::find()->where(['tests_names_id' => $tests_names_id])->one();
         if ($test_sing_up->tests_status == 1) {
             $test_sing_up->start_date = date("Y-m-d H:i:s");
             $test_sing_up->tests_status = 2;
+
+            $end_date = new DateTime(date("Y-m-d H:i:s"));
+            $end_date->add(new DateInterval('PT' . substr($time_limit, 0, 2)  . 'H'));
+            $end_date->add(new DateInterval('PT' . substr($time_limit, 3, 2)  . 'M'));
+            $end_date->add(new DateInterval('PT' . substr($time_limit, 6, 2)  . 'S'));
+
+            $test_sing_up->end_date =  $end_date->format("Y-m-d H:i:s");
             $test_sing_up->save();
         }
   

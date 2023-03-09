@@ -101,8 +101,8 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                             <?php } ?>
 
                             <?php if ($item['tests_status'] == 3) { ?>
-                                <?= \yii\helpers\Html::a('Ko\'rish',Url::to(['home/sign-up-test', 'sing_up_id' => $item["sing_up_id"]]),
-                                    ['class' => 'btn btn-secondary', 'data-confirm' => 'Haqiqatdan ro\'yxatdan o\'tmoqchimisiz? Agar ro`yxatdan o`tsangiz hisobingizdan to`lov yechib olinadi!!!', 'data-method' => 'post']); 
+                                <?= \yii\helpers\Html::a('Ko\'rish',Url::to(['home/view', 'test_singup_id' => $item["sing_up_id"]]),
+                                    ['class' => 'btn btn-secondary']); 
                                 ?>
                             <?php } ?>
                             <?php if ($item['tests_status'] == 4) { ?>
