@@ -31,12 +31,12 @@ use function PHPSTORM_META\type;
 
         <div class="end__test">
             <?php $form = ActiveForm::begin([
-                    'action' => ['home/test'],
+                    'action' => ['home/end-test'],
                     'method'=> 'post',
                     'options' => [
                         'data-pjax' => 1
                     ]]); ?>
-                
+                <?= Html::hiddenInput('test_singup_id', $result['question']['test_sing_up_id']); ?>
                 <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
             <?php ActiveForm::end(); ?> 
         </div>

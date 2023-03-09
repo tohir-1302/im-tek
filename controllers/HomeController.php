@@ -160,7 +160,7 @@ use yii\web\Controller;
                 $test_sing_up -> end_test_date = date("Y-m-d H:i:s");
                 $test_sing_up -> tests_status = 3;
                 $test_sing_up -> save();
-                return $test_singup_id;
+                return $this->redirect(['view', 'test_singup_id' => $test_singup_id]);
             }
         }
 
