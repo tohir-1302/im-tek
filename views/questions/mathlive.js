@@ -1,4 +1,3 @@
-
 AvtoCreate('question');
 AvtoCreate('option_a');
 AvtoCreate('option_b');

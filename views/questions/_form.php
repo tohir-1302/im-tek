@@ -52,3 +52,9 @@ use yii\widgets\ActiveForm;
             </div>
         <?php ActiveForm::end(); ?>
     </div>
+<?php
+    ob_start();
+    include "mathlive.js";
+    $script = ob_get_clean();
+    $this->registerJs($script);
+?>
