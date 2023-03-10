@@ -87,7 +87,8 @@ class TestAnswer extends \yii\db\ActiveRecord
             FROM test_answer
             #LEFT JOIN test_sing_up ON test_sing_up.id = test_answer.test_sing_up_id
             LEFT JOIN questions ON questions.id = test_answer.questions_id
-            WHERE test_answer.test_sing_up_id = :test_sing_up_id ';
+            WHERE test_answer.test_sing_up_id = :test_sing_up_id 
+            order by test_answer.number  ASC';
 
         $result = Yii::$app->getDb()->createCommand($sql, [':test_sing_up_id' => $test_sing_up_id])->queryAll();
 
