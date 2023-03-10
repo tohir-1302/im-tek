@@ -80,79 +80,14 @@ $answer = Questions::getAnswerQuestion();
 
 
 
-    <?php /* GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            [
-                'label'=>'Savol',
-                'format'=>'raw',
-                'attribute' => 'question',
-                'value' => function ($data) {
-                    return " <math-field readonly> ". $data['question']  . "</math-field>";
-                },
-            ],
-            [
-                'label'=>'A variant',
-                'format'=>'raw',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return " <math-field readonly> ". $data['option_A'] . "</math-field>";
-                },
-            ],
-            [
-                'label'=>'B variant',
-                'format'=>'raw',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return " <math-field readonly> ". $data['option_B'] . "</math-field>";
-                },
-            ],
-            [
-                'label'=>'C variant',
-                'format'=>'raw',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return " <math-field readonly> ". $data['option_C'] . "</math-field>";
-                },
-            ],
-            [
-                'label'=>'D variant',
-                'format'=>'raw',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) {
-                    return " <math-field readonly> ". $data['option_D'] . "</math-field>";
-                },
-            ],
-            [
-                'label'=>'To`g`ri variant',
-                'format'=>'raw',
-                // 'attribute' => 'sciences_id',
-                'value' => function ($data) use ($answer){
-                    return " <math-field readonly> ". $answer[$data['answer_option']] . "</math-field>";
-                },
-            ],
-            [
-                'class' => ActionColumn::className(),
-                'template' => '{update}{delete}',
-                'buttons' => [
-                    'delete' => function($url, $data){
-                        return Html::a('O\'chirish',
-                        Url::to(['questions/delete', 'id'=> $data['id']]),
-                        ['class' => 'btn btn-warning', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
-                    },
-                    'update' => function($url, $data){
-                        return Html::a('Tahrirlash',
-                        Url::to(['questions/update', 'id'=> $data['id']]),
-                        ['class' => 'btn btn-success']);
-                    }
-                ]
-            ],
-        ],
-    ]); */ ?>
 
     <?php Pjax::end(); ?>
 
 </div>
+
+<?php
+    ob_start();
+    include "mathlive.js";
+    $script = ob_get_clean();
+    $this->registerJs($script);
+?>

@@ -26,13 +26,8 @@ class AppAsset extends AssetBundle
         "css/colors/default.css",
     ];
     public $js = [
-        'js/mathlive.js',
-        "js/jquery1-3.4.1.min.js",
-        "js/popper1.min.js",
         "js/bootstrap1.min.js",
         "js/metisMenu.js",
-        "js/chart.min.js",
-        "js/dashboard_init.js",
         "js/custom.js"
     ];
     public $depends = [
