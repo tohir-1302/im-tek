@@ -1,3 +1,4 @@
+
 <?php
 
 /** @var yii\web\View $this */
@@ -31,10 +32,10 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">  
     <!-- on your view layout file HEAD section -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" crossorigin="anonymous"></script>
-    <script defer src="//unpkg.com/mathlive"></script>
-    <link rel="stylesheet" href="https://unpkg.com/browse/mathlive@0.89.4/dist/mathlive-fonts.css">  
 
-    
+    <script defer src="//unpkg.com/mathlive"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/browse/mathlive@0.89.4/dist/mathlive-fonts.css">  
 
 </head>
 <body class="crm_body_bg">

@@ -2,6 +2,7 @@
 var test_answer_id = $("input[id='test_answer_id']").val()
 
 
+
 $(".option-1").click(function (e) {
     $.post("<?= Yii::$app->getUrlManager()->createUrl(['home/check-answer'])?>", {
         test_answer_id : test_answer_id,
@@ -103,6 +104,20 @@ function setClock(endtime) {
 setClock(time);
 
 
+
+window.addEventListener("load", (event) => {
+    window.customElements.whenDefined('math-field');
+    var question = document.querySelector('#question_text')
+    var ML__mathlive = document.querySelector('.ML__mathlive')
+    var ML__base = document.querySelector('.ML__base')
+    console.dir(question.style.width);
+    question.style.width  = "auto"
+    ML__mathlive.style.width  = "auto"
+    $(document).ready(function() {
+    $(".ML__mathlive").remove();
+    $(".ML__base").remove();
+    )}
+  });
 
 
 

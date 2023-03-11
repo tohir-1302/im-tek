@@ -19,17 +19,18 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+    public $js = [
+        "js/bootstrap1.min.js",
+        "js/metisMenu.js",
+        "js/custom.js"
+    ];
     public $css = [
         "css/bootstrap1.min.css",
         "css/metisMenu.css",
         "css/style1.css", 
         "css/colors/default.css",
     ];
-    public $js = [
-        "js/bootstrap1.min.js",
-        "js/metisMenu.js",
-        "js/custom.js"
-    ];
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap5\BootstrapAsset'
