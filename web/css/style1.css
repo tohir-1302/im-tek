@@ -1879,7 +1879,7 @@ p a:hover {
 }
 
 .parpel_bg2 {
-    background: #f65365 !important
+    background: #100058 !important
 }
 
 .map-js-height {
@@ -2287,7 +2287,7 @@ span>.bg-secondary {
     right: -7px;
     border-radius: 50%;
     top: -10px;
-    background-color: #f65365;
+    background-color: #100058;
     -webkit-animation: notify-pulse 1s infinite
 }
 
@@ -2488,8 +2488,8 @@ span>.bg-secondary {
 }
 
 .btn_2 {
-    color: #f65365;
-    border: 1px solid #f65365;
+    color: #100058;
+    border: 1px solid #100058;
     display: inline-block;
     padding: 11px 23px;
     text-transform: capitalize;
@@ -2504,8 +2504,8 @@ span>.bg-secondary {
 }
 
 .btn_2:hover {
-    background-color: #f65365;
-    border: 1px solid #f65365;
+    background-color: #100058;
+    border: 1px solid #100058;
     color: #fff
 }
 
@@ -3088,7 +3088,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .header_iner.default_header {
-    background: #f65365;
+    background: #100058;
     border-radius: 0
 }
 
@@ -3897,7 +3897,7 @@ table.dataTable {
 }
 
 .sidebar .single_sidebar_tittle:hover {
-    background-color: #192434
+    background-color: #341919
 }
 
 .sidebar .single_sidebar_tittle:hover i {
@@ -4064,12 +4064,12 @@ table.dataTable {
 }
 
 .sidebar #sidebar_menu>li a:hover {
-    color: #f65365 !important;
+    color: #100058 !important;
     background: #f6f7fb
 }
 
 .sidebar #sidebar_menu>li a.active {
-    color: #f65365;
+    color: #100058;
     background: #f8fafc;
     border-radius: 15px
 }
@@ -4163,7 +4163,7 @@ table.dataTable {
 }
 
 .sidebar #sidebar_menu>li ul li a.active {
-    color: #f65365 !important
+    color: #85000f !important
 }
 
 .sidebar #sidebar_menu>li ul li ul {
@@ -4298,7 +4298,7 @@ body::-webkit-scrollbar {
 }
 
 .sidebar.dark_sidebar {
-    background: #bebef55d;
+    background: #eeeeff;
     box-shadow: 0 0 8px #0F00FF  !important;
 }
 
@@ -4306,13 +4306,13 @@ body::-webkit-scrollbar {
     background: 0 0
 }
 
-.sidebar.dark_sidebar #sidebar_menu>li ul {
-    background: #1e1e2d
+/* .sidebar.dark_sidebar #sidebar_menu>li ul {
+    background: #f45b0f
 }
 
 .sidebar.dark_sidebar #sidebar_menu>li.mm-active>a {
-    background: #1e1e2d
-}
+    background: #f45b0f
+} */
 
 .sidebar.dark_sidebar #sidebar_menu>li>a {
     color: #0d0144;
@@ -4321,8 +4321,8 @@ body::-webkit-scrollbar {
 }
 
 a.active {
-    background: #bdbaba1c !important;
-    color: #f65365 !important
+    background: #f45b0f !important;
+    color: white !important
 }
 
 .sidebar.dark_sidebar #sidebar_menu>li ul li a {
@@ -4513,11 +4513,11 @@ a.active {
 }
 
 .single_user_pil:hover {
-    background: #f5fdff
+    background: #fffbf5
 }
 
 .single_user_pil .user_pils_thumb img {
-    border: 1px solid #94c0d4
+    border: 1px solid #d4be94
 }
 
 .single_user_pil .user_info {
@@ -6036,7 +6036,7 @@ canvas#highlights {
     padding: 4px 15px 8px;
     margin: 0;
     border-radius: 5px 5px 0 0;
-    background-color: #f65365
+    background-color: #100058
 }
 
 .note-editor.note-frame .note-btn i,
@@ -7812,7 +7812,7 @@ canvas#highlights {
 }
 
 .color_parpel2 {
-    color: #f65365
+    color: #100058
 }
 
 .color_pink {
@@ -8478,7 +8478,7 @@ canvas#highlights {
 }
 
 .sales_card_wrapper {
-    background-color: #f65365;
+    background-color: #100058;
     position: relative;
     background-image: url(../img/plane_thumb.svg);
     background-repeat: no-repeat;
@@ -11917,12 +11917,13 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li>a:hover,
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li>a:active {
-    background: #899FFF
-}
+    background: #fd7e14;
+    color: #fd7e14;
+    }
 
 .sidebar.dark_sidebar.mini_sidebar #sidebar_menu>li.mm-active>a {
     background: #1e1e2d;
-    color: #f65365 !important
+    color: #100058 !important
 }
 
 .sidebar.mini_sidebar.dark_sidebar #sidebar_menu>li ul {
@@ -12239,4 +12240,32 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
   .tabs_wrap ul a.active_{
     background: #7fc469;
     color: #fff;
+  }
+
+
+  .ML__mathlive{
+        display: inline-block;
+    direction: ltr;
+    text-align: left;
+    text-indent: 0;
+    text-rendering: auto;
+    font-family:monospace;
+    font-style: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-variant-caps: normal;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-wrap: normal;
+    word-spacing: normal;
+    white-space: none !important;
+    text-shadow: none;
+    -webkit-user-select: none;
+    user-select: none;
+    width: min-content;
+  }
+
+  math-field {
+     width: auto !important;
+     overflow-x: auto;
   }
