@@ -105,19 +105,19 @@ setClock(time);
 
 
 
-window.addEventListener("load", (event) => {
-    window.customElements.whenDefined('math-field');
-    var question = document.querySelector('#question_text')
-    var ML__mathlive = document.querySelector('.ML__mathlive')
-    var ML__base = document.querySelector('.ML__base')
-    console.dir(question.style.width);
-    question.style.width  = "auto"
-    ML__mathlive.style.width  = "auto"
-    $(document).ready(function() {
-    $(".ML__mathlive").remove();
-    $(".ML__base").remove();
-    )}
-  });
+// window.addEventListener("load", (event) => {
+//     window.customElements.whenDefined('math-field');
+//     var question = document.querySelector('#question_text')
+//     var ML__mathlive = document.querySelector('.ML__mathlive')
+//     var ML__base = document.querySelector('.ML__base')
+//     console.dir(question.style.width);
+//     question.style.width  = "auto"
+//     ML__mathlive.style.width  = "auto"
+//     $(document).ready(function() {
+//     $(".ML__mathlive").remove();
+//     $(".ML__base").remove();
+//     )}
+//   });
 
 
 
