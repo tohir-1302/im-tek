@@ -36,7 +36,7 @@ use yii\web\Controller;
                 $type = $get['type'];
             }
             if ($type != 'active' && $type != 'registered'  && $type != 'attendees')
-            $user = Yii::$app->user->getId();
+            $user = Yii::$app->user->identity;
             $sql = '
                     SELECT
                     tests_names.*,
@@ -145,6 +145,9 @@ use yii\web\Controller;
                          return $this->redirect('index');
                      }
                 }
+             }else{
+                \Yii::$app->session->setFlash('danger', "Test yakunlandi" );
+                return $this->redirect('index');
              }
         }
 
