@@ -69,7 +69,13 @@ use function PHPSTORM_META\type;
 <br>
 <div class="wrapper">
     <div class="question">
-        <math-field readonly id = 'question_text'> <?= $result['question']['question'] ?></math-field>
+        <table>
+            <tr>
+                <td id="question_">
+                    <math-field readonly onload="loadImage()"> <?= $result['question']['question'] ?></math-field>
+                </td>
+            </tr>
+        </table>
     </div>
  <input type="radio" name="select" id="option-1" <?= $result['question']['answer_client'] == 1 ? 'checked' : '' ?> >
  <input type="radio" name="select" id="option-2" <?= $result['question']['answer_client'] == 2 ? 'checked' : '' ?>>
@@ -98,7 +104,7 @@ use function PHPSTORM_META\type;
 
 </div>
 
-<div class="test_singup_id" style="display: none;">
+<div class="test_singup_id" style="color: white; position: absolute; z-index: -500;">
     <?= $result['question']['test_sing_up_id'] ?>
 </div>
 <?php
@@ -255,28 +261,5 @@ $this->registerJs($script);
     #option-4:checked:checked ~ .option-4 span{
     color: #fff;
     }
-
-    .ML__base {
-        visibility: inherit;
-        display: inline-block;
-        position: relative;
-        cursor: text;
-        padding: 0;
-        margin: 0;
-        box-sizing: content-box;
-        border: 0;
-        outline: 0;
-        vertical-align: baseline;
-        font-weight: inherit;
-        font-family: inherit;
-        font-style: inherit;
-        text-decoration: none;
-        width: revert !important;
-    }
-
-    .ML__mathit {
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-}
 </style>
 
