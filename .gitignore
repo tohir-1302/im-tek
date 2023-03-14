@@ -34,3 +34,5 @@
 
 # #vagrant folder
 # /.vagrant
+
+.vscode/

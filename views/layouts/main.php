@@ -224,7 +224,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
                                     <div class="profile_info_details">
                                         <a href="#">Mening profilim</a>
                                         <a href="#">Tahrirlash</a>
-                                        <a href="#">Chiqish</a>
+                                        <a href="<?= \yii\helpers\Url::to(['site/logout']) ?>" method="post">Chiqish</a>
                                     </div>
                                 </div>
                             </div>

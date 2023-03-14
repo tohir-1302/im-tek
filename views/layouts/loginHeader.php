@@ -3,14 +3,10 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
-use app\assets\LoginAsset;
-use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
+use app\assets\AppAsset;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
-LoginAsset::register($this);
+AppAsset::register($this);
 
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
@@ -28,8 +24,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-        
-    <?= $content ?>
+        <div class="d-flex justify-content-center">
+            <?= $content ?>
+        </div>
 
 <?php $this->endBody() ?>
 </body>
