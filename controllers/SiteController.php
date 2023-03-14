@@ -12,7 +12,7 @@ use app\models\ContactForm;
 use app\models\SignupForm;
 use ErrorException;
 
-class SiteController extends Controller
+class SiteController extends RoleController
 {
     public $enableCsrfValidation = false;
     /**
@@ -20,25 +20,18 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => ['login', 'signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::class,
+                    'actions' => [
+                        // 'logout' => ['post'],
+                        // 'signup' => ['post']
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    // 'logout' => ['post'],
-                    // 'signup' => ['post']
-                ],
-            ],
-        ];
+            ]
+        );
     }
 
     /**
@@ -74,6 +67,8 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = 'loginHeader';
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -130,13 +125,15 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-      /**
+    /**
      * Signs user up.
      *
      * @return mixed
      */
     public function actionSignup()
     {
+        $this->layout = 'loginHeader';
+        
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
@@ -147,6 +144,4 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
-    
 }

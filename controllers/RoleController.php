@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use common\models\User;
-use yii\base\Controller;
+use yii\web\Controller;
 use yii\filters\AccessControl;
 
  class RoleController extends Controller

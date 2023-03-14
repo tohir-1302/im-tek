@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 /**
  * TestsNamesController implements the CRUD actions for TestsNames model.
  */
-class TestsNamesController extends Controller
+class TestsNamesController extends RoleController
 {
     /**
      * @inheritDoc

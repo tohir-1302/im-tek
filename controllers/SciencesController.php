@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 /**
  * SciencesController implements the CRUD actions for Sciences model.
  */
-class SciencesController extends Controller
+class SciencesController extends RoleController
 {
     /**
      * @inheritDoc

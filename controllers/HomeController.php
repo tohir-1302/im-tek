@@ -7,7 +7,7 @@ use app\models\TestsNames;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
-    class HomeController extends Controller
+    class HomeController extends RoleController
     {
 
         public function behaviors()
@@ -16,7 +16,7 @@ use yii\web\Controller;
                 parent::behaviors(),
                 [
                     'verbs' => [
-                        'class' => VerbFilter::className(),
+                        'class' => VerbFilter::class,
                         'actions' => [
                             'sign-up-test' => ['POST'],
                             'start-test' => ['POST'],
