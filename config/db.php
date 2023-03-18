@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=test',
+    'dsn' => 'mysql:host=127.0.0.1;dbname=im-tek',
     'username' => 'root',
-    'password' => 'mysql2899',
+    'password' => '',
     'charset' => 'utf8',
 
     // 'class' => 'yii\db\Connection',

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
             <div class="row">
                 <div class="col-lg-12 blox_create">
                     <?= $form->field($model, 'question')->textarea(['rows' => 1]) ?>
-                    <math-field id ="question_math" virtual-keyboard-mode="manual"  class="form_input_styles__">
+                    <math-field id ="question_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                     </math-field>
                 </div>
                 <div class="col-sm-2 blox_create ">

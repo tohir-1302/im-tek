@@ -90,13 +90,14 @@ class TestSingUp extends \yii\db\ActiveRecord
         return $this->hasOne(TestsNames::class, ['id' => 'tests_names_id']);
     }
     public static function addSingUp($tests_names_id){
+        $user = Yii::$app->user->identity;
         $tests_names = TestsNames::find()->where(['id' => $tests_names_id])->asArray()->one();
         $questions = Questions::find()->where(['tests_names_id' => $tests_names_id])->asArray()->orderBy(['id'=>SORT_DESC])->all();
         $questions = ArrayHelper::map($questions, 'id', 'answer_option');
 
         $new_test_sing_up = new TestSingUp();
         $new_test_sing_up->create_date = date("Y-m-d H:i:s");
-        $new_test_sing_up->user_id = 33;
+        $new_test_sing_up->user_id = $user->getId();
         $new_test_sing_up->tests_names_id = $tests_names_id;
         $new_test_sing_up->tests_status = 1;
         if($new_test_sing_up->save()){
@@ -132,7 +133,8 @@ class TestSingUp extends \yii\db\ActiveRecord
     }
 
     public static function getSingUpId($tests_names_id, $time_limit){
-        $test_sing_up = TestSingUp::find()->where(['tests_names_id' => $tests_names_id])->one();
+        $user = Yii::$app->user->identity;
+        $test_sing_up = TestSingUp::find()->where(['tests_names_id' => $tests_names_id, 'user_id' => $user->getId()])->one();
         if ($test_sing_up->tests_status == 1) {
             $test_sing_up->start_date = date("Y-m-d H:i:s");
             $test_sing_up->tests_status = 2;

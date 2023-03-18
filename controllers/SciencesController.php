@@ -39,6 +39,10 @@ class SciencesController extends RoleController
 
     public function actionIndex()
     {
+        $user = Yii::$app->user->identity;
+        if ($user->role == 2) {
+            return $this->redirect('home');
+        }
         $searchModel = new SciencesSearch();
         $model = new Sciences();
         $dataProvider = $searchModel->search($this->request->queryParams);
@@ -58,6 +62,10 @@ class SciencesController extends RoleController
      */
     public function actionView($id)
     {
+        $user = Yii::$app->user->identity;
+        if ($user->role == 2) {
+            return $this->redirect('home');
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -70,6 +78,10 @@ class SciencesController extends RoleController
      */
     public function actionCreate()
     {
+        $user = Yii::$app->user->identity;
+        if ($user->role == 2) {
+            return $this->redirect('home');
+        }
         $model = new Sciences();
 
         if ($this->request->isPost) {
@@ -94,6 +106,10 @@ class SciencesController extends RoleController
      */
     public function actionUpdate($id)
     {
+        $user = Yii::$app->user->identity;
+        if ($user->role == 2) {
+            return $this->redirect('home');
+        }
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {

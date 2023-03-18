@@ -10,22 +10,40 @@ use yii\bootstrap5\ActiveForm;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
 
-    <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-
-    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-    <?= $form->field($model, 'email') ?>
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h5 class="form-title">Yangi hisob yaratish</h5>
+                <br>
+                <?php $form = ActiveForm::begin(['id' => 'login-form', "class" => "register-form"]); ?>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'full_name')->textInput([ 'class' => 'input_style', "placeholder" => "Ism"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Username"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'email')->textInput(['class' => 'input_style', "placeholder" => "E-pochta"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_pass"><i class="zmdi zmdi-lock"></i></label> -->
+                        <?= $form->field($model, 'password')->passwordInput(['id'=>"your_pass", 'class' => 'input_style', "placeholder" => "Password"])->label(false) ?>
+                    </div>
+                    <div class="form-group form-button">
+                            <?= Html::submitButton('Saqlash', ['class' => 'form-submit', "id"=>"signin", 'name' => 'login-button']) ?>
+                    </div>
+                <?php ActiveForm::end(); ?>
+            </div>
+            <div class="signup-image">
+                <figure><img src="<?=Yii::getAlias("@img")?>/signup-image.jpg" alt="sing up image"></figure>
+                <?= Html::a('Men ilgari hisob yaratganman', ['site/login'], ['class' => 'signup-image-link']) ?>
+            </div>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-</div>
+</section>
