@@ -21,6 +21,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => $this->params['met
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias("@img/mini_logo.png")]);
 $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
+$user = Yii::$app->user->identity;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -50,7 +51,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
             </div>
         </div>
         <ul id="sidebar_menu">
-           
+           <?php  if ($user->role == 1) :?>
             <li class="">
                 <a class="<?= $url__ ==  'classes/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['classes/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
@@ -83,7 +84,7 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
                     </div>
                 </a>
             </li>
-
+            <?php endif; ?>
             <li class="">
                 <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
@@ -105,15 +106,16 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
                 <div class="col-lg-12 p-0 ">
                     <div class="header_iner d-flex justify-content-between align-items-center">
                         <div class="sidebar_icon d-lg-none">
-                            <img src="<?=Yii::getAlias("@img")?>/line_img.png" alt="">
+                            <img src="https://img.icons8.com/ios/25/null/menu--v1.png"/>
                         </div>
                         <div class="line_icon open_miniSide d-none d-lg-block">
-                            <img src="<?=Yii::getAlias("@img")?>/line_img.png" alt=""> 
+                            <img src="https://img.icons8.com/ios/25/null/menu--v1.png"/>
                         </div>
                         <div class="serach_field-area d-flex align-items-center">
                                 <div class="page_date_button d-flex align-items-center">
                                     <img src="<?=Yii::getAlias("@img")?>/icon/calender_icon.svg" alt="">
-                                    <?= dateView(date("Y-m-d")) ?>
+                                    <?= dateView(date("Y-m-d")) ?><br>
+                                    <?= (date("H:i")) ?>
                                 </div>
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
@@ -218,12 +220,11 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
                                 <img src="<?=Yii::getAlias("@img")?>/client_img.png" alt="#">
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
-                                        <p>Otaqulov</p>
-                                        <h5>Tohirbek</h5>
+                                        <p style="border-bottom: solid 2px white;"><?= $user->username; ?></p>
+                                        <h5><?= $user->full_name; ?></h5>
                                     </div>
                                     <div class="profile_info_details">
                                         <a href="#">Mening profilim</a>
-                                        <a href="#">Tahrirlash</a>
                                         <a href="<?= \yii\helpers\Url::to(['site/logout']) ?>" method="post">Chiqish</a>
                                     </div>
                                 </div>

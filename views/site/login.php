@@ -10,28 +10,40 @@ use yii\bootstrap5\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
 
-    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="<?=Yii::getAlias("@img")?>/signin-image.jpg" alt="sing up image"></figure>
+                <?= Html::a('Yangi hisob ochish', ['site/signup'], ['class' => 'signup-image-link']) ?>
+            </div>
+            <div class="signin-form">
+                <h4 class="form-title"><img src="<?=Yii::getAlias("@img")?>/logo.png" alt=""></h4>
+                <?php $form = ActiveForm::begin(['id' => 'login-form', "class" => "register-form"]); ?>
 
-    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
-
-    <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-    <div class="my-1 mx-0" style="color:#999;">
-        If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-        <br>
-        Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'id'=>"your_name", 'class' => 'input_style', "placeholder" => "Username"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_pass"><i class="zmdi zmdi-lock"></i></label> -->
+                        <?= $form->field($model, 'password')->passwordInput(['id'=>"your_pass", 'class' => 'input_style', "placeholder" => "Password"])->label(false) ?>
+                    </div>
+                    <div class="form-group form-button">
+                            <?= Html::submitButton('Kirish', ['class' => 'form-submit', "id"=>"signin", 'name' => 'login-button']) ?>
+                    </div>
+                <?php ActiveForm::end(); ?>
+                <div class="social-login">
+                    <span class="social-label">Biz bilan aloqa </span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-</div>
+</section>

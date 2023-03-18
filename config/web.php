@@ -7,10 +7,12 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'uz',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@img'   => '/web/img/',
+        '@fonts'   => '/web/fonts/',
     ],
     'components' => [
         'assetManager' => [

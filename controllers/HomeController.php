@@ -30,13 +30,15 @@ use yii\web\Controller;
 
         public function actionIndex(){
             $get = Yii::$app->request->get();
+            $user = Yii::$app->user->identity;
             $type = 'active';
 
             if (isset($get['type'])) {
                 $type = $get['type'];
             }
-            if ($type != 'active' && $type != 'registered'  && $type != 'attendees')
-            $user = Yii::$app->user->identity;
+            if ($type != 'active' && $type != 'registered'  && $type != 'attendees'){
+                $type = 'active';
+            }
             $sql = '
                     SELECT
                     tests_names.*,
@@ -53,7 +55,7 @@ use yii\web\Controller;
             $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
             // prd($result);
 
-            $test_sing_up = TestSingUp::find()->all();
+            $test_sing_up = TestSingUp::find()->where(['user_id' => $user->getId()])->all();
             // prd($test_sing_up);
 
             $gibrit = [];
@@ -184,13 +186,18 @@ use yii\web\Controller;
             }else{
                 return json_encode(['status' => false]);
             }
+            
         }
 
 
         public function actionView($test_singup_id){
             $allQuestions = TestAnswer::getAllQuestions($test_singup_id);
+            $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
+
+            // prd($test_sing_up);
             return $this->render('view',[
                 'allQuestions' => $allQuestions,
+                'test_sing_up' => $test_sing_up
             ]);
         }
      
