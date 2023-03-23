@@ -1,3 +1,23 @@
+<style>
+    .answer_foiz{
+        text-align: center;
+        font-weight: 650;
+        font-size: 30px;
+    }
+
+
+</style>
+<div class="answer_foiz">
+    40%
+</div>
+<div class="amswer__test__">
+    <div class="answer_true">
+        To'g'ri javob:  12
+    </div>
+    <div class="answer_false">
+        Xato javob: 5
+    </div>
+</div>
 
 <div class="white_card_body">
     <div class="QA_section">

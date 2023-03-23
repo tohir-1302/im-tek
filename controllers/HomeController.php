@@ -194,7 +194,7 @@ use yii\web\Controller;
             $allQuestions = TestAnswer::getAllQuestions($test_singup_id);
             $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
 
-            // prd($test_sing_up);
+            // prd($allQuestions);ee3
             return $this->render('view',[
                 'allQuestions' => $allQuestions,
                 'test_sing_up' => $test_sing_up
