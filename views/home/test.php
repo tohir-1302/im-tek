@@ -84,22 +84,22 @@ use function PHPSTORM_META\type;
 
     <label for="option-1" class="option option-1">
         <div class="dot"></div>
-        <span><math-field readonly> <?= $result['question']['option_A'] ?></math-field></span>
+        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_A'] ?></math-field></span>
     </label>
 
     <label for="option-2" class="option option-2">
         <div class="dot"></div>
-        <span><math-field readonly> <?= $result['question']['option_B'] ?></math-field></span>
+        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_B'] ?></math-field></span>
     </label>
 
     <label for="option-3" class="option option-3">
         <div class="dot"></div>
-        <span><math-field readonly> <?= $result['question']['option_C'] ?></math-field></span>
+        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_C'] ?></math-field></span>
     </label>
 
     <label for="option-4" class="option option-4">
         <div class="dot"></div>
-        <span><math-field readonly> <?= $result['question']['option_D'] ?></math-field></span>
+        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_D'] ?></math-field></span>
     </label>
 
 </div>

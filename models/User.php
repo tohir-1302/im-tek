@@ -17,7 +17,9 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $verification_token
  * @property string $email
- * @property string $full_name
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $father_is_name
  * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
@@ -57,12 +59,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['role'], 'integer'],
-            [['full_name'], 'string'],
+            [['first_name', 'last_name', 'father_is_name'], 'string'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -170,7 +171,9 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
+        // return Yii::$app->security->validatePassword($password, $this->password_hash);
+        return $password === $this->password_hash;
+
     }
 
     /**
@@ -180,7 +183,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function setPassword($password)
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = $password;
     }
 
     /**

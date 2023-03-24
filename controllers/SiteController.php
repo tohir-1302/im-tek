@@ -135,6 +135,7 @@ class SiteController extends RoleController
         $this->layout = 'loginHeader';
         
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Ro\'yxatdan oʻtganingiz uchun tashakkur. Platformamizdan foydalanishingiz mumkin !!!');
             return $this->goHome();

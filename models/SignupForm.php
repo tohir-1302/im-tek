@@ -14,7 +14,9 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-    public $full_name;
+    public $last_name;
+    public $father_is_name;
+    public $first_name;
 
 
     /**
@@ -25,19 +27,36 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu foydalanuvchi nomi orqali ro`yxatdan o`tilgan'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
-            ['full_name', 'string', 'max' => 100],
+            [['last_name', 'father_is_name', 'first_name'], 'string', 'max' => 100],
+            [['last_name', 'father_is_name', 'first_name'], 'required'],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu E-pochta orqali ro`yxatdan o`tilgan'],
 
             ['password', 'required'],
-            // ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            ['password', 'string', 'min' => 8],
+        ];
+    }
+
+
+
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'first_name' => 'Ism',
+            'last_name' => 'Familiya',
+            'father_is_name' => 'Sharifi',
+            'username' => 'Foydalanuvchi nomi',
+            'email' => 'E-pochta',
+            'password' => 'Parol',
         ];
     }
 
@@ -56,7 +75,9 @@ class SignupForm extends Model
         $user->username = $this->username;
         $user->email = $this->email;
         $user->status = 10;
-        $user->full_name = $this->full_name;
+        $user->first_name = $this->first_name;
+        $user->father_is_name = $this->father_is_name;
+        $user->last_name = $this->last_name;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
