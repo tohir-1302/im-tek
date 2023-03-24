@@ -21,11 +21,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php $form = ActiveForm::begin(['id' => 'login-form', "class" => "register-form"]); ?>
                     <div class="form-group">
                         <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
-                        <?= $form->field($model, 'full_name')->textInput([ 'class' => 'input_style', "placeholder" => "Ism"])->label(false) ?>
+                        <?= $form->field($model, 'first_name')->textInput([ 'class' => 'input_style', "placeholder" => "Ism"])->label(false) ?>
                     </div>
                     <div class="form-group">
                         <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
-                        <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Username"])->label(false) ?>
+                        <?= $form->field($model, 'last_name')->textInput([ 'class' => 'input_style', "placeholder" => "Familiya"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'father_is_name')->textInput([ 'class' => 'input_style', "placeholder" => "Sharifi"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
                     </div>
                     <div class="form-group">
                         <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
@@ -33,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="form-group">
                         <!-- <label for="your_pass"><i class="zmdi zmdi-lock"></i></label> -->
-                        <?= $form->field($model, 'password')->passwordInput(['id'=>"your_pass", 'class' => 'input_style', "placeholder" => "Password"])->label(false) ?>
+                        <?= $form->field($model, 'password')->passwordInput(['id'=>"your_pass", 'class' => 'input_style', "placeholder" => "Parol"])->label(false) ?>
                     </div>
                     <div class="form-group form-button">
                             <?= Html::submitButton('Saqlash', ['class' => 'form-submit', "id"=>"signin", 'name' => 'login-button']) ?>
@@ -42,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="signup-image">
                 <figure><img src="<?=Yii::getAlias("@img")?>/signup-image.jpg" alt="sing up image"></figure>
-                <?= Html::a('Men ilgari hisob yaratganman', ['site/login'], ['class' => 'signup-image-link']) ?>
+                <?= Html::a('Men ilgari hisob yaratganman', ['site/login'], ['class' => 'btn btn-success']) ?>
             </div>
         </div>
     </div>

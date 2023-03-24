@@ -35,8 +35,8 @@
                     <?php $number = 1; foreach ($allQuestions as $item) : ?>
                     <tr style=" <?= $item['answer_client'] != $item['answer_success'] ? 'background-color: #FFD2C7; !important' : 'background-color: #A3FFA3BB; !important'  ?>">
                         <th scope="row"> <?= $number ?></th>
-                        <td> <math-field readonly>  <?=  $item['question'] ?> </math-field> </td>
-                        <td> <math-field readonly> <?php 
+                        <td> <math-field readonly letter-shape-style="upright" >  <?=  $item['question'] ?> </math-field> </td>
+                        <td> <math-field readonly letter-shape-style="upright" > <?php 
                             switch ($item['answer_client']) {
                                 case 0:
                                     echo "Belgilanmagan";
@@ -56,7 +56,7 @@
                             }
                         ?> </math-field> </td>
                         
-                        <td><math-field readonly> <?php 
+                        <td><math-field readonly letter-shape-style="upright" > <?php 
                             switch ($item['answer_success']) {
                                 case 1:
                                     echo $item['option_A'];
