@@ -27,9 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
                         <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'id'=>"your_name", 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: flex;">
                         <!-- <label for="your_pass"><i class="zmdi zmdi-lock"></i></label> -->
-                        <?= $form->field($model, 'password')->passwordInput(['id'=>"your_pass", 'class' => 'input_style', "placeholder" => "Parol"])->label(false) ?>
+                        <?= $form->field($model, 'password')->passwordInput(['id'=>"password", 'class' => 'input_style', "placeholder" => "Parol"])->label(false) ?>
+                        <i class="bi bi-eye-slash" id="togglePassword"></i>
                     </div>
                     <div class="form-group form-button">
                             <?= Html::submitButton('Kirish', ['class' => 'form-submit', "id"=>"signin", 'name' => 'login-button']) ?>
@@ -48,3 +49,28 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </section>
+
+<script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+</script>
+
+
+<style>
+
+</style>
