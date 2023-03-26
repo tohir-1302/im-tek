@@ -112,11 +112,14 @@ $user = Yii::$app->user->identity;
                             <img src="https://img.icons8.com/ios/25/null/menu--v1.png"/>
                         </div>
                         <div class="serach_field-area d-flex align-items-center">
-                                <div class="page_date_button d-flex align-items-center">
+                                <div class="page_date_button d-flex align-items-center" style="display: block;">
                                     <img src="<?=Yii::getAlias("@img")?>/icon/calender_icon.svg" alt="">
-                                    <?= dateView(date("Y-m-d")) ?><br>
-                                    <?= (date("H:i")) ?>
-                                </div>
+                                    <div class="date_time_all">
+                                        <?= dateView(date("Y-m-d")) ?> <br>
+                                        <div id="time__"> <?= (date("H:i:s")) ?> </div>
+                                    </div>
+                                </div> 
+
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="header_notification_warp d-flex align-items-center">
@@ -268,4 +271,13 @@ $user = Yii::$app->user->identity;
 <?php $this->endBody() ?>
 </body>
 </html>
+<script>
+const myInterval = setInterval(myTimer, 1000);
+
+function myTimer() {
+  const date = new Date();
+  document.getElementById("time__").innerHTML = date.toLocaleTimeString();
+}
+
+</script>
 <?php $this->endPage() ?>

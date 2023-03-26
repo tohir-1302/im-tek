@@ -43,10 +43,10 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                         <th scope="col">Sinf</th>
                         <th scope="col">Fan</th>
                         <th scope="col">Test nomi</th>
-                        <th scope="col">Boshlanish Vaqti</th>
-                        <th scope="col">Tugash Vaqti</th>
-                        <th scope="col">Test davomiyligi</th>
-                        <th scope="col">Savollar soni</th>
+                        <th scope="col">Boshlanish <br> Vaqti</th>
+                        <th scope="col">Tugash <br> Vaqti</th>
+                        <th scope="col">Test <br> davomiyligi</th>
+                        <th scope="col">Savollar <br> soni</th>
                         <th scope="col">#</th>
                     </tr>
                 </thead>
