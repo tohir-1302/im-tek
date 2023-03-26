@@ -3728,7 +3728,7 @@ table.dataTable {
     z-index: 99;
     padding-bottom: 50px;
     position: fixed;
-    width: 270px;
+    width: 150px;
     z-index: 999;
     overflow: hidden;
     overflow-y: auto;
@@ -3775,7 +3775,7 @@ table.dataTable {
 .sidebar .logo {
     margin: 0;
     background: #f3f6f9;
-    padding-left: 40px;
+    /* padding-left: 40px; */
     /* margin-bottom: 20px; */
 }
 
@@ -4050,14 +4050,14 @@ table.dataTable {
     position: relative;
     z-index: 0;
     display: grid;
-    grid-template-columns: 34px auto;
+    grid-template-columns: 14px auto;
     grid-gap: 15px;
     align-items: center;
     position: relative;
     background: 0 0;
     color: #8890b5;
     font-family: mulish, sans-serif;
-    padding: 10px 10px 10px 26px;
+    padding: 10px 10px 10px 10px;
     background: #fff;
     border-radius: 0 30px 30px 0;
     border-radius: 15px
@@ -4299,7 +4299,7 @@ body::-webkit-scrollbar {
 
 .sidebar.dark_sidebar {
     background: #eeeeff;
-    box-shadow: 0 0 8px #0F00FF  !important;
+    box-shadow: 0 0 8px #868686b0  !important;
 }
 
 .sidebar.dark_sidebar .logo {
@@ -4533,7 +4533,7 @@ a.active {
 }
 
 .main_content {
-    padding-left: 270px;
+    padding-left: 140px;
     width: 100%;
     padding-top: 0 !important;
     transition: .5s;
@@ -4939,16 +4939,13 @@ a.active {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .white_card .white_card_header {
     padding: 22px 30px
 }
 
-.white_card .white_card_body {
-    padding: 25px
-}
 
 .white_box_50px {
     padding: 43px 45px 38px 50px;

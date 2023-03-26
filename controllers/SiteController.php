@@ -141,6 +141,8 @@ class SiteController extends RoleController
             return $this->goHome();
         }
 
+        $model->birthday = "2000-01-01";
+        
         return $this->render('signup', [
             'model' => $model,
         ]);

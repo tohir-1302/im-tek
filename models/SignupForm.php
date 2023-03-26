@@ -17,6 +17,7 @@ class SignupForm extends Model
     public $last_name;
     public $father_is_name;
     public $first_name;
+    public $birthday;
 
 
     /**
@@ -31,11 +32,12 @@ class SignupForm extends Model
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             [['last_name', 'father_is_name', 'first_name'], 'string', 'max' => 100],
-            [['last_name', 'father_is_name', 'first_name'], 'required'],
+            [['last_name', 'father_is_name', 'first_name', 'birthday'], 'required'],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
+            ['birthday', 'safe'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu E-pochta orqali ro`yxatdan o`tilgan'],
 
@@ -43,8 +45,6 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 8],
         ];
     }
-
-
 
 
     public function attributeLabels()
@@ -57,6 +57,7 @@ class SignupForm extends Model
             'username' => 'Foydalanuvchi nomi',
             'email' => 'E-pochta',
             'password' => 'Parol',
+            'birthday' => 'Tug\'ilgan kun',
         ];
     }
 
@@ -78,6 +79,7 @@ class SignupForm extends Model
         $user->first_name = $this->first_name;
         $user->father_is_name = $this->father_is_name;
         $user->last_name = $this->last_name;
+        $user->birthday = $this->birthday;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();

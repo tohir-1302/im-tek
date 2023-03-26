@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\validators\SafeValidator;
 use yii\web\IdentityInterface;
 
 /**
@@ -21,6 +22,7 @@ use yii\web\IdentityInterface;
  * @property string $last_name
  * @property string $father_is_name
  * @property string $auth_key
+ * @property string $birthday
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
@@ -59,6 +61,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             [['role'], 'integer'],
+            [['birthday'], 'safe'],
             [['first_name', 'last_name', 'father_is_name'], 'string'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
