@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="signup-image">
                 <figure><img src="<?=Yii::getAlias("@img")?>/signup-image.jpg" alt="sing up image"></figure>
-                <?= Html::a('Men ilgari hisob yaratganman', ['site/login'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Men ilgari hisob yaratganman', ['site/login'], ['class' => 'btn btn-success',  'style' => 'width: 100%']) ?>
             </div>
         </div>
     </div>
