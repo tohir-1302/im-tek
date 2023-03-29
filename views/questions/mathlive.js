@@ -28,4 +28,14 @@ function AvtoCreate(element) {
     
 }
 
+var question__file_button = document.querySelector('#question__file_button');
+var question__file = document.querySelector('.question__file');
+
+question__file_button.addEventListener('click',(ev) => {
+    if (question__file.style.display == "inline") {
+        question__file.style.display = "none";
+    }else{
+        question__file.style.display = "inline";
+    }
+});
 

@@ -16,7 +16,10 @@ use yii\widgets\ActiveForm;
             <div class="row">
                 <div class="col-lg-12 blox_create" style="margin-bottom: 10px; border-bottom: 1px solid black;">
                     <?= $form->field($model, 'question')->textarea(['rows' => 1]) ?>
-                    <button class="btn btn-dark" id="question__formula">Formula kiritish</button>
+                    <div class="click__buttons_">
+                        <button class="btn btn-dark" id="question__formula">Formula kiritish</button>
+                        <button class="btn btn-dark" id="question__file_button">Rasm biriktirish</button>
+                    </div>
                     <div class="formula_question">
                         <math-field id ="question_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
@@ -28,7 +31,6 @@ use yii\widgets\ActiveForm;
                             'pluginOptions' => ['previewFileType' => 'image']
                         ]); ?>
                     </div>
-                 
                 </div>
                 <div class="col-sm-6 blox_create ">
                     <?= $form->field($model, 'option_A')->textarea(['rows' => 1]) ?>
@@ -89,9 +91,16 @@ use yii\widgets\ActiveForm;
 ?>
 <br>
 <style>
-    .formula_question, .formula_option_a, .formula_option_b, .formula_option_c, .formula_option_d{
+    .question__file, .formula_question, .formula_option_a, .formula_option_b, .formula_option_c, .formula_option_d{
         display: none;
         /* display: flex; */
     }
+
+    .click__buttons_{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
 
 </style>
