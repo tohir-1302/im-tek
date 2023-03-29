@@ -84,7 +84,7 @@ use function PHPSTORM_META\type;
 
     <label for="option-1" class="option option-1">
         <div class="dot"></div>
-        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_A'] ?></math-field></span>
+        <span><math-field readonly > <?= $result['question']['option_A'] ?></math-field></span>
     </label>
 
     <label for="option-2" class="option option-2">

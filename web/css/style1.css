@@ -12157,9 +12157,9 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
 }
 
 .blox_create{
-    background-color: rgb(255, 253, 196);
+    background-color: #F1F3FC;
     padding: 10px;
-    margin: 5px;
+    /* margin: 5px; */
     border-radius: 12px;
     box-shadow: 0 0 8px rgba(0, 0, 0, .2) !important;
 }
@@ -12237,11 +12237,4 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
   .tabs_wrap ul a.active_{
     background: #7fc469;
     color: #fff;
-  }
-
-
-
-  math-field {
-     width: auto !important;
-     overflow-x: auto;
   }

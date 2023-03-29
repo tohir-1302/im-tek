@@ -53,12 +53,12 @@ $answer = Questions::getAnswerQuestion();
                     <?php $number = 1; foreach ($dataProvider as $item) : ?>
                     <tr>
                         <th scope="row"> <?= $number ?></th>
-                        <td><?= " <math-field readonly> ". $item['question']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['option_A']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['option_B']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['option_C']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['option_D']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ".  $answer[$item['answer_option']]  . "</math-field>" ?></td>
+                        <td><?= $item['question']  ?></td>
+                        <td><?= $item['option_A']  ?></td>
+                        <td><?= $item['option_B']  ?></td>
+                        <td><?= $item['option_C']  ?></td>
+                        <td><?= $item['option_D']  ?></td>
+                        <td><?=  $answer[$item['answer_option']]  ?></td>
                         <td>
                             <!-- <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i></a> -->
                             <?= \yii\helpers\Html::a(

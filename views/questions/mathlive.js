@@ -6,34 +6,36 @@ AvtoCreate('option_d');
 
 function AvtoCreate(element) {
     var question_math = document.querySelector('#'+element+'_math');
+    var question_formula =  document.querySelector('#'+element+'__formula');
+    var formula_question =  document.querySelector('.formula_'+element);
     var question = document.querySelector('#questions-'+element);
-    question_math.addEventListener("keydown", function(event) {
-        if (event.keyCode == 32) {
-            question_math.value = question_math.value + "\\,";
-        }
-    });
+    var question__formula__save = document.querySelector('#'+element+'__formula__save');
 
-    question_math.addEventListener('input',(ev) => {
+    question__formula__save.addEventListener('click',(ev) => {
         var text = question_math.value, new_text = '';
-        for (let index = 0; index < text.length; index++) {
-            if (text[index] != ' ') {
-                new_text = new_text + text[index];
-            }
-        }
-        question.value = new_text;
-        question_math.value = new_text;
+        question.value +=  '<math-field readonly >' + text + '</math-field>'; 
+        question_math.value ='';
+        formula_question.style.display = "none";
     }); 
 
-    question.addEventListener('input',(ev) => {
-        var text = question.value, new_text = '';
-        for (let index = 0; index < text.length; index++) {
-            if (text[index] != ' ') {
-                new_text = new_text + text[index];
-            }else{
-                new_text = new_text + '\\,';
-            }
+    question_formula.addEventListener('click',(ev) => {
+        if (formula_question.style.display == "flex") {
+            formula_question.style.display = "none";
+        }else{
+            formula_question.style.display = "flex";
         }
-        question.value = new_text;
-        question_math.value = new_text;
-    })
+    }); 
+    
 }
+
+var question__file_button = document.querySelector('#question__file_button');
+var question__file = document.querySelector('.question__file');
+
+question__file_button.addEventListener('click',(ev) => {
+    if (question__file.style.display == "inline") {
+        question__file.style.display = "none";
+    }else{
+        question__file.style.display = "inline";
+    }
+});
+

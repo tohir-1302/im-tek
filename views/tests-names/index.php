@@ -86,12 +86,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php $number = 1; foreach ($dataProvider as $item) : ?>
                     <tr>
                         <th scope="row"> <?= $number ?></th>
-                        <td><?= " <math-field readonly> ". $item['c_name']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['s_name']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". $item['question_count']  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". datetimeView($item['begin_date'])  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ". datetimeView($item['end_date'])  . "</math-field>" ?></td>
-                        <td><?= " <math-field readonly> ".  $item['time_limit']  . "</math-field>" ?></td>
+                        <td><?=  $item['c_name']   ?></td>
+                        <td><?=  $item['s_name']   ?></td>
+                        <td><?=  $item['question_count']   ?></td>
+                        <td><?=  datetimeView($item['begin_date'])   ?></td>
+                        <td><?=  datetimeView($item['end_date'])   ?></td>
+                        <td><?=   $item['time_limit']   ?></td>
                         <td>
                             <!-- <a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i></a> -->
                             <?=  \yii\helpers\Html::a(

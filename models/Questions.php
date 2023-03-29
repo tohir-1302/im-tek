@@ -13,6 +13,7 @@ use Yii;
  * @property string|null $option_B
  * @property string|null $option_C
  * @property string|null $option_D
+ * @property string|null $file
  * @property int|null $answer_option 1→A_option; 2→B_option; 3→C_option; 4→D_option
  * @property string|null $question
  *
@@ -36,7 +37,7 @@ class Questions extends \yii\db\ActiveRecord
         return [
             [['tests_names_id', 'question', 'answer_option', 'option_A', 'option_B', 'option_C', 'option_D'], 'required'],
             [['tests_names_id', 'answer_option'], 'integer'],
-            [['option_A', 'option_B', 'option_C', 'option_D', 'question'], 'string'],
+            [['option_A', 'option_B', 'option_C', 'option_D', 'question', 'file'], 'string'],
             [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']],
         ];
     }

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'yiisoft/yii2-app-basic',
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
-        'reference' => 'abdd69a0ba3dc4271603ca2c1a86d8768d3526b5',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -217,6 +217,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'kartik-v/bootstrap-fileinput' => array(
+            'pretty_version' => 'v5.5.2',
+            'version' => '5.5.2.0',
+            'reference' => '35c29cd9fd5bc47eae5238feaabee95b2d7efe3c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kartik-v/bootstrap-fileinput',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kartik-v/yii2-bootstrap5-dropdown' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -312,6 +321,17 @@
             'install_path' => __DIR__ . '/../kartik-v/yii2-widget-datetimepicker',
             'aliases' => array(
                 0 => '1.5.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'kartik-v/yii2-widget-fileinput' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'b5500b6855526837154694c2afab8dbc3afc8abd',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../kartik-v/yii2-widget-fileinput',
+            'aliases' => array(
+                0 => '1.1.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -991,9 +1011,9 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-basic' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
-            'reference' => 'abdd69a0ba3dc4271603ca2c1a86d8768d3526b5',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
