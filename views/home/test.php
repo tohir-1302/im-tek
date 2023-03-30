@@ -47,7 +47,7 @@ use function PHPSTORM_META\type;
 
 
 <input type="hidden" id="test_answer_id" name="custId" value="<?= $result['question']['id'] ?>">
-<div class="wrapper">
+<div class="wrapper_">
     <div class="numbers__test">
         <?php foreach ($result['test_count'] as $number => $answer): 
              $yes_answwer =  $answer != 0 ? 'yes_answwer' : "";
@@ -72,7 +72,7 @@ use function PHPSTORM_META\type;
         <table>
             <tr>
                 <td id="question_">
-                    <math-field readonly onload="loadImage()"> <?= $result['question']['question'] ?></math-field>
+                    <?= $result['question']['question'] ?>
                 </td>
             </tr>
         </table>
@@ -84,22 +84,22 @@ use function PHPSTORM_META\type;
 
     <label for="option-1" class="option option-1">
         <div class="dot"></div>
-        <span><math-field readonly > <?= $result['question']['option_A'] ?></math-field></span>
+        <span> <?= $result['question']['option_A'] ?></span>
     </label>
 
     <label for="option-2" class="option option-2">
         <div class="dot"></div>
-        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_B'] ?></math-field></span>
+        <span> <?= $result['question']['option_B'] ?></span>
     </label>
 
     <label for="option-3" class="option option-3">
         <div class="dot"></div>
-        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_C'] ?></math-field></span>
+        <span> <?= $result['question']['option_C'] ?></span>
     </label>
 
     <label for="option-4" class="option option-4">
         <div class="dot"></div>
-        <span><math-field readonly letter-shape-style="upright" > <?= $result['question']['option_D'] ?></math-field></span>
+        <span> <?= $result['question']['option_D'] ?></span>
     </label>
 
 </div>
@@ -183,6 +183,19 @@ $this->registerJs($script);
         display: flex;
     }
     .wrapper{
+        display: bloc;
+        background: #fff;
+        height: auto;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        padding: 20px 15px;
+        padding-right: 50px;
+        box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+    }
+
+    .wrapper_{
         overflow-x: auto;
         display: bloc;
         background: #fff;

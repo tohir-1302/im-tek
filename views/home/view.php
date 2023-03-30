@@ -4,18 +4,39 @@
         font-weight: 650;
         font-size: 30px;
     }
+    .amswer__test__{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+    
+    .answer_true{
+        color: #0E5F00;
+        font-weight: 650;
+        font-size: 16px;
+    }
 
-
+    .answer_false{
+        color: #903006;
+        font-weight: 650;
+        font-size: 16px;
+    }
 </style>
-<div class="answer_foiz">
-    40%
+<div style="display: flex; justify-content: space-between;">
+    <h3> <?= $tets_names->name?></h3>
+    <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index', 'type' => 'attendees']) ?>"><img src="https://img.icons8.com/nolan/54/circled-left-2.png"/></a>
 </div>
+
+
 <div class="amswer__test__">
     <div class="answer_true">
-        To'g'ri javob:  12
+        To'g'ri javob:  <?= $true_answer ?>
+    </div>
+    <div class="answer_foiz">
+    <?= $true_answer * 100 / $tets_names->question_count ?>%
     </div>
     <div class="answer_false">
-        Xato javob: 5
+        Xato javob: <?= $tets_names->question_count - $true_answer ?>
     </div>
 </div>
 
@@ -35,8 +56,8 @@
                     <?php $number = 1; foreach ($allQuestions as $item) : ?>
                     <tr style=" <?= $item['answer_client'] != $item['answer_success'] ? 'background-color: #FFD2C7; !important' : 'background-color: #A3FFA3BB; !important'  ?>">
                         <th scope="row"> <?= $number ?></th>
-                        <td> <math-field readonly letter-shape-style="upright" >  <?=  $item['question'] ?> </math-field> </td>
-                        <td> <math-field readonly letter-shape-style="upright" > <?php 
+                        <td>   <?=  $item['question'] ?>  </td>
+                        <td>  <?php 
                             switch ($item['answer_client']) {
                                 case 0:
                                     echo "Belgilanmagan";
@@ -54,9 +75,9 @@
                                     echo $item['option_D'];
                                     break;
                             }
-                        ?> </math-field> </td>
+                        ?>  </td>
                         
-                        <td><math-field readonly letter-shape-style="upright" > <?php 
+                        <td> <?php 
                             switch ($item['answer_success']) {
                                 case 1:
                                     echo $item['option_A'];
@@ -71,7 +92,7 @@
                                     echo $item['option_D'];
                                     break;
                             }
-                        ?></math-field> </td>
+                        ?> </td>
                     </tr>
                     <?php $number++; endforeach; ?>
                 </tbody>

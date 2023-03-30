@@ -13,7 +13,7 @@ function AvtoCreate(element) {
 
     question__formula__save.addEventListener('click',(ev) => {
         var text = question_math.value, new_text = '';
-        question.value +=  '<math-field readonly >' + text + '</math-field>'; 
+        question.value +=  '<math-field readonly class="math__views" >' + text + '</math-field>'; 
         question_math.value ='';
         formula_question.style.display = "none";
     }); 
