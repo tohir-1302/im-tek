@@ -11,6 +11,7 @@ use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * QuestionsController implements the CRUD actions for Questions model.
@@ -48,6 +49,22 @@ class QuestionsController extends RoleController
         $model = new Questions();
         $model->tests_names_id = $tests_names->id;
         if ($model->load($this->request->post())) {
+            $model->file = UploadedFile::getInstances($model, 'file');
+            $fnames = [];
+            $k = 1;
+            if ($model->file && is_array($model->file)){
+                foreach ($model->file as $key => $file){
+                    $fileName = $k.'_'. time() . '_' . $key;
+                    $file->saveAs('uploads/question_file/' . $fileName . '.' . $file->extension,false);
+                    $file_name = $fileName . '.' . $file->extension;
+                    array_push($fnames, $file_name);
+                    $k++;
+                }
+                $json = json_encode($fnames);
+                $model->file_name = $json;
+            }
+
+
             $model->save();
             return $this->redirect(['index', 'id' => $id]);
         }
@@ -112,7 +129,24 @@ class QuestionsController extends RoleController
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) ) {
+            $model->file = UploadedFile::getInstances($model, 'file');
+            $fnames = [];
+            $k = 1;
+            if ($model->file && is_array($model->file)){
+                foreach ($model->file as $key => $file){
+                    $fileName = $k.'_'. time() . '_' . $key;
+                    $file->saveAs('uploads/question_file/' . $fileName . '.' . $file->extension,false);
+                    $file_name = $fileName . '.' . $file->extension;
+                    array_push($fnames, $file_name);
+                    $k++;
+                }
+                $json = json_encode($fnames);
+                $model->file_name = $json;
+            }
+
+
+            $model->save();
             return $this->redirect(['index', 'id' => $model->tests_names_id]);
         }
 

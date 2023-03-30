@@ -29,9 +29,7 @@ $answer = Questions::getAnswerQuestion();
      <?php  echo $this->render('_form', [
         'model' => $model
      ])?>
-
-
-    
+  
 
 <div class="white_card_body">
     <div class="QA_section">
@@ -53,7 +51,20 @@ $answer = Questions::getAnswerQuestion();
                     <?php $number = 1; foreach ($dataProvider as $item) : ?>
                     <tr>
                         <th scope="row"> <?= $number ?></th>
-                        <td><?= $item['question']  ?></td>
+                        <td>
+                            <div class="question_all_data">
+                                <div class="img_question">
+                                    <?php 
+                                        if ($item['file_name'] != null){
+                                            $resp = json_decode($item['file_name']);
+                                            foreach ($resp as $item_): 
+                                    ?>
+                                            <img src="<?=Yii::getAlias("@q_img")?>/question_file/<?= $item_ ?>" alt="">
+                                    <?php endforeach; } ?>
+                                </div>
+                                <?= $item['question']  ?>
+                            </div>
+                        </td>
                         <td><?= $item['option_A']  ?></td>
                         <td><?= $item['option_B']  ?></td>
                         <td><?= $item['option_C']  ?></td>
@@ -91,3 +102,16 @@ $answer = Questions::getAnswerQuestion();
     $script = ob_get_clean();
     $this->registerJs($script);
 ?>
+
+<style>
+    .img_question img{
+        width: 70px;
+        margin-right: 3px
+    }
+    .img_question{
+        margin-right: 10px;
+    }
+    .question_all_data{
+        display: flex;
+    }
+</style>

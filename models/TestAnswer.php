@@ -83,7 +83,8 @@ class TestAnswer extends \yii\db\ActiveRecord
             questions.option_A,
             questions.option_B,
             questions.option_C,
-            questions.option_D	
+            questions.option_D,
+            questions.file_name
             FROM test_answer
             #LEFT JOIN test_sing_up ON test_sing_up.id = test_answer.test_sing_up_id
             LEFT JOIN questions ON questions.id = test_answer.questions_id

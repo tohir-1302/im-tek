@@ -32,6 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'father_is_name')->textInput([ 'class' => 'input_style', "placeholder" => "Sharifi"])->label(false) ?>
                     </div>
                     <div class="form-group">
+                        <p>Tug'ilgan kun</p>
+                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
+                        <?= $form->field($model, 'birthday')->textInput(['class' => 'input_style', "type" => "date"])->label(false) ?>
+                    </div>
+                    <div class="form-group">
                         <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
                         <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
                     </div>
@@ -43,11 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'password')->passwordInput(['id'=>"password", 'class' => 'input_style', "placeholder" => "Parol"])->label(false) ?>
                         <i class="bi bi-eye-slash" id="togglePassword" style="color: black;"></i>
                     </div>
-                    <div class="form-group">
-                        <p>Tug'ilgan kun</p>
-                        <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
-                        <?= $form->field($model, 'birthday')->textInput(['class' => 'input_style', "type" => "date"])->label(false) ?>
-                    </div>
+                 
                     <div class="form-group form-button">
                             <?= Html::submitButton('Saqlash', ['class' => 'form-submit', "id"=>"signin", 'name' => 'login-button']) ?>
                     </div>

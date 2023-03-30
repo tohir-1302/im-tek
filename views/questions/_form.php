@@ -5,7 +5,7 @@ use kartik\file\FileInput;
 use kartik\form\Bs4CustomFileInputAsset;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var app\models\Questions $model */
@@ -27,9 +27,9 @@ use yii\widgets\ActiveForm;
                     </div>
                     <div class="question__file">
                         <?=  $form->field($model, 'file')->widget(FileInput::classname(), [
-                            'options' => ['multiple' => false, 'accept' => 'img/*'],
+                            'options' => ['multiple' => true, 'accept' => "image/png, image/gif, image/jpeg, image/jpg"],
                             'pluginOptions' => ['previewFileType' => 'image']
-                        ]); ?>
+                        ]) ->label("3 tagacha rasm yuklash mumkin !!!"); ?>
                     </div>
                 </div>
                 <div class="col-sm-6 blox_create ">
