@@ -147,10 +147,10 @@ use yii\web\Controller;
                          return $this->redirect('index');
                      }
                 }
-             }else{
+             }
+
                 \Yii::$app->session->setFlash('danger', "Test yakunlandi" );
                 return $this->redirect('index');
-             }
         }
 
         /**
@@ -167,6 +167,9 @@ use yii\web\Controller;
                 $test_sing_up -> save();
                 return $this->redirect(['view', 'test_singup_id' => $test_singup_id]);
             }
+
+            \Yii::$app->session->setFlash('danger', "Test yakunlandi" );
+            return $this->redirect('index');
         }
 
 
@@ -193,11 +196,21 @@ use yii\web\Controller;
         public function actionView($test_singup_id){
             $allQuestions = TestAnswer::getAllQuestions($test_singup_id);
             $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
+            $tets_names = TestsNames::find()->where(['id' => $test_sing_up->tests_names_id])->one();
+            $true_answer = 0;
 
-            // prd($allQuestions);ee3
+            foreach ($allQuestions as $item) {
+                if ($item['answer_success'] == $item['answer_client']) {
+                    $true_answer++;
+                }
+            }
+
+            // prd($tets_names);
             return $this->render('view',[
                 'allQuestions' => $allQuestions,
-                'test_sing_up' => $test_sing_up
+                'test_sing_up' => $test_sing_up,
+                'tets_names' => $tets_names,
+                'true_answer' => $true_answer
             ]);
         }
      
