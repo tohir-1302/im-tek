@@ -5198,7 +5198,7 @@ a.active {
     font-weight: 650;
     color: #474d58;
     white-space: nowrap;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     font-family: monospace;
     border: 0;
     background: #AFB7F3;

@@ -12,6 +12,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@img'   => '/web/img/',
+        '@q_img'   => '/web/uploads/',
         '@fonts'   => '/web/fonts/',
     ],
     'components' => [

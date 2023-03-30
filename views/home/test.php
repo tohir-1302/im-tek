@@ -5,11 +5,11 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 use function PHPSTORM_META\type;
+$tests_count = count($result['test_count']);
 ?>
 <div class="time__test_name">
     <h3><?= $result['test_name'] ?></h3>
     <div class="right__header">
-      
         <div class="end__time">
             <div class="time_" style="display: none;">
                 <?= $result['time'] ?>
@@ -28,8 +28,8 @@ use function PHPSTORM_META\type;
                 00
             </div>
         </div>
-
-        <div class="end__test">
+    </div>
+    <div class="end__test">
             <?php $form = ActiveForm::begin([
                     'action' => ['home/end-test'],
                     'method'=> 'post',
@@ -40,9 +40,6 @@ use function PHPSTORM_META\type;
                 <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
             <?php ActiveForm::end(); ?> 
         </div>
-    </div>
-
-    
 </div>
 
 
@@ -72,7 +69,18 @@ use function PHPSTORM_META\type;
         <table>
             <tr>
                 <td id="question_">
-                    <?= $result['question']['question'] ?>
+                    <div class="view__image">
+                        <?php 
+                        if ($result['question']['file_name'] != null){
+                            $resp = json_decode($result['question']['file_name']);
+                            foreach ($resp as $item_): 
+                        ?>
+                        <img id="myImg" src="<?=Yii::getAlias("@q_img")?>/question_file/<?= $item_ ?>" alt="">
+                    <?php endforeach; } ?>
+                    </div>
+                    <div class="question_tetx">
+                        <?= $result['question']['question'] ?>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -102,31 +110,182 @@ use function PHPSTORM_META\type;
         <span> <?= $result['question']['option_D'] ?></span>
     </label>
 
+    <div class="next__back__button">
+    <?php if ($result['question']['number'] != 1) : ?>
+            <div class="back__button">
+                <?php $form = ActiveForm::begin([
+                    'action' => ['home/test'],
+                    'method'=> 'post',
+                    'options' => [
+                        'data-pjax' => 1
+                    ]]); ?>
+                    <?= Html::hiddenInput('test_names_id', $result["tets_names_id"]); ?>
+                    <?= Html::hiddenInput('question_number', $result['question']['number'] - 1); ?>
+                <?= Html::submitButton('<img src="https://img.icons8.com/stickers/70/null/circled-left.png"/>' , ['style' => 'background: none; border: none;']) ?>
+                <?php ActiveForm::end(); ?>
+            </div> 
+        <?php endif; ?>
+        <?php if ($result['question']['number'] != $tests_count) : ?>
+            <div class="next__button">
+                <?php $form = ActiveForm::begin([
+                    'action' => ['home/test'],
+                    'method'=> 'post',
+                    'options' => [
+                        'data-pjax' => 1
+                    ]]); ?>
+                    <?= Html::hiddenInput('test_names_id', $result["tets_names_id"]); ?>
+                    <?= Html::hiddenInput('question_number', $result['question']['number'] + 1); ?>
+                <?= Html::submitButton('<img src="https://img.icons8.com/stickers/70/null/circled-right.png"/>' , ['style' => 'background: none; border: none;']) ?>
+                <?php ActiveForm::end(); ?>
+            </div> 
+        <?php endif; ?>
+     
+    </div>
 </div>
 
 <div class="test_singup_id" style="color: white; position: absolute; z-index: -500;">
     <?= $result['question']['test_sing_up_id'] ?>
 </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close__img">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
 <?php
 ob_start();
 include "script.js";
 $script = ob_get_clean();
 $this->registerJs($script);
 ?>
-
 <style>
-    .end__test{
+
+    #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 101 !important; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close__img {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
+
+    .close__img:hover,
+    .close__img:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+    }
+</style>
+<style>
+    .next__back__button{
+        display: flex;
+        justify-content: space-around;
+        
+    }
+    
+    .question_tetx{
+        margin-left: 10px;
+        justify-items: center;
+        vertical-align: middle !important;
+        
+    }
+    #question_{
+        display: flex;
+    }
+    .view__image img{
+        width: 300px;
+    }
+
+    .view__image{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* .end__test{
         margin: -10px;
         margin-right: 50px;
-    }
+    } */
 
     .end__time{
         display: flex;
-        margin-right: 100px;
+        /* margin-right: 100px; */
         font-size: 20px;
         font-weight: 650;
         font-family: monospace;
         color: #A41704 ;
+        height: 40px;
     }
     .right__header{
         display: flex;
@@ -274,5 +433,20 @@ $this->registerJs($script);
     #option-4:checked:checked ~ .option-4 span{
     color: #fff;
     }
+
+    @media screen and (max-width:550px) {
+    .time__test_name {
+        display: block;
+        justify-content: space-between;
+    }
+    .end__test{
+        float: right;
+        margin-top: -70px;
+    }
+
+    #question_ {
+        display: block;  
+    }
+}
 </style>
 

@@ -21,6 +21,8 @@ use Yii;
  */
 class Questions extends \yii\db\ActiveRecord
 {
+
+    public $file;
     /**
      * {@inheritdoc}
      */
@@ -37,8 +39,9 @@ class Questions extends \yii\db\ActiveRecord
         return [
             [['tests_names_id', 'question', 'answer_option', 'option_A', 'option_B', 'option_C', 'option_D'], 'required'],
             [['tests_names_id', 'answer_option'], 'integer'],
-            [['option_A', 'option_B', 'option_C', 'option_D', 'question', 'file'], 'string'],
-            [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']],
+            [['option_A', 'option_B', 'option_C', 'option_D', 'question', 'file_name'], 'string'],
+            [['file'], 'file', 'extensions' => 'png, jpg, jpeg, gif', 'maxFiles' => 3, 'maxSize' => 50 * 1024 * 1024],
+            [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']]
         ];
     }
 

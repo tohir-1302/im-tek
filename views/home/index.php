@@ -40,13 +40,9 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                 <thead>
                     <tr>
                         <th scope="col">№</th>
-                        <th scope="col">Sinf</th>
-                        <th scope="col">Fan</th>
-                        <th scope="col">Test nomi</th>
-                        <th scope="col">Boshlanish <br> Vaqti</th>
-                        <th scope="col">Tugash <br> Vaqti</th>
-                        <th scope="col">Test <br> davomiyligi</th>
-                        <th scope="col">Savollar <br> soni</th>
+                        <th scope="col">Sinf / Fan </th>
+                        <th scope="col">Sana</th>
+                        <th scope="col"><img src="https://img.icons8.com/stickers/26/null/info-squared.png"/></th>
                         <th scope="col">#</th>
                     </tr>
                 </thead>
@@ -54,13 +50,14 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                     <?php $number = 1; foreach ($tests as $item) : ?>
                     <tr>
                         <th scope="row"> <?= $number ?></th>
-                        <td><?=  $item['classes_name']   ?></td>
-                        <td><?=  $item['sciences_name']   ?></td>
-                        <td><?=  $item['name']   ?></td>
-                        <td><?=  datetimeView($item['begin_date'])   ?></td>
-                        <td><?=  datetimeView($item['end_date'])   ?></td>
-                        <td><?=   $item['time_limit']   ?></td>
-                        <td><?=   $item['question_count']   ?></td>
+                        <td> 
+                            <b>Sinf: </b> <?=  $item['classes_name'] ?> <br> 
+                            <b>Fan: </b><?=  $item['sciences_name'] ?> <br>
+                            <b>Test nomi: </b> <?= $item['name'] ?>
+                        </td>
+                        <td><?=  datetimeView($item['begin_date'])   ?> / <br> 
+                        <?=  datetimeView($item['end_date'])   ?></td>
+                        <td> <b>Davomiyligi:</b> <?=  $item['time_limit'] ?> <br> <b>Savollar soni:</b>  <?=   $item['question_count']   ?></td>
                         <td>
                             <?php if ($item['tests_status'] == null) { ?>
                                 <?php $form = ActiveForm::begin([
