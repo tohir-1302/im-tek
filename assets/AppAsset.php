@@ -22,7 +22,8 @@ class AppAsset extends AssetBundle
     public $js = [
         "js/bootstrap1.min.js",
         "js/metisMenu.js",
-        "js/custom.js"
+        "js/custom.js",
+        "js/main.js"
     ];
     public $css = [
         "css/bootstrap1.min.css",

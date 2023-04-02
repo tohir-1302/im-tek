@@ -35,7 +35,6 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
 
 <div class="top__menu">
     <div class="logo__img">
@@ -63,8 +62,20 @@ $url__ =Yii::$app->controller->id ."/". Yii::$app->controller->action->id;
         ?>
     </div>
 </div>
-
+<body>
 <?php $this->beginBody() ?>
+    <!-- Preloader -->
+    <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="object" id="object_one"></div>
+                    <div class="object" id="object_two"></div>
+                    <div class="object" id="object_three"></div>
+                    <div class="object" id="object_four"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End Preloader -->
 <div class="content__">
     <?= $content ?>
 </div>
