@@ -63,18 +63,10 @@ class QuestionsController extends RoleController
                 $json = json_encode($fnames);
                 $model->file_name = $json;
             }
-
-
-            $model->save();
+            $model->save(false);
             return $this->redirect(['index', 'id' => $id]);
         }
-        $dataProvider = new ArrayDataProvider([
-            'allModels' => $questions,
 
-            'pagination' => [
-                'pageSize' => 0,
-            ],
-        ]);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $questions,
