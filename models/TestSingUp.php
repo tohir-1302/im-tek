@@ -13,6 +13,7 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property int|null $user_id
  * @property int $tests_names_id
+ * @property int $answer_success
  * @property string|null $create_date
  * @property string|null $start_date
  * @property string|null $end_test_date
@@ -38,7 +39,7 @@ class TestSingUp extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'tests_names_id', 'tests_status'], 'integer'],
+            [['user_id', 'tests_names_id', 'tests_status', 'answer_success'], 'integer'],
             [['tests_names_id'], 'required'],
             [['create_date', 'start_date', 'end_date', 'end_test_date'], 'safe'],
             [['tests_names_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestsNames::class, 'targetAttribute' => ['tests_names_id' => 'id']],

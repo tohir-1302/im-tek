@@ -120,6 +120,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                        echo "<span class='btn btn-success'>Clientga chiqarildi !</span>";
                                     }
                             ?>
+                            <?= \yii\helpers\Html::a(
+                                '<i class="fas fa-users"></i>',
+                                Url::to(['tests-names/test-users', 'tests_names_id' => $item["id"]]),
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px']);
+                            ?>
                         </td>
                     </tr>
                     <?php $number++; endforeach; ?>

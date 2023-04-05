@@ -80,7 +80,7 @@ $user = Yii::$app->user->identity;
                         <img src="<?=Yii::getAlias("@img")?>/menu-icon/test_create.svg" alt="">
                     </div>
                     <div class="nav_title">
-                        <span>Test yaratish</span>
+                        <span>Testlar</span>
                     </div>
                 </a>
             </li>

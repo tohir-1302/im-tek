@@ -173,4 +173,27 @@ class TestsNamesController extends RoleController
             }
          }
     }
+
+    public function actionTestUsers(){
+        $get = Yii::$app->request->get();
+
+        if (isset($get['tests_names_id'])) {
+            $tets_names_id = $get['tests_names_id'];
+            $tets_names = TestsNames::findOne(['id' => $tets_names_id]);
+            $sql = '
+            SELECT
+                CONCAT(u.first_name, " ", u.last_name) AS fio,
+                tsu.*
+            FROM test_sing_up tsu
+            LEFT JOIN user u on tsu.user_id = u.id
+            where tsu.tests_names_id = :tests_names_id
+            ';
+            $result = Yii::$app->getDb()->createCommand($sql,[':tests_names_id' => $tets_names_id])->queryAll();
+            // prd($result);
+            return $this->render('test-users', [
+                'result' => $result,
+                'tets_names' => $tets_names
+            ]);
+        }
+    }
 }
