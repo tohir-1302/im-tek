@@ -12241,4 +12241,5 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
   .math__views{
     background: none;
     border: none;
+    margin-top: -10px;
   }
