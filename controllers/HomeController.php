@@ -160,10 +160,19 @@ use yii\web\Controller;
             if (Yii::$app->request->isPost) {
                 $post = Yii::$app->request->post();
                 $test_singup_id = $post['test_singup_id'];
+                $test_answer = TestAnswer::findAll(['test_sing_up_id' => $test_singup_id]);
+
+                $answer_success = 0;
+                foreach ($test_answer as $item) {
+                    if ($item->answer_client == $item->answer_success) {
+                        $answer_success++;
+                    }
+                }
 
                 $test_sing_up = TestSingUp::findOne(['id' => $test_singup_id]);
                 $test_sing_up -> end_test_date = date("Y-m-d H:i:s");
                 $test_sing_up -> tests_status = 3;
+                $test_sing_up -> answer_success = $answer_success;
                 $test_sing_up -> save();
                 return $this->redirect(['view', 'test_singup_id' => $test_singup_id]);
             }
