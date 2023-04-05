@@ -17,13 +17,13 @@ use yii\bootstrap5\ActiveForm;
                 <div class="col-lg-12 blox_create" style="margin-bottom: 10px; border-bottom: 1px solid black;">
                     <?= $form->field($model, 'question')->textarea(['rows' => 1]) ?>
                     <div class="click__buttons_">
-                        <button class="btn btn-dark" id="question__formula">Formula kiritish</button>
-                        <button class="btn btn-dark" id="question__file_button">Rasm biriktirish</button>
+                        <div class="btn btn-dark" id="question__formula">Formula kiritish</div>
+                        <div class="btn btn-dark" id="question__file_button">Rasm biriktirish</div>
                     </div>
                     <div class="formula_question">
                         <math-field id ="question_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
-                        <button class="btn btn-success" id="question__formula__save">Saqlash</button>
+                        <div class="btn btn-success" id="question__formula__save">Saqlash</div>
                     </div>
                     <div class="question__file">
                         <?=  $form->field($model, 'file')->widget(FileInput::classname(), [
@@ -34,38 +34,38 @@ use yii\bootstrap5\ActiveForm;
                 </div>
                 <div class="col-sm-6 blox_create ">
                     <?= $form->field($model, 'option_A')->textarea(['rows' => 1]) ?>
-                    <button class="btn btn-dark" id="option_a__formula">Formula kiritish</button>
+                    <div class="btn btn-dark" id="option_a__formula">Formula kiritish</div>
                     <div class="formula_option_a">
                         <math-field id ="option_a_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
-                        <button class="btn btn-success" id="option_a__formula__save">Saqlash</button>
+                        <div class="btn btn-success" id="option_a__formula__save">Saqlash</div>
                     </div>
                 </div>
                 <div class="col-sm-6 blox_create">
                     <?= $form->field($model, 'option_B')->textarea(['rows' => 1]) ?>
-                    <button class="btn btn-dark" id="option_b__formula">Formula kiritish</button>
+                    <div class="btn btn-dark" id="option_b__formula">Formula kiritish</div>
                     <div class="formula_option_b">
                         <math-field id ="option_b_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
-                        <button class="btn btn-success" id="option_b__formula__save">Saqlash</button>
+                        <div class="btn btn-success" id="option_b__formula__save">Saqlash</div>
                     </div>
                 </div>
                 <div class="col-sm-6 blox_create">
                     <?= $form->field($model, 'option_C')->textarea(['rows' => 1]) ?>
-                    <button class="btn btn-dark" id="option_c__formula">Formula kiritish</button>
+                    <div class="btn btn-dark" id="option_c__formula">Formula kiritish</div>
                     <div class="formula_option_c">
                         <math-field id ="option_c_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
-                        <button class="btn btn-success" id="option_c__formula__save">Saqlash</button>
+                        <div class="btn btn-success" id="option_c__formula__save">Saqlash</div>
                     </div>
                 </div>
                 <div class="col-sm-6 blox_create">
                     <?= $form->field($model, 'option_D')->textarea(['rows' => 1]) ?>
-                    <button class="btn btn-dark" id="option_d__formula">Formula kiritish</button>
+                    <div class="btn btn-dark" id="option_d__formula">Formula kiritish</div>
                     <div class="formula_option_d">
                         <math-field id ="option_d_math" virtual-keyboard-mode="manual" letter-shape-style="upright"  class="form_input_styles__">
                         </math-field>
-                        <button class="btn btn-success" id="option_d__formula__save">Saqlash</button>
+                        <div class="btn btn-success" id="option_d__formula__save">Saqlash</div>
                     </div>
                 </div>
                 <div class="col-sm-12 blox_create">
