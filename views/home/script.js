@@ -1,43 +1,51 @@
 var test_answer_id = $("input[id='test_answer_id']").val()
+function SaveAnswer() {
+    var option_1 = document.getElementById("option-1");
+    var option_2 = document.getElementById("option-2");
+    var option_3 = document.getElementById("option-3");
+    var option_4 = document.getElementById("option-4");
+    var Answer = 0;
+    
+    if (option_1.checked == true) {
+        Answer = 1
+    }
+    
+    if (option_2.checked == true) {
+        Answer = 2
+    }
+    if (option_3.checked == true) {
+        Answer = 3
+    }
+    if (option_4.checked == true) {
+        Answer = 4
+    }
 
-$(".option-1").click(function (e) {
+
     $.post("<?= Yii::$app->getUrlManager()->createUrl(['home/check-answer'])?>", {
         test_answer_id : test_answer_id,
-        answer : 1, 
+        answer : Answer, 
     }, function(data) {
         },
         'json'
     );
+}
+
+
+$(".back__button").click(function (e) {
+    SaveAnswer();    
 });
 
-$(".option-2").click(function (e) {
-    $.post("<?= Yii::$app->getUrlManager()->createUrl(['home/check-answer'])?>", {
-        test_answer_id : test_answer_id,
-        answer : 2, 
-    }, function(data) {
-        },
-        'json'
-    );
+$(".next__button").click(function (e) {
+    SaveAnswer();    
 });
 
-$(".option-3").click(function (e) {
-    $.post("<?= Yii::$app->getUrlManager()->createUrl(['home/check-answer'])?>", {
-        test_answer_id : test_answer_id,
-        answer : 3, 
-    }, function(data) {
-        },
-        'json'
-    );
+
+$(".end__test").click(function (e) {
+    SaveAnswer();    
 });
 
-$(".option-4").click(function (e) {
-    $.post("<?= Yii::$app->getUrlManager()->createUrl(['home/check-answer'])?>", {
-        test_answer_id : test_answer_id,
-        answer : 4, 
-    }, function(data) {
-        },
-        'json'
-    );
+$(".numbers__test").click(function (e) {
+    SaveAnswer();    
 });
 
 // timer
@@ -85,7 +93,7 @@ function setClock(endtime) {
 
         if (t.timer <= 0) {
             clearInterval(timeInterval)
-
+            SaveAnswer();    
             $.ajax({
                 type : "POST",  //type of method
                 url  : "<?= Yii::$app->getUrlManager()->createUrl(['home/end-test'])?>",  //your page
