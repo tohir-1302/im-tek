@@ -124,7 +124,7 @@ $user = Yii::$app->user->identity;
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="profile_info">
                                 <img src="<?=Yii::getAlias("@img")?>/client_img.png" alt="#">
-                                <p style="font-weight: 650;"><?= $user->last_name; ?></p>
+                                <p style="font-weight: 650;"><?= $user->last_name . " ". $user->first_name ?></p>
 
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
