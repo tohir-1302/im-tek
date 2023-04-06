@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\TestSingUp;
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
 use Exception;
@@ -178,7 +179,20 @@ class TestsNamesController extends RoleController
         $get = Yii::$app->request->get();
 
         if (isset($get['tests_names_id'])) {
+
+            $date_now = date("Y-m-d H:i:s");
             $tets_names_id = $get['tests_names_id'];
+
+            $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $tets_names_id]);
+            foreach ($test_sing_up as $item) {
+                if ($item->end_date <= $date_now) {
+                    $item->tests_status = 3;
+                    $item->end_test_date = $item->end_date;
+                    $item->save();
+                }
+            }
+
+
             $tets_names = TestsNames::findOne(['id' => $tets_names_id]);
             $sql = '
             SELECT
