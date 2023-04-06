@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $js = [
-        "js/bootstrap1.min.js",
+        // "js/bootstrap1.min.js",
         "js/metisMenu.js",
         "js/custom.js",
         "js/main.js"

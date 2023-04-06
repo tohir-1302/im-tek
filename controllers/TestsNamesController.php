@@ -215,9 +215,24 @@ class TestsNamesController extends RoleController
             where tsu.tests_names_id = :tests_names_id
             ';
             $result = Yii::$app->getDb()->createCommand($sql,[':tests_names_id' => $tets_names_id])->queryAll();
-            // prd($result);
+            $dataProvider = new ArrayDataProvider([
+                'allModels' => $result,
+                // 'sort' => [
+                //     'defaultOrder' => [
+                //         'j_summa' => 'SORT_DESC',
+                //     ],
+    
+                //     'attributes' => [
+                //         'j_summa', 'j_amount', 'chiqim_summa', 'chiqim_amount', 'kirim_amount', 'kirim_summa', 'b_summa', 'b_amount'
+                //     ],
+                // ],
+                'pagination' => [
+                    'pageSize' => 0,
+                ],
+            ]);
             return $this->render('test-users', [
-                'result' => $result,
+                'dataProvider' => $dataProvider,
+                'result'=>$result,
                 'tets_names' => $tets_names
             ]);
         }

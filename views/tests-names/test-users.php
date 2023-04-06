@@ -2,6 +2,7 @@
 
 use app\models\Classes;
 use app\models\Sciences;
+use kartik\export\ExportMenu;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -31,6 +32,67 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php endif; ?>
 
+<?= 
+    ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'kartik\grid\SerialColumn'],
+            [
+                'label' => "Ism, Familiya",
+                'value'=>function($data){
+                    return $data['fio'];
+                },
+            ],
+
+            [
+                'label' => "Ro`yxatdan o`tgan vaqti",
+                'value'=>function($data){
+                    return $data['create_date'];
+                },
+            ],
+
+            [
+                'label' => "Test boshlangan vaqt",
+                'value'=>function($data){
+                    return $data['start_date'];
+                },
+            ],
+
+            [
+                'label' => "Tugagan vaqt",
+                'value'=>function($data){
+                    return $data['end_test_date'];
+                },
+            ],
+
+            [
+                'label' => "Foiz: ",
+                'value'=>function($data) use ($tets_names){
+                    return  pul2($data['answer_success'] / $tets_names->question_count * 100, 1);
+                },
+            ],
+
+            [
+                'label' => "To`g`ri javoblar",
+                'value'=>function($data) use ($tets_names){
+                    return $data['answer_success'];
+                },
+            ],
+            [
+                'label' => "Xato javoblar",
+                'value'=>function($data) use ($tets_names){
+                    return $tets_names->question_count - $data['answer_success'] ;
+                },
+            ],
+
+        ],
+        
+        'dropdownOptions' => [
+            'label' => 'Yuklab olish',
+            'class' => 'btn btn-outline-secondary btn-default'
+        ]
+    ]) . "<hr>\n"
+?>
 
 <div class="white_card_body">
     <div class="QA_section">
