@@ -186,19 +186,21 @@ class TestsNamesController extends RoleController
 
             $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $tets_names_id]);
             foreach ($test_sing_up as $item) {
-                $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
+                if ($item->tests_status = 2) {
+                    $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
 
-                $answer_success = 0;
-                foreach ($test_answer as $item) {
-                    if ($item->answer_client == $item->answer_success) {
-                        $answer_success++;
+                    $answer_success = 0;
+                    foreach ($test_answer as $item) {
+                        if ($item->answer_client == $item->answer_success) {
+                            $answer_success++;
+                        }
                     }
-                }
-                if ($item->end_date <= $date_now) {
-                    $item->tests_status = 3;
-                    $item->end_test_date = $item->end_date;
-                    $item->answer_success = $answer_success;
-                    $item->save();
+                    if ($item->end_date <= $date_now) {
+                        $item->tests_status = 3;
+                        $item->end_test_date = $item->end_date;
+                        $item->answer_success = $answer_success;
+                        $item->save();
+                    }
                 }
             }
 
