@@ -190,8 +190,8 @@ class TestsNamesController extends RoleController
                     $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
 
                     $answer_success = 0;
-                    foreach ($test_answer as $item) {
-                        if ($item->answer_client == $item->answer_success) {
+                    foreach ($test_answer as $item_) {
+                        if ($item_->answer_client == $item_->answer_success) {
                             $answer_success++;
                         }
                     }
