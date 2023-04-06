@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?=  isset($item['end_test_date']) ? datetimeView($item['end_test_date']): "" ?></td>
                         <td>
                             <?php if($item['tests_status'] == 3) { ?>
-                                <b>Foiz: </b><?= pul2($item['answer_success'] / $tets_names->question_count, 2) ?> % <br>
+                                <b>Foiz: </b><?= pul2($item['answer_success'] / $tets_names->question_count, 2) * 100 ?> % <br>
                                 <b>To`g`ri javoblar: </b><?= $item['answer_success']  ?> <br>
                                 <b>Xato javoblar: </b><?= $tets_names->question_count - $item['answer_success']  ?> <br>
                             <?php } else { ?>
