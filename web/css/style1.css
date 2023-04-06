@@ -3346,7 +3346,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .profile_info {
-    position: relative
+    position: relative;
+    text-align: center;
 }
 
 .profile_info img {
