@@ -5,14 +5,13 @@ namespace app\controllers;
 use app\models\Districts;
 use app\models\DistrictsSearch;
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * DistrictsController implements the CRUD actions for Districts model.
  */
-class DistrictsController extends Controller
+class DistrictsController extends RoleController
 {
     /**
      * @inheritDoc
@@ -148,4 +147,5 @@ class DistrictsController extends Controller
         $types = Districts::find()->where(['regions_id' => $regions_id])->select(['id', 'name'])->asArray()->all();
         echo json_encode($types); die();
     }
+    
 }

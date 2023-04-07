@@ -13,13 +13,14 @@ namespace Symfony\Component\Console\Question;
 
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\LogicException;
+use yii\db\ActiveRecord;
 
 /**
  * Represents a Question.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Question
+class Question extends ActiveRecord
 {
     private $question;
     private $attempts;

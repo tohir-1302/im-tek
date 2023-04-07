@@ -44,7 +44,7 @@ use yii\web\Controller;
                     tests_names.*,
                     c.name AS classes_name,
                     s.name AS sciences_name,
-                    IF (tests_names.begin_date < "'.date("Y-m-d").'", IF (tests_names.end_date < "'.date("Y-m-d").'", "passive", "active" ), "active" ) as xolat
+                    IF (tests_names.begin_date < "'.date("Y-m-d H:i:s").'", IF (tests_names.end_date < "'.date("Y-m-d H:i:s").'", "passive", "active" ), "active" ) as xolat
                 FROM tests_names
                 LEFT JOIN classes c ON c.id = tests_names.classes_id
                 LEFT JOIN sciences s ON s.id = tests_names.sciences_id

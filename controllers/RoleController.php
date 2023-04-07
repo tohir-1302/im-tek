@@ -18,7 +18,7 @@ use yii\filters\AccessControl;
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['login', 'signup'],
+                        'actions' => ['login', 'signup', 'chosen-type'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],

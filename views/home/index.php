@@ -11,13 +11,13 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
 ?>
 
     <?php if (Yii::$app->session->hasFlash('success')): ?>
-        <div class="alert alert-success alert-dismissible">
+        <div class="alert alert-success alert-dismissible" style="text-align: center; font-weight: 650; font-size: 20px;">
             <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
             <?= Yii::$app->session->getFlash('success') ?>
         </div>
     <?php endif; ?>
     <?php if (Yii::$app->session->hasFlash('danger')): ?>
-        <div class="alert alert-danger alert-dismissible">
+        <div class="alert alert-danger alert-dismissible" style="text-align: center; font-weight: 650; font-size: 20px;">
             <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
             <?= Yii::$app->session->getFlash('danger') ?>
         </div>
