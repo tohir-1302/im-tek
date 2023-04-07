@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
+
 
 /** @var yii\web\View $this */
 /** @var app\models\Regions $model */

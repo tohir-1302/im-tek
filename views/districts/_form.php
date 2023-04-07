@@ -1,9 +1,9 @@
 <?php
 
 use app\models\Regions;
+use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
 /** @var app\models\Districts $model */
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-lg-2">
             <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Saqlash'), ['class' => 'btn btn-success' , 'style' => 'margin-top: 20px']) ?>
+                <?= Html::submitButton(Yii::t('app', 'Saqlash'), ['class' => 'btn btn-success' , 'style' => 'margin-top: 28px']) ?>
             </div>
         </div>
     </div>
