@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Districts;
 use app\models\DistrictsSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -137,5 +138,14 @@ class DistrictsController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    public function actionChosenType()
+    {        
+        $post = Yii::$app->request->post();
+        $regions_id = $post['regions_id'];        
+
+        $types = Districts::find()->where(['regions_id' => $regions_id])->select(['id', 'name'])->asArray()->all();
+        echo json_encode($types); die();
     }
 }

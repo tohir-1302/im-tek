@@ -37,14 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php ActiveForm::end(); ?>
                 
-                <div class="social-login">
+                <!-- <div class="social-login">
                     <span class="social-label">Biz bilan aloqa </span>
                     <ul class="socials">
                         <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                         <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                         <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

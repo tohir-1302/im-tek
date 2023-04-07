@@ -23,10 +23,13 @@ use yii\web\IdentityInterface;
  * @property string $father_is_name
  * @property string $auth_key
  * @property string $birthday
+ * @property string $schools
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $role
+ * @property integer $districts_id
+ * @property integer $regions_id
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -35,6 +38,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    const Admin = 1;
+    const Teacher = 2;
+    const Client = 3;
 
     /**
      * {@inheritdoc}
@@ -60,9 +66,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['role'], 'integer'],
+            [['role', 'regions_id', 'districts_id'], 'integer'],
             [['birthday'], 'safe'],
-            [['first_name', 'last_name', 'father_is_name'], 'string'],
+            [['first_name', 'last_name', 'father_is_name', 'schools'], 'string'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
