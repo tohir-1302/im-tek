@@ -153,11 +153,11 @@ $user = Yii::$app->user->identity;
 
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
-                                        <p style="border-bottom: solid 2px white;"><?= $user->username; ?></p>
+                                        <p style="border-bottom: solid 2px white;"><?= $user->first_name; ?></p>
                                         <h5><?= $user->last_name; ?></h5>
                                     </div>
                                     <div class="profile_info_details">
-                                        <a href="#">Mening profilim</a>
+                                        <a href="<?= \yii\helpers\Url::to(['users/my-profile']) ?>">Mening profilim</a>
                                         <a href="<?= \yii\helpers\Url::to(['site/logout']) ?>" method="post">Chiqish</a>
                                     </div>
                                 </div>

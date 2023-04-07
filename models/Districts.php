@@ -70,8 +70,8 @@ class Districts extends \yii\db\ActiveRecord
         return $this->hasMany(Schools::class, ['districts_id' => 'id']);
     }
 
-    public static function getList(){
-        $model = self::find()->asArray()->all();
+    public static function getList($region_id){
+        $model = self::find()->where(['regions_id'=>$region_id])->asArray()->all();
         $result = ArrayHelper::map($model, 'id', 'name');
         return $result;
     }

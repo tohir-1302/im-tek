@@ -139,6 +139,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     case '3':
                                         echo \yii\helpers\Html::a('Ko\'rish',Url::to(['home/view', 'test_singup_id' => $item["id"]]),['class' => 'btn btn-secondary']);
+                                        echo \yii\helpers\Html::a('Qayta topshirish',Url::to(['tests-names/reset-test', 'test_singup_id' => $item["id"], 'tests_names_id' => $tets_names->id]),['class' => 'btn btn-primary', 'style'=>'margin-left:15px']);
                                         break;
 
                                     case '4':

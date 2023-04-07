@@ -65,12 +65,31 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
+        // return [
+        //     [['role', 'regions_id', 'districts_id'], 'integer'],
+        //     [['birthday'], 'safe'],
+        //     [['first_name', 'last_name', 'father_is_name', 'schools'], 'string'],
+        //     ['status', 'default', 'value' => self::STATUS_INACTIVE],
+        //     ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+        // ];
         return [
-            [['role', 'regions_id', 'districts_id'], 'integer'],
-            [['birthday'], 'safe'],
-            [['first_name', 'last_name', 'father_is_name', 'schools'], 'string'],
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['username', 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu foydalanuvchi nomi orqali ro`yxatdan o`tilgan'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+
+            [['last_name', 'father_is_name', 'first_name', 'schools'], 'string', 'max' => 150],
+            [['last_name', 'father_is_name', 'first_name', 'birthday', 'schools', 'regions_id', 'districts_id'], 'required'],
+            [['regions_id', 'districts_id'], 'integer'],
+            ['email', 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['birthday', 'safe'],
+            ['email', 'string', 'max' => 255],
+            ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu E-pochta orqali ro`yxatdan o`tilgan'],
+
+            ['password_hash', 'required'],
+            ['password_hash', 'string', 'min' => 8],
         ];
     }
     /**
@@ -79,6 +98,23 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+    }
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'first_name' => 'Ism',
+            'last_name' => 'Familiya',
+            'father_is_name' => 'Sharifi',
+            'username' => 'Foydalanuvchi nomi',
+            'email' => 'E-pochta',
+            'password' => 'Parol',
+            'birthday' => 'Tug\'ilgan kun',
+            'schools' => 'Maktab nomi',
+            'regions_id' => 'Hudud',
+            'districts_id' => 'Tuman(shahar)'
+
+        ];
     }
 
     /**

@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Questions;
 use app\models\TestAnswer;
 use app\models\TestSingUp;
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
+use app\models\User;
 use Exception;
+use Symfony\Component\Console\Question\Question;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
@@ -46,7 +49,10 @@ class TestsNamesController extends RoleController
      
     public function actionIndex()
     {
-
+        $user = Yii::$app->user->identity;
+        if (!in_array($user->role, [User::Admin, User::Teacher])) {
+            return $this->redirect(['home/index']);
+        }
         $searchModel = new TestsNamesSearch();
         $query = TestsNames::find()
         ->select('tests_names.*, s.name as s_name, c.name as c_name')
@@ -137,8 +143,9 @@ class TestsNamesController extends RoleController
      */
     public function actionDelete($id)
     {
+        Questions::deleteAll(['tests_names_id'=>$id]);
         $this->findModel($id)->delete();
-
+        \Yii::$app->session->setFlash('success', "Testlar o'chirildi!" );
         return $this->redirect(['index']);
     }
 
@@ -237,4 +244,13 @@ class TestsNamesController extends RoleController
             ]);
         }
     }
+
+    public function actionResetTest($test_singup_id, $tests_names_id){
+        TestAnswer::deleteAll(['test_sing_up_id'=>$test_singup_id]);
+        TestSingUp::deleteAll(['id'=>$test_singup_id]);
+
+        return $this->redirect(['tests-names/test-users', 'tests_names_id' => $tests_names_id]);
+
+    }
+        
 }

@@ -53,14 +53,12 @@ $this->params['breadcrumbs'][] = $this->title;
     
    
     <?php if (Yii::$app->session->hasFlash('success')): ?>
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-success alert-dismissible" style="text-align: center; font-weight: 650; font-size: 20px;">
             <?= Yii::$app->session->getFlash('success') ?>
         </div>
     <?php endif; ?>
     <?php if (Yii::$app->session->hasFlash('danger')): ?>
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-danger alert-dismissible" style="text-align: center; font-weight: 650; font-size: 20px;">
             <?= Yii::$app->session->getFlash('danger') ?>
         </div>
     <?php endif; ?>
@@ -109,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= \yii\helpers\Html::a(
                                 '<i class="fas fa-trash"></i>',
                                 Url::to(['tests-names/delete', 'id' => $item["id"]]),
-                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px', 'data-confirm' => 'Haqiqatdan o`chirmoqchimisiz?', 'data-method' => 'post']);
+                                ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px', 'data-confirm' => 'Ushbu testni haqiqatdan o\'chirmoqchimisz?', 'data-method' => 'post']);
                             ?>
                             <?php   if ($item['status'] == 1) {
                                         echo \yii\helpers\Html::a(
