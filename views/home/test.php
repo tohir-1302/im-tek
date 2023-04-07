@@ -5,12 +5,41 @@ use yii\widgets\ActiveForm;
 
 $tests_count = count($result['test_count']);
 ?>
-<div class="time__test_name">
-    <?= $this->render('test_header', [
-            'result' => $result
-    ]) ?>
+    <div class="time_" style="display: none;">
+        <?= $result['time'] ?>
+    </div>
+    <div class="row">
+        <div class="col-lg-4" style="text-align: center;">
+            <h3><?= $result['test_name'] ?></h3>
+        </div>
+        <div class="col-sm-1 end__time" style="text-align: right; margin-left: 120px;">
+                <span class="hours">
+                    00
+                </span>
+                :
+                <span class="minut">
+                    00
+                </span>
+                :
+                <span class="secund">
+                    00
+                </span>
+        </div>
+        <div class="col-sm-4" style="text-align: center;">
+            <?php
+                $form = ActiveForm::begin([
+                    'action' => ['home/end-test'],
+                    'method'=> 'post',
+                    'options' => [
+                        'data-pjax' => 1
+                    ]]); ?>
+                <?= Html::hiddenInput('test_singup_id', $result['question']['test_sing_up_id']); ?>
+                <?= Html::submitButton('Tugatish', ['class' =>"btn_1 ", 'data-confirm' => 'Testni haqiqatdan tugatishni xohlaysizmi?']) ?>
+            <?php ActiveForm::end(); ?> 
+        </div>
+    </div>
 </div>
-
+<br>
 
 <input type="hidden" id="test_answer_id" name="custId" value="<?= $result['question']['id'] ?>">
 <div class="wrapper_">
