@@ -53,6 +53,36 @@ $user = Yii::$app->user->identity;
         <ul id="sidebar_menu">
            <?php  if ($user->role == 1) :?>
             <li class="">
+                <a class="<?= $url__ ==  'regions/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['regions/index']) ?>" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/regions.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Viloyatlar</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="<?= $url__ ==  'districts/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['districts/index']) ?>" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/districts.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Tumanlar</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="<?= $url__ ==  'schools/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['schools/index']) ?>" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="<?=Yii::getAlias("@img")?>/menu-icon/schools.svg" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Maktablar</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
                 <a class="<?= $url__ ==  'classes/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['classes/index']) ?>" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="<?=Yii::getAlias("@img")?>/menu-icon/classes.svg" alt="">
@@ -123,7 +153,7 @@ $user = Yii::$app->user->identity;
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="profile_info">
-                                <img src="<?=Yii::getAlias("@img")?>/client_img.png" alt="#">
+                                <img src='https://img.icons8.com/external-bearicons-blue-bearicons/64/null/external-user-essential-collection-bearicons-blue-bearicons.png'>
                                 <p style="font-weight: 650;"><?= $user->last_name . " ". $user->first_name ?></p>
 
                                 <div class="profile_info_iner">
