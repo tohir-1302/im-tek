@@ -14,7 +14,7 @@ use yii\helpers\Url;
 
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
-?>
+?>  
 
 
 <section class="signup">
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group">
                                 <?= $form->field($model, 'regions_id')->widget(Select2::className(), [
                                         'data' => Regions::getList(),
-                                        'options' => ['placeholder' => 'Viloyat', 'class'=>"input_style"],
+                                        'options' => ['placeholder' => 'Hudud tanlang', 'class'=>"input_style"],
                                         'pluginOptions' => [
                                             'allowClear' => false
                                         ],
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="form-group">
                                 <?= $form->field($model, 'districts_id')->widget(Select2::className(), [
                                         'data' => [],
-                                        'options' => ['placeholder' => 'Tuman', 'class'=>"input_style"],
+                                        'options' => ['placeholder' => 'Tuman(shahar) tanlang', 'class'=>"input_style"],
                                         'pluginOptions' => [
                                             'allowClear' => false
                                         ],
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($model, 'schools')->textInput([ 'class' => 'input_style', "placeholder" => "Maktab"])->label(false) ?>
+                        <?= $form->field($model, 'schools')->textInput([ 'class' => 'input_style', "placeholder" => "Maktab nomi"])->label(false) ?>
                     </div>
                     <div class="form-group">
                         <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>

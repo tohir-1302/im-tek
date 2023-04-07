@@ -5,12 +5,10 @@
 /** @var \common\models\LoginForm $model */
 
 use yii\bootstrap5\Html;
-use yii\bootstrap5\ActiveForm;
-
+use kartik\form\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 
 <section class="sign-in">
     <div class="container">

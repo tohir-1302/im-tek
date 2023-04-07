@@ -73,16 +73,6 @@ $user = Yii::$app->user->identity;
                         </div>
                     </a>
                 </li>
-                <li class="">
-                    <a class="<?= $url__ ==  'schools/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['schools/index']) ?>" aria-expanded="false">
-                        <div class="nav_icon_small">
-                            <img src="<?=Yii::getAlias("@img")?>/menu-icon/schools.svg" alt="">
-                        </div>
-                        <div class="nav_title">
-                            <span>Maktablar</span>
-                        </div>
-                    </a>
-                </li>
             <?php endif; ?>
             <?php  if (in_array($user->role,[User::Admin, User::Teacher])) :?>
                 <li class="">
@@ -157,7 +147,7 @@ $user = Yii::$app->user->identity;
 
                         </div>
                         <div class="header_right d-flex justify-content-between align-items-center">
-                            <div class="profile_info">
+                            <div class="profile_info" style="text-align: center;">
                                 <img src='https://img.icons8.com/external-bearicons-blue-bearicons/64/null/external-user-essential-collection-bearicons-blue-bearicons.png'>
                                 <p style="font-weight: 650;"><?= $user->last_name . " ". $user->first_name ?></p>
 
