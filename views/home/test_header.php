@@ -33,6 +33,6 @@
                     'data-pjax' => 1
                 ]]); ?>
             <?= Html::hiddenInput('test_singup_id', $result['question']['test_sing_up_id']); ?>
-            <?= Html::submitButton('Tugatish', ['class' =>"btn_1 "]) ?>
+            <?= Html::submitButton('Tugatish', ['class' =>"btn_1 ", 'data-confirm' => 'Testni haqiqatdan tugatishni xohlaysizmi?']) ?>
         <?php ActiveForm::end(); ?> 
     </div>
