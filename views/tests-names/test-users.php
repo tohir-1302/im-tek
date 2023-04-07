@@ -126,7 +126,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 Natijalar yo`q
                             <?php } ?>
                         </td>
-                        <td>
+                        <td >
+                            <div class="div" style="display: flex;">
                             <?php 
                                 switch ($item['tests_status']) {
                                     case '1':
@@ -139,14 +140,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
                                     case '3':
                                         echo \yii\helpers\Html::a('Ko\'rish',Url::to(['home/view', 'test_singup_id' => $item["id"]]),['class' => 'btn btn-secondary']);
-                                        echo \yii\helpers\Html::a('Qayta topshirish',Url::to(['tests-names/reset-test', 'test_singup_id' => $item["id"], 'tests_names_id' => $tets_names->id]),['class' => 'btn btn-primary', 'style'=>'margin-left:15px']);
+                                        echo \yii\helpers\Html::a('<img src="https://img.icons8.com/color/25/null/undo.png"/>',Url::to(['tests-names/reset-test', 'test_singup_id' => $item["id"], 'tests_names_id' => $tets_names->id]),['class' => 'btn btn-secondary', 'style'=>'margin-left:15px']);
                                         break;
 
                                     case '4':
                                         echo \yii\helpers\Html::a('Qatnashilmadi',null,['class' => 'btn btn-warning']);
                                         break;
-                            }
+                                }
                             ?>
+                            </div>
+                           
                         </td>
                     </tr>
                     <?php $number++; endforeach; ?>
