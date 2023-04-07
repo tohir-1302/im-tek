@@ -48,5 +48,11 @@ function datetimeView($date)
     return Yii::$app->formatter->asDate($date[0], 'php:d.m.Y') . ' ' . $date[1];
 }
 
+function url($route, $params = array(), $ampersand = '&')
+{
+    return Yii::$app->getUrlManager()->createUrl($route, $params, $ampersand);
+    // return Yii::app()->createUrl($route,$params,$ampersand);
+}
+
 
 ?>

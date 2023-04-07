@@ -18,6 +18,9 @@ class SignupForm extends Model
     public $father_is_name;
     public $first_name;
     public $birthday;
+    public $districts_id;
+    public $regions_id;
+    public $schools;
 
 
     /**
@@ -31,9 +34,9 @@ class SignupForm extends Model
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu foydalanuvchi nomi orqali ro`yxatdan o`tilgan'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
-            [['last_name', 'father_is_name', 'first_name'], 'string', 'max' => 100],
-            [['last_name', 'father_is_name', 'first_name', 'birthday'], 'required'],
-
+            [['last_name', 'father_is_name', 'first_name', 'schools'], 'string', 'max' => 150],
+            [['last_name', 'father_is_name', 'first_name', 'birthday', 'schools', 'regions_id', 'districts_id'], 'required'],
+            [['regions_id', 'districts_id'], 'integer'],
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
