@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use kartik\grid\GridView;
+use yii\grid\GridView as YiiGridGridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
 /** @var app\models\DistrictsSearch $searchModel */
@@ -25,7 +26,7 @@ $regions = Regions::getList();
 
     <?php  echo $this->render('_form', ['model' => $model]);  ?>
 
-    <?= GridView::widget([
+    <?= YiiGridGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [

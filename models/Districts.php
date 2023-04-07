@@ -30,7 +30,7 @@ class Districts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['regions_id'], 'required'],
+            [['regions_id','name'], 'required'],
             [['regions_id'], 'integer'],
             [['name'], 'string', 'max' => 145],
             [['regions_id'], 'exist', 'skipOnError' => true, 'targetClass' => Regions::class, 'targetAttribute' => ['regions_id' => 'id']],
@@ -44,8 +44,8 @@ class Districts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'regions_id' => 'Regions ID',
+            'name' => 'Tuman nomi',
+            'regions_id' => 'Viloyat',
         ];
     }
 

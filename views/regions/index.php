@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php /* echo $this->render('_form', ['model' => $model]); */ ?>
 
-    <?= GridGridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [

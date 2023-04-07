@@ -29,6 +29,8 @@ class Regions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required'],
+
             [['name'], 'string', 'max' => 145],
         ];
     }
@@ -53,7 +55,7 @@ class Regions extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Districts::class, ['regions_id' => 'id']);
     }
-    
+
     public static function getList(){
         $model = self::find()->asArray()->all();
         $result = ArrayHelper::map($model, 'id', 'name');
