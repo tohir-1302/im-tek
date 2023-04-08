@@ -10,9 +10,12 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<section class="sign-in">
+<section class="sign-in" style="margin-top: 7%;">
     <div class="container">
         <div class="signin-content">
+            <div class="about__us">
+                <img src="https://img.icons8.com/stickers/70/null/info.png"/>
+            </div>
             <div class="signin-image">
                 <figure><img src="<?=Yii::getAlias("@img")?>/signin-image.jpg" alt="sing up image"></figure>
                 <?= Html::a('Yangi hisob ochish', ['site/signup'], ['class' => 'btn btn-success', 'style' => 'width: 100%']) ?>
@@ -47,6 +50,24 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </section>
+<!-- <div style="min-width: 100%;  padding-right: 20%; padding-left: 20%;">
+<p style="font-size: 12px; text-align: center;">
+    Ilmingizni baholashdan qo'rqmang! <br>
+</p>
+
+<p style="text-align: center; font-size: 12px;">
+
+Har birimiz bu dunyoda tug'ilganimizdan imtihon topshirib kelamiz, balkim siz buni sezmassiz. Oddiy bir misol qilib aytaman, yashash uchun kurash tushunchasini o'zi bir imtihon!
+Har bir inson bu hayotda yashar ekan, bir narsani o'ylaydi. Meni ertaga qanday imtihon yoki kelajakda qanday imtihonlar kutyapti deb o'ylaydi.
+Demak tushunib yetdikki, bu real hayotda yashashdan qiyin imtihon bo'lmas ekan!
+Lekin afsuslar bo'lsinki, o'z bilimini baholashdan qo'rqadigan inson, ertaga jamiyatda oʻz oʻrnini topolmaydi?
+Shu o'rinda bir gap aytaman: "XATOLARDAN QO'RQMANG, ULARSIZ YASHAB BO'LMAYDI!" Har bir inson shu tushunchani mag'zini chaqib yetsa, men xursand bo'lardim.
+</p>
+<p style="font-size: 12px; text-align: right;">
+    Muallif: FARID RAXMONOV <br>
+</p>
+
+</div> -->
 
 <script>
         const togglePassword = document.querySelector("#togglePassword");
@@ -68,7 +89,8 @@ $this->params['breadcrumbs'][] = $this->title;
         });
 </script>
 
-
 <style>
-
+    .input_style{
+        border-radius: 0;
+    }
 </style>

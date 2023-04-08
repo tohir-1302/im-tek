@@ -89,7 +89,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </section>
-
+<style>
+    .input_style{
+        border-radius: 0;
+    }
+</style>
 <script>
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
