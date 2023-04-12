@@ -8,6 +8,7 @@ use app\models\TestSingUp;
 use app\models\TestsNames;
 use app\models\TestsNamesSearch;
 use app\models\User;
+use app\models\UsersFilter;
 use Exception;
 use Symfony\Component\Console\Question\Question;
 use Yii;
@@ -185,13 +186,13 @@ class TestsNamesController extends RoleController
 
     public function actionTestUsers(){
         $get = Yii::$app->request->get();
-
-        if (isset($get['tests_names_id'])) {
+        // prd($get);
+        if (isset($get['tests_names_id']) || isset($get['UsersFilter']['tests_names_id'])) {
 
             $date_now = date("Y-m-d H:i:s");
-            $tets_names_id = $get['tests_names_id'];
+            $test_names_id = isset($get['tests_names_id']) ? $get['tests_names_id'] : $get['UsersFilter']['tests_names_id'];
 
-            $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $tets_names_id]);
+            $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $test_names_id]);
             foreach ($test_sing_up as $item) {
                 if ($item->tests_status = 2) {
                     $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
@@ -212,16 +213,40 @@ class TestsNamesController extends RoleController
             }
 
 
-            $tets_names = TestsNames::findOne(['id' => $tets_names_id]);
+            $tets_names = TestsNames::findOne(['id' => $test_names_id]);
             $sql = '
             SELECT
                 CONCAT(u.first_name, " ", u.last_name) AS fio,
-                tsu.*
+                tsu.*,
+                d.name as districts_name,
+                r.name as regions_name,
+                u.schools
             FROM test_sing_up tsu
             LEFT JOIN user u on tsu.user_id = u.id
+            left join regions r on r.id = u.regions_id
+            left join districts d on d.id = u.districts_id
             where tsu.tests_names_id = :tests_names_id
             ';
-            $result = Yii::$app->getDb()->createCommand($sql,[':tests_names_id' => $tets_names_id])->queryAll();
+            $user_model = new UsersFilter();
+            
+            if ($user_model->load(Yii::$app->request->get())) {
+                if ($user_model->regions_id) {
+                    $sql .= ' and r.id =  '. $user_model->regions_id;
+                }
+                if ($user_model->districts_id) {
+                    $sql .= ' and d.id =  '. $user_model->districts_id;
+                }
+
+                if ($user_model->schools) {
+                    $sql .= " and u.schools like '%$user_model->schools%'";
+                }
+
+                if ($user_model->tests_names_id) {
+                    $test_names_id = $user_model->tests_names_id;
+                }
+            }
+            $result = Yii::$app->getDb()->createCommand($sql,[':tests_names_id' => $test_names_id])->queryAll();
+            
             $dataProvider = new ArrayDataProvider([
                 'allModels' => $result,
                 // 'sort' => [
@@ -237,10 +262,13 @@ class TestsNamesController extends RoleController
                     'pageSize' => 0,
                 ],
             ]);
+
             return $this->render('test-users', [
                 'dataProvider' => $dataProvider,
                 'result'=>$result,
-                'tets_names' => $tets_names
+                'user_model'=>$user_model,
+                'tets_names' => $tets_names,
+                'tests_names_id' => $test_names_id
             ]);
         }
     }

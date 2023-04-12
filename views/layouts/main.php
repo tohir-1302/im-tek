@@ -45,7 +45,7 @@ $user = Yii::$app->user->identity;
 
 <nav class="sidebar dark_sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/logo.png" alt=""></a>
+            <a class="large_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/logo_im_tek.png" alt=""></a>
             <a class="small_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/mini_logo.png" alt=""></a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
@@ -137,18 +137,34 @@ $user = Yii::$app->user->identity;
                             <img src="https://img.icons8.com/ios/25/null/menu--v1.png"/>
                         </div>
                         <div class="serach_field-area d-flex align-items-center">
-                                <div class="page_date_button d-flex align-items-center" style="display: block;">
-                                    <img src="<?=Yii::getAlias("@img")?>/icon/calender_icon.svg" alt="">
-                                    <div class="date_time_all">
-                                        <?= dateView(date("Y-m-d")) ?> <br>
-                                        <div id="time__"> <?= (date("H:i:s")) ?> </div>
-                                    </div>
-                                </div> 
-
+                            <div class="page_date_button d-flex align-items-center" style="display: block;">
+                                <img src="<?=Yii::getAlias("@img")?>/icon/calender_icon.svg" alt="">
+                                <div class="date_time_all">
+                                    <?= dateView(date("Y-m-d")) ?> <br>
+                                    <div id="time__"> <?= (date("H:i:s")) ?> </div>
+                                </div>
+                            </div> 
                         </div>
+                        <div class="header_right d-flex justify-content-between align-items-center" style="border-right: 2px #828bb2 solid; padding-right: 10px; margin-right: 10px;">
+                            <div class="profile_info" style="text-align: center;">
+                                <img style="border: none;" src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/null/external-Money-achievements-and-badges-flatarticons-blue-flatarticons.png"/>
+                                <p style="font-weight: 650;"><?= pul2(50000,1) ?> so'm</p>
+
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p style="border-bottom: solid 2px white;">Hisob: <?= pul2(50000,1) ?> so'm</p>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <a href="<?= \yii\helpers\Url::to(['#']) ?>">Hisobga tushgan pullar</a>
+                                        <a href="<?= \yii\helpers\Url::to(['#']) ?>" method="post">Sarflangan pullar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="header_right d-flex justify-content-between align-items-center">
                             <div class="profile_info" style="text-align: center;">
-                                <img src='https://img.icons8.com/external-bearicons-blue-bearicons/64/null/external-user-essential-collection-bearicons-blue-bearicons.png'>
+                                <img style="border: none;" src="https://img.icons8.com/external-others-inmotus-design/67/null/external-User-virtual-keyboard-others-inmotus-design-3.png"/>
                                 <p style="font-weight: 650;"><?= $user->last_name . " ". $user->first_name ?></p>
 
                                 <div class="profile_info_iner">
