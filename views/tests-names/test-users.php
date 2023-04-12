@@ -58,6 +58,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
 
                         [
+                            'label' => "Maktab",
+                            'value'=>function($data){
+                                return $data['schools'];
+                            },
+                        ],
+
+                        [
                             'label' => "Ism, Familiya",
                             'value'=>function($data){
                                 return $data['fio'];
