@@ -51,24 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </section>
-<!-- <div style="min-width: 100%;  padding-right: 20%; padding-left: 20%;">
-<p style="font-size: 12px; text-align: center;">
-    Ilmingizni baholashdan qo'rqmang! <br>
-</p>
-
-<p style="text-align: center; font-size: 12px;">
-
-Har birimiz bu dunyoda tug'ilganimizdan imtihon topshirib kelamiz, balkim siz buni sezmassiz. Oddiy bir misol qilib aytaman, yashash uchun kurash tushunchasini o'zi bir imtihon!
-Har bir inson bu hayotda yashar ekan, bir narsani o'ylaydi. Meni ertaga qanday imtihon yoki kelajakda qanday imtihonlar kutyapti deb o'ylaydi.
-Demak tushunib yetdikki, bu real hayotda yashashdan qiyin imtihon bo'lmas ekan!
-Lekin afsuslar bo'lsinki, o'z bilimini baholashdan qo'rqadigan inson, ertaga jamiyatda oʻz oʻrnini topolmaydi?
-Shu o'rinda bir gap aytaman: "XATOLARDAN QO'RQMANG, ULARSIZ YASHAB BO'LMAYDI!" Har bir inson shu tushunchani mag'zini chaqib yetsa, men xursand bo'lardim.
-</p>
-<p style="font-size: 12px; text-align: right;">
-    Muallif: FARID RAXMONOV <br>
-</p>
-
-</div> -->
 
 <script>
         const togglePassword = document.querySelector("#togglePassword");
