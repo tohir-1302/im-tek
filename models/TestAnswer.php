@@ -99,8 +99,10 @@ class TestAnswer extends \yii\db\ActiveRecord
     public static function getOneQuestions($questions_number, $tets_names_id){
         $tets_names = TestsNames::findOne(['id'=>$tets_names_id]);
         $test_sing_up = TestSingUp::getSingUpId($tets_names_id, $tets_names->time_limit);
+        if (in_array($test_sing_up->tests_status,[3, 4])) {
+            return -1;
+        }
         $allQuestions = TestAnswer::getAllQuestions($test_sing_up->id);
-       
         $result = [
             'test_name' => $tets_names->name,
             'tets_names_id' => $tets_names->id,
@@ -109,6 +111,15 @@ class TestAnswer extends \yii\db\ActiveRecord
             'test_count' => [],
         ];
 
+
+
+
+
+
+
+
+
+        tohi
         foreach ($allQuestions as $item) {
             if ($item['number'] == $questions_number) {
                 $result['question'] = $item;

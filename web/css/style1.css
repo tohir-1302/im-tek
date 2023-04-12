@@ -3378,7 +3378,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     transition: .5s;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
-    border-radius: 15px
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 16.83px 0.17px #567aed;
 }
 
 .profile_info .profile_info_iner::before {
@@ -3391,6 +3392,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     right: 15px;
     border-width: 0 11px 12px;
     border-color: transparent transparent #567aed transparent;
+    -webkit-box-shadow: 0px 0px 16.83px 0.17px #567aed;
     z-index: 2
 }
 
@@ -3423,19 +3425,26 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 }
 
 .profile_info .profile_info_details {
-    padding: 20px 25px
+    padding: 10px 15px
 }
 
 .profile_info .profile_info_details a {
     color: #2e4765;
     font-size: 14px;
     display: block;
-    padding: 10px 0;
-    font-weight: 400
+    padding: 10px;
+    margin: 5px;
+    font-weight: 400;
+    border: 1px dashed #ffffff;
+    transition: .5s ease-in-out;
+
 }
 
 .profile_info .profile_info_details a:hover {
-    color: #2e4765
+    color: #2e4765;
+    border: 1px dashed #2e4765;
+    transition: .5s ease-in-out;
+
 }
 
 .profile_info .profile_info_details a:hover i {

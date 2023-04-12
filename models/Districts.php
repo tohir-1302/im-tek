@@ -76,5 +76,11 @@ class Districts extends \yii\db\ActiveRecord
         return $result;
     }
 
+    public static function getListAll(){
+        $model = self::find()->asArray()->all();
+        $result = ArrayHelper::map($model, 'id', 'name');
+        return $result;
+    }
+
  
 }

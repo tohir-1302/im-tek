@@ -136,21 +136,22 @@ use yii\web\Controller;
                 if ($post['test_names_id']) {
                      $tets_names_id = $post['test_names_id'];
                      $validateDate = TestsNames::validateDate($tets_names_id);
-                     if($validateDate){
-                        $question_number = isset($post['question_number']) ? $post['question_number'] : 1;
-                        $result = TestAnswer::getOneQuestions($question_number, $tets_names_id);
-                        return $this->render('test',[
-                            'result' => $result,
-                        ]);
-                     }else{
-                         \Yii::$app->session->setFlash('danger', "Test hali boshlanmadi" );
-                         return $this->redirect('index');
-                     }
+                    if($validateDate){
+                    $question_number = isset($post['question_number']) ? $post['question_number'] : 1;
+                    $result = TestAnswer::getOneQuestions($question_number, $tets_names_id);
+                    if ($result == -1) {
+                        \Yii::$app->session->setFlash('danger', "Test yakunlandi" );
+                        return $this->redirect('index');
+                    }
+                    return $this->render('test',[
+                        'result' => $result,
+                    ]);
+                    }else{
+                        \Yii::$app->session->setFlash('danger', "Test hali boshlanmadi" );
+                        return $this->redirect('index');
+                    }
                 }
-             }
-
-                \Yii::$app->session->setFlash('danger', "Test yakunlandi" );
-                return $this->redirect('index');
+            }
         }
 
         /**

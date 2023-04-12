@@ -14,14 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <div class="signin-content">
             <div class="about__us">
-                <img src="https://img.icons8.com/stickers/70/null/info.png"/>
+                <!-- <img src="https://img.icons8.com/stickers/70/null/info.png"/> -->
             </div>
             <div class="signin-image">
                 <figure><img src="<?=Yii::getAlias("@img")?>/signin-image.jpg" alt="sing up image"></figure>
                 <?= Html::a('Yangi hisob ochish', ['site/signup'], ['class' => 'btn btn-success', 'style' => 'width: 100%']) ?>
             </div>
             <div class="signin-form">
-                <h4 class="form-title"><img src="<?=Yii::getAlias("@img")?>/logo.png" alt=""></h4>
+                <h4 class="form-title"><img src="<?=Yii::getAlias("@img")?>/logo_im_tek.png" alt=""></h4>
                 <?php $form = ActiveForm::begin(['id' => 'login-form', "class" => "register-form"]); ?>
 
                     <div class="form-group">
@@ -38,14 +38,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php ActiveForm::end(); ?>
                 
-                <!-- <div class="social-login">
+                <div class="social-login">
                     <span class="social-label">Biz bilan aloqa </span>
                     <ul class="socials">
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                        <li><a href="https://t.me/im_tek_21" target="_blank"><img class="telegram__" src="<?=Yii::getAlias("@img")?>/telegram.svg" alt="sing up image"></a></li>
+                        <li><a href="https://www.youtube.com/@IM-TEK" target="_blank"><img class="youtube__" src="<?=Yii::getAlias("@img")?>/youtube.svg" alt="sing up image"></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100091802080307" target="_blank"><img class="facebook__" src="<?=Yii::getAlias("@img")?>/facebook.svg" alt="sing up image"></a></li>
+                        <!-- <li><a href="#" target="_blank"><img class="instagram__" src="<?=Yii::getAlias("@img")?>/instagram.svg" alt="sing up image"></a></li> -->
                     </ul>
-                </div> -->
+                </div> 
             </div>
         </div>
     </div>
@@ -92,5 +93,46 @@ Shu o'rinda bir gap aytaman: "XATOLARDAN QO'RQMANG, ULARSIZ YASHAB BO'LMAYDI!" H
 <style>
     .input_style{
         border-radius: 0;
+    }
+    .telegram__{
+        width: 35px;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+    }
+
+    .telegram__:hover{
+        transition: .3s ease-in-out;
+        -webkit-box-shadow: 0px 0px 16.83px 0.17px #0088CC;
+    }
+
+    .youtube__{
+        width: 35px;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+    }
+
+    .youtube__:hover{
+        transition: .3s ease-in-out;
+        -webkit-box-shadow: 0px 0px 16.83px 0.17px #CC0E00;
+    }
+    .facebook__{
+        width: 35px;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+    }
+
+    .facebook__:hover{
+        transition: .3s ease-in-out;
+        -webkit-box-shadow: 0px 0px 16.83px 0.17px #395185;
+    }
+    .instagram__{
+        width: 35px;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+    }
+
+    .instagram__:hover{
+        transition: .3s ease-in-out;
+        -webkit-box-shadow: 0px 0px 16.83px 0.17px #395185;
     }
 </style>

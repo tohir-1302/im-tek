@@ -20,10 +20,13 @@ class LoginAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $js = [
-        "js/main.js"
+        "js/main.js",
+        // "js/bootstrap1.min.js",
+
     ];
     public $css = [
-        "css/style.css", 
+        "css/style.css",
+        // "css/bootstrap1.min.css", 
     ];
 
     public $depends = [

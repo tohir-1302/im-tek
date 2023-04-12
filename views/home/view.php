@@ -39,81 +39,83 @@
         Xato javob: <?= $tets_names->question_count - $true_answer ?>
     </div>
 </div>
+    <?php if ($tets_names->end_date < date("Y-m-d H:i:s")) : ?>
+        <div class="white_card_body">
+            <div class="QA_section">
+                <div class="QA_table mb_30">
+                    <table class="table lms_table_active ">
+                        <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Savol</th>
+                                <th scope="col">Siz bergan javob</th>
+                                <th scope="col">To`g`ri javob</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $number = 1; foreach ($allQuestions as $item) : ?>
+                            <tr style=" <?= $item['answer_client'] != $item['answer_success'] ? 'background-color: #FFD2C7; !important' : 'background-color: #A3FFA3BB; !important'  ?>">
+                                <th scope="row"> <?= $number ?></th>
 
-<div class="white_card_body">
-    <div class="QA_section">
-        <div class="QA_table mb_30">
-            <table class="table lms_table_active ">
-                <thead>
-                    <tr>
-                        <th scope="col">№</th>
-                        <th scope="col">Savol</th>
-                        <th scope="col">Siz bergan javob</th>
-                        <th scope="col">To`g`ri javob</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $number = 1; foreach ($allQuestions as $item) : ?>
-                    <tr style=" <?= $item['answer_client'] != $item['answer_success'] ? 'background-color: #FFD2C7; !important' : 'background-color: #A3FFA3BB; !important'  ?>">
-                        <th scope="row"> <?= $number ?></th>
-
-                        <td>     
-                            <div class="question_all_data">
-                                <div class="img_question">
-                                    <?php 
-                                        if ($item['file_name'] != null){
-                                            $resp = json_decode($item['file_name']);
-                                            foreach ($resp as $item_): 
-                                    ?>
-                                            <img id="myImg" src="<?=Yii::getAlias("@q_img")?>/question_file/<?= $item_ ?>" alt="">
-                                    <?php endforeach; } ?>
-                                </div>
-                                <?= $item['question']  ?>
-                            </div>  
-                        </td>
-                        <td>  <?php 
-                            switch ($item['answer_client']) {
-                                case 0:
-                                    echo "Belgilanmagan";
-                                    break;
-                                case 1:
-                                    echo $item['option_A'];
-                                    break;
-                                case 2:
-                                    echo $item['option_B'];
-                                    break;
-                                case 3:
-                                    echo $item['option_C'];
-                                    break;
-                                case 4:
-                                    echo $item['option_D'];
-                                    break;
-                            }
-                        ?>  </td>
-                        
-                        <td> <?php 
-                            switch ($item['answer_success']) {
-                                case 1:
-                                    echo $item['option_A'];
-                                    break;
-                                case 2:
-                                    echo $item['option_B'];
-                                    break;
-                                case 3:
-                                    echo $item['option_C'];
-                                    break;
-                                case 4:
-                                    echo $item['option_D'];
-                                    break;
-                            }
-                        ?> </td>
-                    </tr>
-                    <?php $number++; endforeach; ?>
-                </tbody>
-            </table>
+                                <td>     
+                                    <div class="question_all_data">
+                                        <div class="img_question">
+                                            <?php 
+                                                if ($item['file_name'] != null){
+                                                    $resp = json_decode($item['file_name']);
+                                                    foreach ($resp as $item_): 
+                                            ?>
+                                                    <img id="myImg" src="<?=Yii::getAlias("@q_img")?>/question_file/<?= $item_ ?>" alt="">
+                                            <?php endforeach; } ?>
+                                        </div>
+                                        <?= $item['question']  ?>
+                                    </div>  
+                                </td>
+                                <td>  <?php 
+                                    switch ($item['answer_client']) {
+                                        case 0:
+                                            echo "Belgilanmagan";
+                                            break;
+                                        case 1:
+                                            echo $item['option_A'];
+                                            break;
+                                        case 2:
+                                            echo $item['option_B'];
+                                            break;
+                                        case 3:
+                                            echo $item['option_C'];
+                                            break;
+                                        case 4:
+                                            echo $item['option_D'];
+                                            break;
+                                    }
+                                ?>  </td>
+                                
+                                <td> <?php 
+                                    switch ($item['answer_success']) {
+                                        case 1:
+                                            echo $item['option_A'];
+                                            break;
+                                        case 2:
+                                            echo $item['option_B'];
+                                            break;
+                                        case 3:
+                                            echo $item['option_C'];
+                                            break;
+                                        case 4:
+                                            echo $item['option_D'];
+                                            break;
+                                    }
+                                ?> </td>
+                            </tr>
+                            <?php $number++; endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    <?php endif; ?>
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <span class="close__img">&times;</span>
