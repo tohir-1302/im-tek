@@ -111,15 +111,6 @@ class TestAnswer extends \yii\db\ActiveRecord
             'test_count' => [],
         ];
 
-
-
-
-
-
-
-
-
-        tohi
         foreach ($allQuestions as $item) {
             if ($item['number'] == $questions_number) {
                 $result['question'] = $item;
