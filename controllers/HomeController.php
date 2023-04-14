@@ -31,7 +31,7 @@ use yii\web\Controller;
 
         public function actionIndex(){
             $user = Yii::$app->user->identity;
-            if (!in_array($user->role, [User::Admin, User::Teacher])) {
+            if (in_array($user->role, [User::Teacher])) {
                 return $this->redirect(['tests-names/index']);
             }
             $get = Yii::$app->request->get();
