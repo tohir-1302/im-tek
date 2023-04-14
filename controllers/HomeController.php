@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\models\TestAnswer;
 use app\models\TestSingUp;
 use app\models\TestsNames;
+use app\models\User;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -29,6 +30,10 @@ use yii\web\Controller;
     
 
         public function actionIndex(){
+            $user = Yii::$app->user->identity;
+            if (!in_array($user->role, [User::Admin, User::Teacher])) {
+                return $this->redirect(['tests-names/index']);
+            }
             $get = Yii::$app->request->get();
             $user = Yii::$app->user->identity;
             $type = 'active';
