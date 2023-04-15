@@ -163,3 +163,17 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
     </div>
 </div>
 
+<style>
+    .mobile_registr{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile_registr{
+        display: table-cell;
+    }
+    .mobile__registr{
+        display: none;
+    }
+  }
+</style>
