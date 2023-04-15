@@ -120,6 +120,18 @@ $user = Yii::$app->user->identity;
                     </a>
                 </li>
             <?php endif; ?>
+            <?php  if (in_array($user->role,[User::Admin])) :?>
+                <li class="">
+                    <a href="<?= Yii::$app->getUrlManager()->createUrl(['users/all-users']) ?>" aria-expanded="false">
+                        <div class="nav_icon_small">
+                            <img src="<?=Yii::getAlias("@img")?>/menu-icon/users_icon.svg" alt="">
+                        </div>
+                        <div class="nav_title">
+                            <span>USERS</span>
+                        </div>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </nav>
 

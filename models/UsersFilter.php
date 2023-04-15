@@ -13,6 +13,8 @@ class UsersFilter extends Model
     public $districts_id;
     public $schools;
     public $tests_names_id;
+    public $fio;
+    public $role;
 
     /**
      * {@inheritdoc}
@@ -20,8 +22,8 @@ class UsersFilter extends Model
     public function rules()
     {
         return [
-            [['regions_id', 'districts_id'], 'integer'],
-            ['schools', 'string', 'max' => 255],
+            [['regions_id', 'districts_id', 'role'], 'integer'],
+            [['fio','schools'], 'string', 'max' => 255],
         ];
     }
 
@@ -32,7 +34,22 @@ class UsersFilter extends Model
             'districts_id' => 'Tuman(shahar)',
             'regions_id' => 'Hudud',
             'schools' => 'Maktab',
-            
+            'fio' => 'Ism, Familiya',
+        ];
+    }
+
+    public static function getRole(){
+        return [
+            1 => 'Admin',
+            2 => 'Teacher',
+            3 => 'Client',
+        ];
+    }
+
+    public static function getStatus(){
+        return [
+            10 => 'Active',
+            9 => 'Passive',
         ];
     }
 }
