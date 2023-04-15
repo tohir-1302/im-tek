@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Regions;
+use app\models\User;
 use app\models\UsersFilter;
 use kartik\form\ActiveForm;
 use kartik\select2\Select2;
@@ -10,6 +11,7 @@ use yii\widgets\Pjax;
 $this->title = Yii::t('app', 'Mening Profilim');
 $roles = UsersFilter::getRole();
 $status = UsersFilter::getStatus();
+$user = Yii::$app->user->identity;
 ?>
     <link rel="stylesheet" href="/web/fonts/material-icon/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
@@ -62,6 +64,7 @@ $status = UsersFilter::getStatus();
         <div class="col-lg-4">
             <?= $form->field($model, 'password_hash')->passwordInput(['id'=>"password",  "placeholder" => "Parol"])->label('Parol <i class="bi bi-eye-slash" id="togglePassword" style="color: black;"></i>') ?>
         </div>
+        <?php if ($user->role == User::Admin): ?>
         <div class="col-lg-4">
             <?= $form->field($model, 'role')->widget(Select2::className(), [
                     'data' => $roles,
@@ -82,6 +85,7 @@ $status = UsersFilter::getStatus();
                 ])->label();
             ?>
         </div>
+        <?php endif; ?>
         <br>
         <div class="col-lg-12" style="text-align: center;">
         <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success','style' => 'width: 40%; font-size: 25px', 'name' => 'login-button', 'data-confirm' => 'O\'zgarishlarni saqlaysizmi?']) ?>
