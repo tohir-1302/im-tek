@@ -12201,7 +12201,21 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
         width: auto;
         margin-top: 0px;
     }
+   
 }
+.mobile_registr{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile_registr{
+        display: table-cell;
+    }
+    .mobile__registr{
+        display: none;
+    }
+  }
+
 
 
 .tabs_wrap{

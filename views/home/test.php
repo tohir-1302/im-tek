@@ -34,7 +34,7 @@ $tests_count = count($result['test_count']);
                         'data-pjax' => 1
                     ]]); ?>
                 <?= Html::hiddenInput('test_singup_id', $result['question']['test_sing_up_id']); ?>
-                <?= Html::submitButton('Tugatish', ['class' =>"btn_1 ", 'data-confirm' => 'Testni haqiqatdan tugatishni xohlaysizmi?']) ?>
+                <?= Html::submitButton('Tugatish', ['class' =>"btn_1 end__test", 'data-confirm' => 'Testni haqiqatdan tugatishni xohlaysizmi?']) ?>
             <?php ActiveForm::end(); ?> 
         </div>
     </div>

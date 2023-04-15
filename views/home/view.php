@@ -1,3 +1,9 @@
+<?php
+
+use app\models\User;
+
+    $user = Yii::$app->user->identity;
+?>
 <style>
     .answer_foiz{
         text-align: center;
@@ -39,7 +45,7 @@
         Xato javob: <?= $tets_names->question_count - $true_answer ?>
     </div>
 </div>
-    <?php if ($tets_names->end_date < date("Y-m-d H:i:s")) : ?>
+    <?php if ($tets_names->end_date < date("Y-m-d H:i:s") || $user->role == User::Admin) : ?>
         <div class="white_card_body">
             <div class="QA_section">
                 <div class="QA_table mb_30">

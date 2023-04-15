@@ -2,6 +2,7 @@
 
 use app\models\Classes;
 use app\models\Sciences;
+use app\models\User;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -13,6 +14,7 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Testlar';
 $this->params['breadcrumbs'][] = $this->title;
+$user = Yii::$app->user->identity;
 ?>
 <div class="tests-names-index">
 
@@ -71,11 +73,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <thead>
                     <tr>
                         <th scope="col">№</th>
+                        <th scope="col">Test yaratuvchi</th>
                         <th scope="col">Sinf</th>
                         <th scope="col">Fanlar</th>
-                        <th scope="col">Savollan soni</th>
-                        <th scope="col">Boshlanish Vaqti</th>
-                        <th scope="col">Tugash Vaqti</th>
+                        <th scope="col">Savollar soni</th>
+                        <th scope="col">Boshlanish vaqti</th>
+                        <th scope="col">Tugash vaqti</th>
                         <th scope="col">Test davomiyligi</th>
                         <th scope="col">#</th>
                     </tr>
@@ -84,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php $number = 1; foreach ($dataProvider as $item) : ?>
                     <tr>
                         <th scope="row"> <?= $number ?></th>
+                        <td><?=  $item['username']   ?></td>
                         <td><?=  $item['c_name']   ?></td>
                         <td><?=  $item['s_name']   ?></td>
                         <td><?=  $item['question_count']   ?></td>
@@ -109,12 +113,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 Url::to(['tests-names/delete', 'id' => $item["id"]]),
                                 ['class' => 'action_btn mr_10', 'style'=>'font-size: 15px', 'data-confirm' => 'Ushbu testni haqiqatdan o\'chirmoqchimisz?', 'data-method' => 'post']);
                             ?>
-                            <?php   if ($item['status'] == 1) {
+                            <?php   if ($item['status'] == 1 && $user->role == User::Admin) {
                                         echo \yii\helpers\Html::a(
                                             'Clientga chiqarish',
                                             Url::to(['tests-names/status', 'id' => $item["id"]]),
                                             ['class' => 'btn btn-primary', 'data-confirm' => 'Client qismiga chiqarilyapti !!! Orqaga qaytarish Admin tomonidan amalga oshiriladi!', 'data-method' => 'post']);
-                                    }else{
+                                    }else if ($user->role == User::Admin){
                                        echo "<span class='btn btn-success'>Clientga chiqarildi !</span>";
                                     }
                             ?>

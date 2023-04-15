@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string|null $name
  * @property int $classes_id
+ * @property int $user_id
  * @property int $sciences_id
  * @property int $status
  * @property int|null $question_count
@@ -38,7 +39,7 @@ class TestsNames extends \yii\db\ActiveRecord
     {
         return [
             [['classes_id', 'sciences_id', 'question_count', 'begin_date', 'time_limit', 'name', 'end_date'], 'required'],
-            [['classes_id', 'sciences_id', 'question_count', 'status'], 'integer'],
+            [['classes_id', 'sciences_id', 'question_count', 'status', 'user_id'], 'integer'],
             [['begin_date', 'time_limit', 'end_date', 'create_date', 'status_date'], 'safe'],
             [['name'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],

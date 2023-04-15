@@ -56,8 +56,9 @@ class TestsNamesController extends RoleController
         }
         $searchModel = new TestsNamesSearch();
         $query = TestsNames::find()
-        ->select('tests_names.*, s.name as s_name, c.name as c_name')
+        ->select('tests_names.*, s.name as s_name, c.name as c_name, u.username')
         ->leftJoin('sciences s','s.id = tests_names.sciences_id')
+        ->leftJoin('user u','u.id = tests_names.user_id')
         ->leftJoin('classes c','c.id = tests_names.classes_id')->orderBy(['create_date' => SORT_DESC]);
 
         if ($searchModel->load(Yii::$app->request->get())) {
@@ -68,6 +69,8 @@ class TestsNamesController extends RoleController
                 $query =  $query->where(['c.id' => $searchModel->classes_id]);
             }
         }
+
+        $query = $query->andWhere(['tests_names.user_id' => $user->getId()]);
 
         $query = $query->asArray()->all();
 
@@ -99,10 +102,11 @@ class TestsNamesController extends RoleController
     public function actionCreate()
     {
         $model = new TestsNames();
-
+        $user = Yii::$app->user->identity;
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->create_date = date("Y-m-d H:i:s");
+                $model->user_id = $user->getId();
                 $model->save();
                 return $this->redirect(['questions/index', 'id' => $model->id]);
             }
