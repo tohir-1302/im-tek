@@ -38,7 +38,7 @@ class SignupForm extends Model
             [['last_name', 'father_is_name', 'first_name', 'birthday', 'schools', 'regions_id', 'districts_id'], 'required'],
             [['regions_id', 'districts_id'], 'integer'],
             ['email', 'trim'],
-            ['email', 'required'],
+            // ['email', 'required'],
             ['email', 'email'],
             ['birthday', 'safe'],
             ['email', 'string', 'max' => 255],

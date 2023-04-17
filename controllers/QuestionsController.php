@@ -136,9 +136,7 @@ class QuestionsController extends RoleController
                 $json = json_encode($fnames);
                 $model->file_name = $json;
             }
-
-
-            $model->save();
+            $model->save(false);
             return $this->redirect(['index', 'id' => $model->tests_names_id]);
         }
 

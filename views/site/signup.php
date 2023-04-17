@@ -69,9 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="form-group">
                         <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
                     </div>
-                    <div class="form-group"  style="display: flex">
-                        <?= $form->field($model, 'email')->textInput(['class' => 'input_style', "placeholder" => "E-pochta"])->label(false) ?>
-                    </div>
+                    <!-- <div class="form-group"  style="display: flex"> -->
+                        <?php /*$form->field($model, 'email')->textInput(['class' => 'input_style', "placeholder" => "E-pochta"])->label(false) */?>
+                    <!-- </div> -->
                     <div class="form-group" style="display: flex;">
                         <?= $form->field($model, 'password')->passwordInput(['id'=>"password", 'class' => 'input_style', "placeholder" => "Parol"])->label(false) ?>
                         <i class="bi bi-eye-slash" id="togglePassword" style="color: black;"></i>
