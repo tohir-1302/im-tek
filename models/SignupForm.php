@@ -39,7 +39,7 @@ class SignupForm extends Model
             [['regions_id', 'districts_id'], 'integer'],
             ['email', 'trim'],
             // ['email', 'required'],
-            ['email', 'email'],
+            // ['email', 'email'],
             ['birthday', 'safe'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu E-pochta orqali ro`yxatdan o`tilgan'],
