@@ -2,13 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 $tests_count = count($result['test_count']);
 ?>
     <div class="time_" style="display: none;">
         <?= $result['time'] ?>
     </div>
-    <div class="row">
+    <div class="row"  onmousedown="return false" onselectstart="return false">
         <div class="col-lg-4" style="text-align: center;">
             <h3><?= $result['test_name'] ?></h3>
         </div>
@@ -31,7 +32,7 @@ $tests_count = count($result['test_count']);
                     'action' => ['home/end-test'],
                     'method'=> 'post',
                     'options' => [
-                        'data-pjax' => 1
+                        // 'data-pjax' => 1
                     ]]); ?>
                 <?= Html::hiddenInput('test_singup_id', $result['question']['test_sing_up_id']); ?>
                 <?= Html::submitButton('Tugatish', ['class' =>"btn_1 end__test", 'data-confirm' => 'Testni haqiqatdan tugatishni xohlaysizmi?']) ?>
@@ -42,7 +43,7 @@ $tests_count = count($result['test_count']);
 <br>
 
 <input type="hidden" id="test_answer_id" name="custId" value="<?= $result['question']['id'] ?>">
-<div class="wrapper_">
+<div class="wrapper_"  onmousedown="return false" onselectstart="return false">
     <div class="numbers__test">
         <?php foreach ($result['test_count'] as $number => $answer): 
              $yes_answwer =  $answer != 0 ? 'yes_answwer' : "";
@@ -62,7 +63,9 @@ $tests_count = count($result['test_count']);
     </div>
 </div>
 <br>
-<div class="wrapper">
+<?php Pjax::begin(); ?>
+
+<div class="wrapper" onmousedown="return false" onselectstart="return false">
     <div class="question">
         <table>
             <tr>
@@ -89,7 +92,7 @@ $tests_count = count($result['test_count']);
  <input type="radio" name="select" id="option-4" <?= $result['question']['answer_client'] == 4 ? 'checked' : '' ?>>
 
     <label for="option-1" class="option option-1">
-        <div class="dot"></div>
+        <div class="dot " ></div>
         <span> <?= $result['question']['option_A'] ?></span>
     </label>
 
@@ -115,7 +118,7 @@ $tests_count = count($result['test_count']);
                     'action' => ['home/test'],
                     'method'=> 'post',
                     'options' => [
-                        'data-pjax' => 1
+                        // 'data-pjax' => 1
                     ]]); ?>
                     <?= Html::hiddenInput('test_names_id', $result["tets_names_id"]); ?>
                     <?= Html::hiddenInput('question_number', $result['question']['number'] - 1); ?>
@@ -129,7 +132,7 @@ $tests_count = count($result['test_count']);
                     'action' => ['home/test'],
                     'method'=> 'post',
                     'options' => [
-                        'data-pjax' => 1
+                        // 'data-pjax' => 1
                     ]]); ?>
                     <?= Html::hiddenInput('test_names_id', $result["tets_names_id"]); ?>
                     <?= Html::hiddenInput('question_number', $result['question']['number'] + 1); ?>
@@ -140,6 +143,7 @@ $tests_count = count($result['test_count']);
      
     </div>
 </div>
+<?php Pjax::end(); ?> 
 
 <div class="test_singup_id" style="color: white; position: absolute; z-index: -500;">
     <?= $result['question']['test_sing_up_id'] ?>
@@ -150,7 +154,7 @@ $tests_count = count($result['test_count']);
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
-    
+ 
 <?php
 ob_start();
 include "script.js";

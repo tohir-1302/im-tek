@@ -60,7 +60,7 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                                                     'data-pjax' => 1
                                                 ]]); ?>
                                                 <?= Html::hiddenInput('test_names_id', $item["id"]); ?>
-                                            <?= Html::submitButton('Ro\'yxatdan o\'tish', ['class' => 'btn btn-primary', 'data-confirm' => 'Haqiqatdan ro\'yxatdan o\'tmoqchimisiz? Agar ro`yxatdan o`tsangiz hisobingizdan to`lov yechib olinadi!!!',]) ?>
+                                            <?= Html::submitButton('Ro\'yxatdan o\'tish', ['class' => 'btn btn-primary']) ?>
                                 <?php ActiveForm::end(); ?>
                             <?php } ?>
                            
