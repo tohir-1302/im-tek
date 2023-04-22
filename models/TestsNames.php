@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tests_names".
@@ -115,5 +116,20 @@ class TestsNames extends \yii\db\ActiveRecord
         }else {
             return false;
         }
+    }
+
+    public static function getAllTests(){
+        $sql = '
+            SELECT
+            tn.id,
+            CONCAT(c.name, "-sinf. ", s.name, " → " , tn.name) AS tests_name
+        FROM tests_names tn
+        LEFT JOIN classes c ON c.id = tn.classes_id
+        LEFT JOIN sciences s ON s.id = tn.sciences_id
+        WHERE tn.`status` = 2';
+
+        $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
+        $result = ArrayHelper::map($result, 'id', 'tests_name');
+        return $result;
     }
 }

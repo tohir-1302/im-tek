@@ -54,6 +54,16 @@ $user = Yii::$app->user->identity;
         <ul id="sidebar_menu">
            <?php  if (in_array($user->role,[User::Admin])) :?>
                 <li class="">
+                    <a class="<?= $url__ ==  'regions/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['monitoring/monitoring']) ?>" aria-expanded="false">
+                        <div class="nav_icon_small">
+                            <img src="<?=Yii::getAlias("@img")?>/menu-icon/monitoring.svg" alt="">
+                        </div>
+                        <div class="nav_title">
+                            <span>Monitoring</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
                     <a class="<?= $url__ ==  'regions/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['regions/index']) ?>" aria-expanded="false">
                         <div class="nav_icon_small">
                             <img src="<?=Yii::getAlias("@img")?>/menu-icon/regions.svg" alt="">
