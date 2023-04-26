@@ -42,7 +42,7 @@ use yii\web\Controller;
             if (isset($get['type'])) {
                 $type = $get['type'];
             }
-            if ($type != 'active' && $type != 'registered'  && $type != 'attendees'){
+            if ($type != 'active' && $type != 'attendees'){
                 $type = 'active';
             }
             $sql = '
@@ -109,9 +109,7 @@ use yii\web\Controller;
 
             $gibrit_new = [];
             foreach ($gibrit as $item) {
-                if ($type == 'active' && $item['tests_status'] == 0) {
-                    $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);
-                } else if ($type == 'registered' && in_array($item['tests_status'] , [1, 2])) {
+                if ($type == 'active' && in_array($item['tests_status'] , [0, 1, 2])) {
                     $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);
                 }else if ($type == 'attendees' && in_array($item['tests_status'] , [3, 4])) {
                     $gibrit_new = array_merge($gibrit_new,  [$gibrit[$item['id']]]);

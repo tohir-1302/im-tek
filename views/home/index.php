@@ -27,7 +27,6 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
     <div class="tabs_wrap">
         <ul>
             <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index', 'type' => 'active']) ?>" class="<?= $type == "active"  ? 'active_' : '' ?>" >Faol</a>
-            <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index', 'type' => 'registered']) ?>" class="<?= $type == "registered"  ? 'active_' : '' ?>" >Ro`yxatdan o`tilganlar</a>
             <a href="<?= Yii::$app->getUrlManager()->createUrl(['home/index', 'type' => 'attendees']) ?>" class="<?= $type == "attendees"  ? 'active_' : '' ?>" >Qatnashilganlar</a>
         </ul>
   </div>
