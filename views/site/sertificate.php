@@ -8,17 +8,6 @@
 "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <title>Sertificat</title>
 </head>
-<?php
-
-use app\models\Districts;
-use app\models\Regions;
-use app\models\Sciences;
-
-$fan = Sciences::getList();
-$user = Yii::$app->user->identity;
-$viloyat = Regions::getList();
-$tuman = Districts::getListAll();
-?>
 <body>
     <div class="bloc__" style="height: 100%">
     <div class="im_tek_img">
@@ -35,15 +24,15 @@ $tuman = Districts::getListAll();
             </div>
 
             <div class="fan">
-                <b style=" text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $fan[$tets_names['sciences_id']] ?> fanidan muvaffaqiyatli ishtiroki uchun</b>
+                <b style=" text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['fan'] ?> fanidan muvaffaqiyatli ishtiroki uchun</b>
             </div>
 
             <div class="vil__tuman">
-                <b style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $viloyat[$user->regions_id]?> <?= $tuman[$user->districts_id] ?></b>
+                <b style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['viloyat'] ?> <?= $test_sing_up['tuman'] ?></b>
             </div>
 
             <div class="ism_fam">
-                <b  style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $user->last_name . " " . $user->first_name . " " . $user->father_is_name ?></b>
+                <b  style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['fio']  ?></b>
             </div>
         </div>
         <div class="ratio">SERTIFIKAT</div>

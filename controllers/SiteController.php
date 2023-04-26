@@ -88,14 +88,25 @@ class SiteController extends RoleController
     }
 
     
-    public function actionSertificate($test_singup_id = null){
+    public function actionSertificate($test_singup_id){
 
-        $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
-        $tets_names = TestsNames::find()->where(['id' => $test_sing_up->tests_names_id])->one();
+        $test_sing_up = 'SELECT
+                            tsu.*,
+                            CONCAT(u.last_name, " ", u.first_name, " ", u.father_is_name) AS fio,
+                            r.name AS viloyat,
+                            d.name AS tuman,
+                            s.name as fan
+                        FROM test_sing_up tsu
+                        LEFT JOIN user u ON u.id = tsu.user_id
+                        left join tests_names tn on tn.id = tsu.tests_names_id
+                        left join sciences s on s.id = tn.sciences_id
+                        LEFT JOIN regions r ON r.id = u.regions_id
+                        LEFT JOIN districts d ON d.id = u.districts_id
+                        WHERE tsu.id = ' . $test_singup_id;
+        $test_sing_up = Yii::$app->getDb()->createCommand($test_sing_up)->queryOne();
         $pdf = Yii::$app->pdf;
         $html = $this->renderPartial('sertificate', [
             'test_sing_up' => $test_sing_up,
-            'tets_names' => $tets_names
         ]);
 
         $mpdf = $pdf->api; // fetches mpdf api
