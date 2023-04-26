@@ -124,20 +124,6 @@ use yii\web\Controller;
             ]);
         }
 
-        public function actionSertificate($test_singup_id = null){
-
-            $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
-            $tets_names = TestsNames::find()->where(['id' => $test_sing_up->tests_names_id])->one();
-            $pdf = Yii::$app->pdf;
-            $html = $this->renderPartial('sertificate', [
-                'test_sing_up' => $test_sing_up,
-                'tets_names' => $tets_names
-            ]);
-
-            $mpdf = $pdf->api; // fetches mpdf api
-            $mpdf->WriteHtml($html); // call mpdf write html
-            echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'D');
-        }
 
         public function actionSignUpTest()
         {
