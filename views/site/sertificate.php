@@ -51,7 +51,7 @@ $tuman = Districts::getListAll();
             bilan taqdirlanadi.
         </div>
         <div class="qrcode">
-           <img src = "https://chart.googleapis.com/chart?cht=qr&chl=https://im-tek.uz/home/sertificate?test_singup_id=<?= $test_sing_up['id'] ?>/&chs=160x160&chld=L|0"
+           <img src = "https://chart.googleapis.com/chart?cht=qr&chl=https://im-tek.uz/site/sertificate?test_singup_id=<?= $test_sing_up['id'] ?>/&chs=160x160&chld=L|0"
             class="qr-code img-thumbnail img-responsive" /> 
             <div class="ball">
                 <b>Ball: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
@@ -84,7 +84,7 @@ $tuman = Districts::getListAll();
         border-radius: 12px;
         border: 5px solid #06065C;
     }
-    
+
     .fan{
         text-decoration: underline;
     }
