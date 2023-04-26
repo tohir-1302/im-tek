@@ -59,27 +59,32 @@ $tuman = Districts::getListAll();
         </div>
     </div>
 <style>
+
     .ball{
         font-size: 16px;
         font-weight: 650;
         text-align: center;
         margin-top: -7px;
     }
+
     .bilan{
         font-size: 25px;
         text-align: center;
         font-family: monospace;
         margin-top: -20px;
     }
+
     .qr-code {
       max-width: 150px;
     }
+
     .qrcode{
         margin: 50px;
         width: 150px;
         border-radius: 12px;
         border: 5px solid #06065C;
     }
+    
     .fan{
         text-decoration: underline;
     }
