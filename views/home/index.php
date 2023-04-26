@@ -95,7 +95,7 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                                     ['class' => 'btn btn-secondary']); 
                                 ?>
                                 <?php if ($item['sertificat_status'] == 2 && ($item['sertifikat_foiz'] <= ($item['sing_up_answer'] / $item['sing_up_question_count'] *100))) { ?>
-                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['home/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
+                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['site/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
                                         ['class' => 'sertificate']); 
                                 ?>
                                 <?php } ?>
@@ -156,7 +156,7 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                                     ['class' => 'btn btn-secondary']); 
                                 ?>
                                 <?php if ($item['sertificat_status'] == 2 && ($item['sertifikat_foiz'] <= ($item['sing_up_answer'] / $item['sing_up_question_count'] *100))) { ?>
-                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['home/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
+                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['site/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
                                         ['class' => 'sertificate']); 
                                     ?>
                                 <?php } ?>
