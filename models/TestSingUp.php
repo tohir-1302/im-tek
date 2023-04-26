@@ -102,6 +102,7 @@ class TestSingUp extends \yii\db\ActiveRecord
         $new_test_sing_up->user_id = $user->getId();
         $new_test_sing_up->tests_names_id = $tests_names_id;
         $new_test_sing_up->tests_status = 1;
+        $new_test_sing_up->question_count = $tests_names['question_count'];
         if($new_test_sing_up->save()){
             $question_date = [];
             $count = 0;
