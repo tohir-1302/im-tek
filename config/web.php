@@ -1,5 +1,7 @@
 <?php
 
+use kartik\mpdf\Pdf;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -22,6 +24,23 @@ $config = [
                     'bsDependencyEnabled' => false // do not load bootstrap assets for a specific asset bundle
                 ],
             ],
+        ],
+        'pdf' => [
+            'class' => Pdf::classname(),
+            // 'format' => Pdf::FORMAT_A3,
+            'format' => [297, 210],
+            'mode' => Pdf::MODE_CORE,
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            'destination' => Pdf::DEST_BROWSER,
+            'marginTop' => 0,
+            'marginLeft' => 0,
+            'marginRight' => 0,
+            'marginBottom' => 0,
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/src/assets/kv-mpdf-bootstrap.min.css',
+        ],
+        'qr' => [
+            'class' => '\Da\QrCode\Component\QrCodeComponent',
+            // ... you can configure more properties of the component here
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

@@ -10,6 +10,24 @@
         'dev' => true,
     ),
     'versions' => array(
+        '2amigos/qrcode-library' => array(
+            'pretty_version' => '1.1.2',
+            'version' => '1.1.2.0',
+            'reference' => '5356f2355c7ba9a9ced67753411c88c2c095deb0',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../2amigos/qrcode-library',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'bacon/bacon-qr-code' => array(
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => '448ee9929aece0e86f0e2b926e636f9b53d03ce1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../bacon/bacon-qr-code',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'behat/gherkin' => array(
             'pretty_version' => 'v4.9.0',
             'version' => '4.9.0.0',
@@ -153,6 +171,15 @@
             'install_path' => __DIR__ . '/../codeception/verify',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'diggindata/yii2-kjua' => array(
+            'pretty_version' => '0.0.2',
+            'version' => '0.0.2.0',
+            'reference' => '187f31dfd87f7fb07a8d948e522123605e32b2e3',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../diggindata/yii2-kjua',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
             'pretty_version' => 'v1.0.0',
@@ -355,6 +382,15 @@
             'aliases' => array(
                 0 => '1.0.x-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'khanamiryan/qrcode-detector-decoder' => array(
+            'pretty_version' => '1.0.6',
+            'version' => '1.0.6.0',
+            'reference' => '45326fb83a2a375065dbb3a134b5b8a5872da569',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../khanamiryan/qrcode-detector-decoder',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'maennchen/zipstream-php' => array(
@@ -1018,6 +1054,15 @@
             'install_path' => __DIR__ . '/../theseer/tokenizer',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'xj/yii2-qrcode-widget' => array(
+            'pretty_version' => '1.1',
+            'version' => '1.1.0.0',
+            'reference' => 'f6031ecb67dd34c95eca7c3eb99cf19dd9a94eba',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../xj/yii2-qrcode-widget',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'yiisoft/yii2' => array(
             'pretty_version' => '2.0.47',

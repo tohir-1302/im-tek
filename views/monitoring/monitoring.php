@@ -125,7 +125,7 @@ $this->registerJs($script);
         var data = google.visualization.arrayToDataTable([
           ['Tumanlar', 'O\'zlashtirish ko\'rsatkichi (%)', 'Test topshiruvchilar soni'],
           <?php foreach ($result as $item) : ?>
-            ["<?= $item['tuman'] ?>", <?= (int) pul2($item['answer_success'] / $item['question_count'] * 100,2) ?> + "%", <?= $item['sign_count'] ?>],
+            ["<?= $item['tuman'] ?>", <?= (int) pul2($item['answer_success'] / $item['question_count'] * 100,2) ?>, <?= $item['sign_count'] ?>],
           <?php endforeach ;?>
         ]);
 

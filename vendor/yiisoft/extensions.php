@@ -184,4 +184,22 @@ return array (
       '@kartik/select2' => $vendorDir . '/kartik-v/yii2-widget-select2/src',
     ),
   ),
+  '2amigos/qrcode-library' => 
+  array (
+    'name' => '2amigos/qrcode-library',
+    'version' => '1.1.2.0',
+    'alias' => 
+    array (
+      '@Da/QrCode' => $vendorDir . '/2amigos/qrcode-library/src',
+    ),
+  ),
+  'diggindata/yii2-kjua' => 
+  array (
+    'name' => 'diggindata/yii2-kjua',
+    'version' => '0.0.2.0',
+    'alias' => 
+    array (
+      '@diggindata/kjua' => $vendorDir . '/diggindata/yii2-kjua/src',
+    ),
+  ),
 );

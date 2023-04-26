@@ -70,7 +70,19 @@ use kartik\time\TimePicker;
                                                 ]])
              ?>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-2">
+            <?= $form->field($model, 'sertificat_status')->widget(Select2::className(), [
+                        'data' => [1 => 'Berilmaydi', 2 => 'Beriladi'],
+                        'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__" , ],
+                        'pluginOptions' => [
+                            'allowClear' => false
+                        ],
+            ]); ?>
+        </div>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'sertifikat_foiz')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
+        </div>
+        <div class="col-lg-2">
             <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
         </div>
     </div>

@@ -6,6 +6,7 @@ use DateInterval;
 use DateTime;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\web\Response;
 
 /**
  * This is the model class for table "test_sing_up".
@@ -132,6 +133,17 @@ class TestSingUp extends \yii\db\ActiveRecord
 
         return true;
     }
+    public static function getQrCode(){
+        $qr = Yii::$app->get('qr');
+
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', $qr->getContentType());
+
+        return $qr
+            ->setText('https://2amigos.us')
+            ->setLabel('2amigos consulting group llc')
+            ->writeString();
+        }
 
     public static function getSingUpId($tests_names_id, $time_limit){
         $user = Yii::$app->user->identity;
