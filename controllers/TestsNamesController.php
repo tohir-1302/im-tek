@@ -66,7 +66,7 @@ class TestsNamesController extends RoleController
                 $query =  $query->where(['s.id' => $searchModel->sciences_id]);
             }
             if ($searchModel->classes_id) {
-                $query =  $query->where(['c.id' => $searchModel->classes_id]);
+                $query =  $query->andWhere(['c.id' => $searchModel->classes_id]);
             }
         }
         if ($user->role != User::Admin) {
