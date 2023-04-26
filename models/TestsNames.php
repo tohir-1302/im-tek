@@ -14,6 +14,8 @@ use yii\helpers\ArrayHelper;
  * @property int $user_id
  * @property int $sciences_id
  * @property int $status
+ * @property int $sertificat_status
+ * @property int $sertifikat_foiz
  * @property int|null $question_count
  * @property string|null $begin_date
  * @property string|null $status_date
@@ -40,7 +42,7 @@ class TestsNames extends \yii\db\ActiveRecord
     {
         return [
             [['classes_id', 'sciences_id', 'question_count', 'begin_date', 'time_limit', 'name', 'end_date'], 'required'],
-            [['classes_id', 'sciences_id', 'question_count', 'status', 'user_id'], 'integer'],
+            [['classes_id', 'sciences_id', 'question_count', 'status', 'user_id', 'sertificat_status', 'sertifikat_foiz'], 'integer'],
             [['begin_date', 'time_limit', 'end_date', 'create_date', 'status_date'], 'safe'],
             [['name'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],

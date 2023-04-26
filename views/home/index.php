@@ -94,6 +94,11 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                                 <?= \yii\helpers\Html::a('Ko\'rish',Url::to(['home/view', 'test_singup_id' => $item["sing_up_id"]]),
                                     ['class' => 'btn btn-secondary']); 
                                 ?>
+                                <?php if ($item['sertificat_status'] == 2 && ($item['sertifikat_foiz'] <= ($item['sing_up_answer'] / $item['sing_up_question_count'] *100))) { ?>
+                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['home/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
+                                        ['class' => 'sertificate']); 
+                                ?>
+                                <?php } ?>
                             <?php } ?>
                             <?php if ($item['tests_status'] == 4) { ?>
                                 <?= \yii\helpers\Html::a('Qatnashilmadi',Url::to(['#', ]),['class' => 'btn btn-warning', ]); ?>
@@ -150,6 +155,11 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                                 <?= \yii\helpers\Html::a('Ko\'rish',Url::to(['home/view', 'test_singup_id' => $item["sing_up_id"]]),
                                     ['class' => 'btn btn-secondary']); 
                                 ?>
+                                <?php if ($item['sertificat_status'] == 2 && ($item['sertifikat_foiz'] <= ($item['sing_up_answer'] / $item['sing_up_question_count'] *100))) { ?>
+                                    <?= \yii\helpers\Html::a('<img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/null/external-certificate-online-education-flaticons-lineal-color-flat-icons-4.png"/>',Url::to(['home/sertificate', 'test_singup_id' => $item["sing_up_id"]]),
+                                        ['class' => 'sertificate']); 
+                                    ?>
+                                <?php } ?>
                             <?php } ?>
                             <?php if ($item['tests_status'] == 4) { ?>
                                 <?= \yii\helpers\Html::a('Qatnashilmadi',Url::to(['#', ]),['class' => 'btn btn-warning', ]); ?>
@@ -164,6 +174,11 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
 </div>
 
 <style>
+    .sertificate img{
+        width: 55px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
     .mobile_registr{
     display: none;
 }

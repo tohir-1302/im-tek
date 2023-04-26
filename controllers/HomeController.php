@@ -5,6 +5,7 @@ use app\models\TestAnswer;
 use app\models\TestSingUp;
 use app\models\TestsNames;
 use app\models\User;
+use kartik\mpdf\Pdf;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -75,6 +76,8 @@ use yii\web\Controller;
                     "begin_date" => $item['begin_date'],
                     "end_date" => $item['end_date'],
                     "xolat" => $item['xolat'],
+                    "sertifikat_foiz" => $item['sertifikat_foiz'],
+                    "sertificat_status" => $item['sertificat_status'],
                     "sing_up_id" => null,
                     "tests_status" => null
                 ];
@@ -87,9 +90,13 @@ use yii\web\Controller;
                             $data->tests_status = 4;
                             $data->save(); 
                             $gibrit[$item['id']]['sing_up_id'] =$data->id;
+                            $gibrit[$item['id']]['sing_up_question_count'] = $data->question_count;
+                            $gibrit[$item['id']]['sing_up_answer'] = $data->answer_success;
                             $gibrit[$item['id']]['tests_status'] = $data->tests_status;
                         }else{
-                            $gibrit[$item['id']]['sing_up_id'] =$data->id;
+                            $gibrit[$item['id']]['sing_up_id'] = $data->id;
+                            $gibrit[$item['id']]['sing_up_question_count'] = $data->question_count;
+                            $gibrit[$item['id']]['sing_up_answer'] = $data->answer_success;
                             $gibrit[$item['id']]['tests_status'] = $data->tests_status;
                         }
                     }
@@ -115,6 +122,21 @@ use yii\web\Controller;
                 'tests' => $gibrit_new,
                 'type' => $type
             ]);
+        }
+
+        public function actionSertificate($test_singup_id = null){
+
+            $test_sing_up = TestSingUp::find()->where(['id' => $test_singup_id])->one();
+            $tets_names = TestsNames::find()->where(['id' => $test_sing_up->tests_names_id])->one();
+            $pdf = Yii::$app->pdf;
+            $html = $this->renderPartial('sertificate', [
+                'test_sing_up' => $test_sing_up,
+                'tets_names' => $tets_names
+            ]);
+
+            $mpdf = $pdf->api; // fetches mpdf api
+            $mpdf->WriteHtml($html); // call mpdf write html
+            echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'D');
         }
 
         public function actionSignUpTest()

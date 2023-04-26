@@ -1,0 +1,23 @@
+{
+    "name": "diggindata/yii2-kjua",
+    "description": "Yii2 widget to display a QRCode using the kjua library",
+    "keywords": ["yii2", "qrcode", "widget", "kjua"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "version": "0.0.2",
+    "authors": [
+        {
+            "name": "Joachim Werner",
+            "email": "joachim.werner@diggin-data.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "diggindata\\kjua\\": "src"
+        }
+    }
+}
