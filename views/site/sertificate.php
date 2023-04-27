@@ -16,28 +16,62 @@
         <div class="text__bloc">
          
             <div class="im_tek_jamoa">
-               <b style=" text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"> IM-TEK jamoasi tomonidan </b>
+               <b style=" text-shadow:
+                            1px 1px 0px #FFC400,
+                            2px 2px 0px #0000FF,
+                            3px 3px 0px #0000FF,
+                            4px 4px 0px #FFC400,
+                            5px 5px 0px #FFC400;
+                            transition: .5s ease-in-out;"> IM-TEK jamoasi tomonidan </b>
             </div>
 
             <div class="respublika">
-                <b style=" text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;">Respublika miqiyosida o'tkazilgan olimpiadada </b>
+                <b style=" text-shadow:
+                            1px 1px 0px #FFC400,
+                            2px 2px 0px #0000FF,
+                            3px 3px 0px #0000FF,
+                            4px 4px 0px #FFC400,
+                            5px 5px 0px #FFC400;
+                            transition: .5s ease-in-out;">Respublika miqiyosida o<span style="font-family: 'Times New Roman', Times, serif;">‘</span>tkazilgan  </b>
             </div>
 
             <div class="fan">
-                <b style=" text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['fan'] ?> fanidan muvaffaqiyatli ishtiroki uchun</b>
+                <b style=" text-shadow:
+                            1px 1px 0px #FFC400,
+                            2px 2px 0px #0000FF,
+                            3px 3px 0px #0000FF,
+                            4px 4px 0px #FFC400,
+                            5px 5px 0px #FFC400;
+                            transition: .5s ease-in-out;"> olimpiadada <?= $test_sing_up['fan'] ?>  fanidan </b>
             </div>
 
             <div class="vil__tuman">
-                <b style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['viloyat'] ?> <?= $test_sing_up['tuman'] ?></b>
+                <b style="  text-shadow:
+                            1px 1px 0px #FFC400,
+                            2px 2px 0px #0000FF,
+                            3px 3px 0px #0000FF,
+                            4px 4px 0px #FFC400,
+                            5px 5px 0px #FFC400;
+                            transition: .5s ease-in-out;"> muvaffaqiyatli ishtiroki uchun <br> <?= $test_sing_up['viloyat'] ?> viloyat <?= $test_sing_up['tuman'] ?>idan</b>
             </div>
 
             <div class="ism_fam">
-                <b  style="  text-shadow: 0 0 13px #FF0000, 0 0 15px #0000FF;"><?= $test_sing_up['fio']  ?></b>
+                <b><?= $test_sing_up['fio']  ?></b>
             </div>
         </div>
         <div class="ratio">SERTIFIKAT</div>
-        <div class="bilan">
-            bilan taqdirlanadi.
+        <div class="bilan" style="  text-shadow:
+                            1px 1px 0px #FFC400,
+                            2px 2px 0px #0000FF,
+                            3px 3px 0px #0000FF,
+                            4px 4px 0px #FFC400,
+                            5px 5px 0px #FFC400;
+                            transition: .5s ease-in-out;     color: #FFC400;
+        font-size: 35px;
+        text-align: center;
+        font-family: monospace;
+        ">
+           <b> bilan taqdirlanadi. </b>
         </div>
         <div class="qrcode">
            <img src = "https://chart.googleapis.com/chart?cht=qr&chl=https://im-tek.uz/site/sertificate?test_singup_id=<?= $test_sing_up['id'] ?>&chs=160x160&chld=L|0"
@@ -46,21 +80,32 @@
                 <b>Ball: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
             </div>
         </div>
+       
     </div>
+    <div class="date_test">
+            <?= dateView(date("Y-m-d",strtotime($test_sing_up['end_test_date'])))?>
+        </div>
 <style>
+    .date_test{
+        text-align: center;
+        font-weight: bold;
+        text-decoration:underline;
+        font-family: monospace;
+        font-size: 20px;
+        margin-top: -100px;
+    }
 
     .ball{
         font-size: 16px;
         font-weight: 650;
         text-align: center;
-        margin-top: -7px;
     }
 
     .bilan{
         font-size: 25px;
         text-align: center;
         font-family: monospace;
-        margin-top: -20px;
+        margin-top: -50px;
     }
 
     .qr-code {
@@ -71,37 +116,26 @@
         margin: 50px;
         width: 150px;
         border-radius: 12px;
-        border: 5px solid #06065C;
+        border: 5px solid #FFC400;
+        margin-top: 10px;
+        box-shadow:
+                -1px -1px 0px #9AA8FF,
+                -2px -2px 0px #C4CCFF,
+                -3px -3px 0px #C4CCFF,
+                1px 1px 0px #9AA8FF,
+                2px 2px 0px #C4CCFF,
+                3px 3px 0px #C4CCFF;
     }
-
-    .fan{
-        text-decoration: underline;
-    }
-
     .ism_fam{
-        text-decoration: underline;
         font-style: italic;
-        color: hsl(260, 100%, 20%);
+        color: #000000;
+        text-shadow:
+                -1px -1px 0px #CAC702,
+                -2px -2px 0px #CBCA91,
+                1px 1px 0px #CAC730,
+                2px 2px 0px #C7C679;
     }
     
-    .sertificat h1 {
-        color: #FFC400;
-        text-shadow:0 1px 0 hsl(240, 100%, 60%),
-                    0 2px 0 hsl(240, 100%, 65%),
-                    0 3px 0 hsl(240, 100%, 70%),
-                    0 4px 0 hsl(240, 100%, 60%),
-                    0 5px 0 hsl(240, 100%, 70%),
-                    0 6px 0 hsl(240, 100%, 70%),
-                    0 7px 0 hsl(240, 100%, 70%),
-                    0 8px 0 hsl(240, 100%, 70%),
-
-                    0 0 5px rgba(0,0,0,.05),
-	                0 1px 3px rgba(0,0,0,.2),
-	                0 3px 5px rgba(0,0,0,.2),
-	               0 5px 10px rgba(0,0,0,.2),
-	              0 10px 10px rgba(0,0,0,.2),
-	              0 20px 20px rgba(0,0,0,.3);
-    }
     .bloc__{
         border: 2px red solid;
         /* background-color: rgba(28, 146, 244, .4); */
@@ -112,14 +146,15 @@
     }
    
     .text__bloc{
-        color: #160134;
+        color: #FFC400;
         background-color: rgba(255, 255, 254, .5);
         border-radius: 12px;
         font-size: 30px;
-        margin-left: 70px;
-        margin-right: 70px;
         text-align: center;
         font-family: monospace;
+        font-weight: 900;
+        letter-spacing: 5px;
+
     }
     .sertificat h1{
         font-size: 80px;
@@ -133,25 +168,21 @@
         display: block;
         font-size: 100px;
         text-align: center;
-        color: rgba(95, 192, 254, 0.6);
+        color: #FFC400;
         text-shadow:
-        -14px 14px 0 rgba(50, 153, 240, 0.4),		
-        -1px 1px 0 #697075,
-        -2px 2px 0 #0B0135,
-        -3px 3px 0 #000000,
-        -4px 4px 0 #0372b8,
-        -5px 5px 0 #0372b8,
-        -6px 6px 0 #0372b8,
-        -7px 7px 0 #0372b8,
-        -8px 8px 0 #0372b8,
-        -9px 9px 0 #0372b8,
-        -10px 10px 0 #0372b8,
-        -11px 11px 0 #0372b8,
-        -12px 12px 0 #0372b8,
-        -13px 13px 0 #0372b8,
-        -14px 14px 0 #0372b8;
-        /* -15px 15px 35px rgba(0, 0, 0, 0.2),
-        -35px 15px 10px rgba(0, 0, 0, 0.1); */
+        -1px 1px 0 #FFC400,
+        -4px 4px 0 #FFC400,
+        -5px 5px 0 #FFC400,
+        -6px 6px 0 #0226FF,
+        -7px 7px 0 #2341FD,
+        -8px 8px 0 #435EFE,
+        -9px 9px 0 #667CFF,
+        -10px 10px 0 #9AA8FF,
+        -11px 11px 0 #B3BEFF ,
+        -12px 12px 0 #C4CCFF,
+        -13px 13px 0 #DCE1FF,
+        -14px 14px 0 #F1F3FF;
+        
         transition: all .1s ;
         line-height: 240px;
     }
