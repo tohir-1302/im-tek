@@ -116,7 +116,7 @@
         margin: 50px;
         width: 150px;
         border-radius: 12px;
-        border: 5px solid #FFC400;
+        border: 5px solid #0000FF;
         margin-top: 10px;
         box-shadow:
                 -1px -1px 0px #9AA8FF,
@@ -127,6 +127,7 @@
                 3px 3px 0px #C4CCFF;
     }
     .ism_fam{
+        /* text-decoration: underline; */
         font-style: italic;
         color: #000000;
         text-shadow:
