@@ -52,7 +52,7 @@
                             3px 3px 0px #0000FF,
                             4px 4px 0px #FFC400,
                             5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;"> muvaffaqiyatli ishtiroki uchun <br> <?= $test_sing_up['viloyat'] ?> viloyat <?= $test_sing_up['tuman'] ?>idan</b>
+                            transition: .5s ease-in-out;"> muvaffaqiyatli ishtiroki uchun <br> <?= $test_sing_up['viloyat'] ?> <?= $test_sing_up['tuman'] ?>idan</b>
             </div>
 
             <div class="ism_fam">
