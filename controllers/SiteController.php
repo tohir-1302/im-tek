@@ -111,7 +111,7 @@ class SiteController extends RoleController
 
         $mpdf = $pdf->api; // fetches mpdf api
         $mpdf->WriteHtml($html); // call mpdf write html
-        echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'I');
+        echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'D');
     }
     /**
      * Logout action.
