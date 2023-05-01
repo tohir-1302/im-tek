@@ -92,7 +92,7 @@ class SiteController extends RoleController
 
         $test_sing_up = 'SELECT
                             tsu.*,
-                            CONCAT(u.last_name, " ", u.first_name, " ", u.father_is_name) AS fio,
+                            CONCAT(u.last_name, " ", u.first_name, "<br>", u.father_is_name) AS fio,
                             r.name AS viloyat,
                             d.name AS tuman,
                             s.name as fan
@@ -105,6 +105,7 @@ class SiteController extends RoleController
                         WHERE tsu.id = ' . $test_singup_id;
         $test_sing_up = Yii::$app->getDb()->createCommand($test_sing_up)->queryOne();
         $pdf = Yii::$app->pdf;
+        // prd($test_sing_up);
         $html = $this->renderPartial('sertificate', [
             'test_sing_up' => $test_sing_up,
         ]);
