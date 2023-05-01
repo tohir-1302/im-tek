@@ -6,186 +6,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=
 "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <title>Sertificat</title>
 </head>
 <body>
     <div class="bloc__" style="height: 100%">
-    <div class="im_tek_img">
-                <img style="width: 160px; float: right; margin-right: 20px;  border-radius: 50% !important;" src="<?=Yii::getAlias("@img")?>/logo.png" alt="">
-            </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <div class="text__bloc">
-         
-            <div class="im_tek_jamoa">
-               <b style=" text-shadow:
-                            1px 1px 0px #FFC400,
-                            2px 2px 0px #0000FF,
-                            3px 3px 0px #0000FF,
-                            4px 4px 0px #FFC400,
-                            5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;"> IM-TEK jamoasi tomonidan </b>
+            <div class="text_sertificat">
+                <b>
+                    <?= $test_sing_up['fan'] ?>  fanidan <br> 
+                    muvaffaqiyatli ishtiroki uchun <br>
+                    <?= $test_sing_up['viloyat'] ?> <?= $test_sing_up['tuman'] ?>idan
+                </b>
             </div>
-
-            <div class="respublika">
-                <b style=" text-shadow:
-                            1px 1px 0px #FFC400,
-                            2px 2px 0px #0000FF,
-                            3px 3px 0px #0000FF,
-                            4px 4px 0px #FFC400,
-                            5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;">Respublika miqiyosida o<span style="font-family: 'Times New Roman', Times, serif;">‘</span>tkazilgan  </b>
-            </div>
-
-            <div class="fan">
-                <b style=" text-shadow:
-                            1px 1px 0px #FFC400,
-                            2px 2px 0px #0000FF,
-                            3px 3px 0px #0000FF,
-                            4px 4px 0px #FFC400,
-                            5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;"> olimpiadada <?= $test_sing_up['fan'] ?>  fanidan </b>
-            </div>
-
-            <div class="vil__tuman">
-                <b style="  text-shadow:
-                            1px 1px 0px #FFC400,
-                            2px 2px 0px #0000FF,
-                            3px 3px 0px #0000FF,
-                            4px 4px 0px #FFC400,
-                            5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;"> muvaffaqiyatli ishtiroki uchun <br> <?= $test_sing_up['viloyat'] ?> <?= $test_sing_up['tuman'] ?>idan</b>
-            </div>
-
             <div class="ism_fam">
                 <b><?= $test_sing_up['fio']  ?></b>
             </div>
         </div>
-        <div class="ratio">SERTIFIKAT</div>
-        <div class="bilan" style="  text-shadow:
-                            1px 1px 0px #FFC400,
-                            2px 2px 0px #0000FF,
-                            3px 3px 0px #0000FF,
-                            4px 4px 0px #FFC400,
-                            5px 5px 0px #FFC400;
-                            transition: .5s ease-in-out;     color: #FFC400;
-        font-size: 35px;
-        text-align: center;
-        font-family: monospace;
-        ">
-           <b> bilan taqdirlanadi. </b>
+        <div class="ball">
+            <b>Ball: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
+        </div>
+        <div class="t_j_s">
+            <b>
+                To'g'ri javoblar: <?= ($test_sing_up['answer_success']) ?> <br>
+                Xato javoblar: <?= ($test_sing_up['question_count'] - $test_sing_up['answer_success']) ?> 
+             </b>
+        </div>
+        <div class="date_test">
+            <b><?= dateView(date("Y-m-d",strtotime($test_sing_up['end_test_date'])))?></b>
         </div>
         <div class="qrcode">
            <img src = "https://chart.googleapis.com/chart?cht=qr&chl=https://im-tek.uz/site/sertificate?test_singup_id=<?= $test_sing_up['id'] ?>&chs=160x160&chld=L|0"
             class="qr-code img-thumbnail img-responsive" /> 
-            <div class="ball">
-                <b>Ball: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
-            </div>
+          
         </div>
-       
+      
     </div>
-    <div class="date_test">
-            <?= dateView(date("Y-m-d",strtotime($test_sing_up['end_test_date'])))?>
-        </div>
+  
 <style>
-    .date_test{
+    .text__bloc{
         text-align: center;
-        font-weight: bold;
-        text-decoration:underline;
+        font-size: 30px;
         font-family: monospace;
-        font-size: 20px;
-        margin-top: -100px;
+
     }
 
-    .ball{
-        font-size: 16px;
-        font-weight: 650;
-        text-align: center;
-    }
-
-    .bilan{
-        font-size: 25px;
-        text-align: center;
-        font-family: monospace;
-        margin-top: -50px;
+    .ism_fam{
+        font-family: Arial, Helvetica, sans-serif;
+        color: #0d4057;
     }
 
     .qr-code {
-      max-width: 150px;
+      max-width: 80px;
     }
 
+    .date_test{
+        text-align: right;
+        margin-right: 325px;
+        margin-top: -70px;
+        position: absolute;
+        color: #0d4057;
+    }
+
+    .ball, .t_j_s{
+        text-align: left;
+        margin-left: 325px;
+        position: absolute;
+        color: #0d4057;
+    }
+
+    .ball{
+        margin-top: 75px;
+    }
+
+    .t_j_s{
+        margin-top: 12px;
+    }
     .qrcode{
-        margin: 50px;
-        width: 150px;
+        margin-right: 315px;
+        width: 80px;
         border-radius: 12px;
-        border: 5px solid #0000FF;
-        margin-top: 10px;
-        box-shadow:
-                -1px -1px 0px #9AA8FF,
-                -2px -2px 0px #C4CCFF,
-                -3px -3px 0px #C4CCFF,
-                1px 1px 0px #9AA8FF,
-                2px 2px 0px #C4CCFF,
-                3px 3px 0px #C4CCFF;
+        border: 3px solid #0d4057;
+        margin-top: 17px;
+        float: right;
+        text-align: center;
+        color: #0d4057;
     }
-    .ism_fam{
-        /* text-decoration: underline; */
-        font-style: italic;
-        color: #000000;
-        text-shadow:
-                -1px -1px 0px #CAC702,
-                -2px -2px 0px #CBCA91,
-                1px 1px 0px #CAC730,
-                2px 2px 0px #C7C679;
-    }
-    
+  
     .bloc__{
-        border: 2px red solid;
-        /* background-color: rgba(28, 146, 244, .4); */
-        background-image: url("<?=Yii::getAlias("@img")?>/sertificate.png");
+        background-image: url("<?=Yii::getAlias("@img")?>/sertifikat.png");
         background-attachment: fixed;
         background-size: 100% 100%;
         background-repeat: no-repeat;
-    }
-   
-    .text__bloc{
-        color: #FFC400;
-        background-color: rgba(255, 255, 254, .5);
-        border-radius: 12px;
-        font-size: 30px;
-        text-align: center;
-        font-family: monospace;
-        font-weight: 900;
-        letter-spacing: 5px;
-
-    }
-    .sertificat h1{
-        font-size: 80px;
-    }
-    .ratio {
-        font-family: 'Catamaran', sans-serif;
-        letter-spacing: 20px;
-        font-weight: 900;
-        max-width: 800px;
-        margin-top: -50px;
-        display: block;
-        font-size: 100px;
-        text-align: center;
-        color: #FFC400;
-        text-shadow:
-        -1px 1px 0 #FFC400,
-        -4px 4px 0 #FFC400,
-        -5px 5px 0 #FFC400,
-        -6px 6px 0 #0226FF,
-        -7px 7px 0 #2341FD,
-        -8px 8px 0 #435EFE,
-        -9px 9px 0 #667CFF,
-        -10px 10px 0 #9AA8FF,
-        -11px 11px 0 #B3BEFF ,
-        -12px 12px 0 #C4CCFF,
-        -13px 13px 0 #DCE1FF,
-        -14px 14px 0 #F1F3FF;
-        
-        transition: all .1s ;
-        line-height: 240px;
+        border: 15px solid #0d4057;
     }
 
 </style>

@@ -197,23 +197,21 @@ class TestsNamesController extends RoleController
             $date_now = date("Y-m-d H:i:s");
             $test_names_id = isset($get['tests_names_id']) ? $get['tests_names_id'] : $get['UsersFilter']['tests_names_id'];
 
-            $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $test_names_id]);
+            $test_sing_up = TestSingUp::findAll(['tests_names_id'=> $test_names_id, 'tests_status' => 2]);
             foreach ($test_sing_up as $item) {
-                if ($item->tests_status = 2) {
-                    $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
+                $test_answer = TestAnswer::findAll(['test_sing_up_id' => $item['id']]);
 
-                    $answer_success = 0;
-                    foreach ($test_answer as $item_) {
-                        if ($item_->answer_client == $item_->answer_success) {
-                            $answer_success++;
-                        }
+                $answer_success = 0;
+                foreach ($test_answer as $item_) {
+                    if ($item_->answer_client == $item_->answer_success) {
+                        $answer_success++;
                     }
-                    if ($item->end_date <= $date_now) {
-                        $item->tests_status = 3;
-                        $item->end_test_date = $item->end_date;
-                        $item->answer_success = $answer_success;
-                        $item->save();
-                    }
+                }
+                if ($item->end_date <= $date_now) {
+                    $item->tests_status = 3;
+                    $item->end_test_date = $item->end_date;
+                    $item->answer_success = $answer_success;
+                    $item->save();
                 }
             }
 
