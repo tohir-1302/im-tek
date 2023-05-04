@@ -109,10 +109,10 @@ class SiteController extends RoleController
         $html = $this->renderPartial('sertificate', [
             'test_sing_up' => $test_sing_up,
         ]);
-
+        
         $mpdf = $pdf->api; // fetches mpdf api
         $mpdf->WriteHtml($html); // call mpdf write html
-        echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'D');
+        echo $mpdf->Output("sertificat [ ".date('Y-m-d H:i:s') ."].pdf", 'I');
     }
     /**
      * Logout action.

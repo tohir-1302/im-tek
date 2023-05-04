@@ -3,11 +3,10 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
-use function PHPSTORM_META\type;
-
 $styele_active = ' border-left: 8px solid green; border-right: 8px solid green; ';
 $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black; ';
+$this->title = Yii::t('app', 'Imtihonlar');
+
 ?>
 
     <?php if (Yii::$app->session->hasFlash('success')): ?>
@@ -64,16 +63,19 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                             <?php } ?>
                            
                             <?php if (in_array($item['tests_status'], [1])) { ?>
-
-                                <?php $form = ActiveForm::begin([
-                                                'action' => ['home/test'],
-                                                'method'=> 'post',
-                                                'options' => [
-                                                    'data-pjax' => 1
-                                                ]]); ?>
-                                                <?= Html::hiddenInput('test_names_id', $item["id"]); ?>
-                                            <?= Html::submitButton('Boshlash', ['class' => 'btn btn-success']) ?>
-                                            <?php ActiveForm::end(); ?>
+                                <?php if ($item['begin_date'] <= date("Y-m-d H:i:s") ) { ?>
+                                    <?php $form = ActiveForm::begin([
+                                                    'action' => ['home/test'],
+                                                    'method'=> 'post',
+                                                    'options' => [
+                                                        'data-pjax' => 1
+                                                    ]]); ?>
+                                        <?= Html::hiddenInput('test_names_id', $item["id"]); ?>
+                                        <?= Html::submitButton('Boshlash', ['class' => 'btn btn-success']) ?>
+                                    <?php ActiveForm::end(); ?>
+                                <?php } else { ?>
+                                    <?= \yii\helpers\Html::a('Test hali boshlanmadi!',Url::to(['#', ]),['class' => 'btn btn-info', ]); ?>
+                                <?php } ?>
                             <?php } ?>
 
                             <?php if (in_array($item['tests_status'], [2])) { ?>
@@ -125,16 +127,19 @@ $styele_passive = ' border-left: 8px solid black; border-right: 8px solid black;
                             <?php } ?>
                            
                             <?php if (in_array($item['tests_status'], [1])) { ?>
-
-                                <?php $form = ActiveForm::begin([
-                                                'action' => ['home/test'],
-                                                'method'=> 'post',
-                                                'options' => [
-                                                    'data-pjax' => 1
-                                                ]]); ?>
-                                                <?= Html::hiddenInput('test_names_id', $item["id"]); ?>
-                                            <?= Html::submitButton('Boshlash', ['class' => 'btn btn-success']) ?>
-                                            <?php ActiveForm::end(); ?>
+                                <?php if ($item['begin_date'] <= date("Y-m-d H:i:s") ) { ?>
+                                    <?php $form = ActiveForm::begin([
+                                                    'action' => ['home/test'],
+                                                    'method'=> 'post',
+                                                    'options' => [
+                                                        'data-pjax' => 1
+                                                    ]]); ?>
+                                        <?= Html::hiddenInput('test_names_id', $item["id"]); ?>
+                                        <?= Html::submitButton('Boshlash', ['class' => 'btn btn-success']) ?>
+                                    <?php ActiveForm::end(); ?>
+                                <?php } else { ?>
+                                    <?= \yii\helpers\Html::a('Test hali boshlanmadi!',Url::to(['#', ]),['class' => 'btn btn-info', ]); ?>
+                                <?php } ?>
                             <?php } ?>
 
                             <?php if (in_array($item['tests_status'], [2])) { ?>

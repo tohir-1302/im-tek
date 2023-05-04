@@ -1,8 +1,9 @@
 <?php
 
 use app\models\User;
+$this->title = Yii::t('app', 'Test natijasi');
 
-    $user = Yii::$app->user->identity;
+$user = Yii::$app->user->identity;
 ?>
 <style>
     .answer_foiz{
