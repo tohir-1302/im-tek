@@ -27,12 +27,12 @@
             </div>
         </div>
         <div class="ball">
-            <b>Ball: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
+            <b>Natija: <?= pul2($test_sing_up['answer_success'] / $test_sing_up['question_count'] * 100,1) ?> % </b>
         </div>
         <div class="t_j_s">
             <b>
                 To'g'ri javoblar: <?= ($test_sing_up['answer_success']) ?> <br>
-                Xato javoblar: <?= ($test_sing_up['question_count'] - $test_sing_up['answer_success']) ?> 
+                Noto'g'ri javoblar: <?= ($test_sing_up['question_count'] - $test_sing_up['answer_success']) ?> 
              </b>
         </div>
         <div class="date_test">
@@ -51,7 +51,7 @@
         text-align: center;
         font-size: 30px;
         font-family: monospace;
-
+        margin-top: -20px;
     }
 
     .ism_fam{
@@ -79,7 +79,7 @@
     }
 
     .ball{
-        margin-top: 75px;
+        margin-top: 95px;
     }
 
     .t_j_s{
