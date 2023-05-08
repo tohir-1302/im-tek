@@ -65,7 +65,7 @@ use yii\widgets\Pjax;
 <style>
   #myChart{
     height: 100%;
-    max-height: 800px;
+    max-height: 1000px;
   }
 
 </style>
@@ -148,5 +148,19 @@ $this->registerJs($script);
               }
             ]
           },
+          options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontSize: 16
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontSize: 16
+                    }
+                }]
+            }
+          }
         });
     </script>
