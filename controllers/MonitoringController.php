@@ -45,7 +45,6 @@ class MonitoringController extends RoleController
     }
 
     $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
-    
     return $this->render('monitoring', [
         'result' =>  $result,
         'search' => $search

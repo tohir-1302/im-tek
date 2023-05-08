@@ -142,7 +142,7 @@ $this->registerJs($script);
         duration: 1000,
         easing: 'in'
       },
-      hAxis: {viewWindow: {min:0, max:5}},
+      hAxis:{},
           axes: {
             y: {
               distance: {label: 'O\'zlashtirish ko\'rsatkichi (%)'}, // Left y-axis.
