@@ -65,10 +65,11 @@
 
     .date_test{
         text-align: right;
-        margin-right: 325px;
-        margin-top: -70px;
+        margin-right: 305px;
+        margin-top: -77px;
         position: absolute;
         color: #0d4057;
+        font-size: 20px;
     }
 
     .ball, .t_j_s{
@@ -79,14 +80,15 @@
     }
 
     .ball{
-        margin-top: 95px;
+        margin-top: 90px;
+        font-size: 20px;
     }
 
     .t_j_s{
         margin-top: 12px;
     }
     .qrcode{
-        margin-right: 315px;
+        margin-right: 305px;
         width: 80px;
         border-radius: 12px;
         border: 3px solid #0d4057;

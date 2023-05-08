@@ -105,7 +105,6 @@ class SiteController extends RoleController
                         WHERE tsu.id = ' . $test_singup_id;
         $test_sing_up = Yii::$app->getDb()->createCommand($test_sing_up)->queryOne();
         $pdf = Yii::$app->pdf;
-        // prd($test_sing_up);
         $html = $this->renderPartial('sertificate', [
             'test_sing_up' => $test_sing_up,
         ]);

@@ -10,7 +10,8 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 ?>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
+ 
 <div class="row">
   <div class="col-lg-12">
     <div class="" style="width: 100% !important; margin-left: 20px; margin-top: 15px;">
@@ -56,14 +57,15 @@ use yii\widgets\Pjax;
 </div>
 <hr>
   <?php Pjax::begin(); ?>
-    <div id="chart_div"></div>
+    <div>
+	    <canvas id="myChart"></canvas>
+    </div>
   <?php Pjax::end(); ?> 
 
 <style>
-  #chart_div{
+  #myChart{
     height: 100%;
-    min-height: 600px;
-    margin: 20px;
+    max-height: 1000px;
   }
 
 </style>
@@ -113,76 +115,52 @@ ob_start(); ?>
 $this->registerJs($script);
 
 ?>
-<script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawStuff);
 
-      function drawStuff() {
-
-        var button = document.getElementById('change-chart');
-        var chartDiv = document.getElementById('chart_div');
-
-        var data = google.visualization.arrayToDataTable([
-          ['Tumanlar', 'O\'zlashtirish ko\'rsatkichi (%)', 'Test topshiruvchilar soni'],
-          <?php foreach ($result as $item) : ?>
-            ["<?= $item['tuman'] ?>", <?= (int) pul2($item['answer_success'] / $item['question_count'] * 100,2) ?>, <?= $item['sign_count'] ?>],
-          <?php endforeach ;?>
-        ]);
-
-        var materialOptions = {
-          chart: {
-            // title: 'Nearby galaxies',
-            // subtitle: 'distance on the left, brightness on the right'
+<script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+              <?php foreach ($result as $item) : ?>
+                "<?= $item['tuman'] ?>",
+              <?php endforeach ;?>
+            ],
+            datasets: [{ 
+                data: [ 
+                  <?php foreach ($result as $item) : ?>
+                    <?= (int) pul2($item['answer_success'] / $item['question_count'] * 100,2) ?>,
+                  <?php endforeach ;?>],
+                label: 'O\'zlashtirish ko\'rsatkichi (%)',
+                borderColor: "rgb(62,149,205)",
+                backgroundColor: "rgb(62,149,205,0.1)",
+                borderWidth:2
+              }, { 
+                data: [
+                  <?php foreach ($result as $item) : ?>
+                    <?= $item['sign_count'] ?>,
+                  <?php endforeach ;?>
+                ],
+                label: "Test topshiruvchilar soni",
+                borderColor: "rgb(60,186,159)",
+                backgroundColor: "rgb(60,186,159,0.1)",
+                borderWidth:2
+              }
+            ]
           },
-          series: {
-            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-          },
-          animation: {
-        duration: 1000,
-        easing: 'in'
-      },
-      hAxis: {viewWindow: {min:0, max:5}},
-          axes: {
-            y: {
-              distance: {label: 'O\'zlashtirish ko\'rsatkichi (%)'}, // Left y-axis.
-              brightness: {side: 'right', label: 'Test topshiruvchilar soni'} // Right y-axis.
+          options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        fontSize: 16
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        fontSize: 16
+                    }
+                }]
             }
           }
-        };
-
-        var classicOptions = {
-          width: 1,
-          series: {
-            0: {targetAxisIndex: 0},
-            1: {targetAxisIndex: 1}
-          },
-          animation: {
-        duration: 1000,
-        easing: 'in'
-      },
-          title: 'Nearby galaxies - distance on the left, brightness on the right',
-          vAxes: {
-            // Adds titles to each axis.
-            0: {title: 'O\'zlashtirish ko\'rsatkichi (%)'},
-            1: {title: 'Test topshiruvchilar soni'}
-          }
-        };
-
-        function drawMaterialChart() {
-          var materialChart = new google.charts.Bar(chartDiv);
-          materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
-          button.innerText = 'Change to Classic';
-          button.onclick = drawClassicChart;
-        }
-
-        function drawClassicChart() {
-          var classicChart = new google.visualization.ColumnChart(chartDiv);
-          classicChart.draw(data, classicOptions);
-          button.innerText = 'Change to Material';
-          button.onclick = drawMaterialChart;
-        }
-
-        drawMaterialChart();
-    };
+        });
     </script>
