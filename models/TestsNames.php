@@ -10,11 +10,13 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property string|null $name
+ * @property string|null $special_test_password
  * @property int $classes_id
  * @property int $user_id
  * @property int $sciences_id
  * @property int $status
  * @property int $sertificat_status
+ * @property int $has_special_test
  * @property int $sertifikat_foiz
  * @property int|null $question_count
  * @property string|null $begin_date
@@ -42,9 +44,9 @@ class TestsNames extends \yii\db\ActiveRecord
     {
         return [
             [['classes_id', 'sciences_id', 'question_count', 'begin_date', 'time_limit', 'name', 'end_date'], 'required'],
-            [['classes_id', 'sciences_id', 'question_count', 'status', 'user_id', 'sertificat_status', 'sertifikat_foiz'], 'integer'],
+            [['classes_id', 'sciences_id', 'question_count', 'status', 'user_id', 'sertificat_status', 'sertifikat_foiz', 'has_special_test'], 'integer'],
             [['begin_date', 'time_limit', 'end_date', 'create_date', 'status_date'], 'safe'],
-            [['name'], 'string', 'max' => 45],
+            [['name', 'special_test_password'], 'string', 'max' => 45],
             [['classes_id'], 'exist', 'skipOnError' => true, 'targetClass' => Classes::class, 'targetAttribute' => ['classes_id' => 'id']],
             [['sciences_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sciences::class, 'targetAttribute' => ['sciences_id' => 'id']],
         ];
@@ -63,7 +65,9 @@ class TestsNames extends \yii\db\ActiveRecord
             'question_count' => 'Test savollar soni',
             'begin_date' => 'Boshlaninsh vaqti',
             'time_limit' => 'Davomiyligi (H/m/s)',
-            'end_date' => 'Tugash vaqti'
+            'end_date' => 'Tugash vaqti',
+            'has_special_test' => 'Maxsus test',
+            'special_test_password' => 'Maxsus test paroli'
         ];
     }
 
@@ -133,5 +137,15 @@ class TestsNames extends \yii\db\ActiveRecord
         $result = Yii::$app->getDb()->createCommand($sql)->queryAll();
         $result = ArrayHelper::map($result, 'id', 'tests_name');
         return $result;
+    }
+
+
+    public static function validateSpecilaTest($test_name_id, $password)
+    {
+        $test_name = self::findOne(['id' => $test_name_id]);
+        if ($password === $test_name->special_test_password) {
+            return true;
+        }
+        return false;
     }
 }

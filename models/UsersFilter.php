@@ -15,6 +15,7 @@ class UsersFilter extends Model
     public $tests_names_id;
     public $fio;
     public $role;
+    public $password;
 
     /**
      * {@inheritdoc}
@@ -23,7 +24,7 @@ class UsersFilter extends Model
     {
         return [
             [['regions_id', 'districts_id', 'role'], 'integer'],
-            [['fio','schools'], 'string', 'max' => 255],
+            [['fio','schools', 'password'], 'string', 'max' => 255],
         ];
     }
 

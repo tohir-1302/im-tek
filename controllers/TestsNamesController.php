@@ -132,6 +132,7 @@ class TestsNamesController extends RoleController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('success', "O'zgarishlar saqlandi!" );
             return $this->redirect(['index']);
         }
 

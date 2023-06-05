@@ -10,12 +10,9 @@ $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<section class="sign-in" style="margin-top: 7%;">
+<section class="sign-in">
     <div class="container">
         <div class="signin-content">
-            <div class="about__us">
-                <!-- <img src="https://img.icons8.com/stickers/70/null/info.png"/> -->
-            </div>
             <div class="signin-image">
                 <figure><img src="<?=Yii::getAlias("@img")?>/signin-image.jpg" alt="sing up image"></figure>
                 <?= Html::a('Yangi hisob ochish', ['site/signup'], ['class' => 'btn btn-success', 'style' => 'width: 100%']) ?>
