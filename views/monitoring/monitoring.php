@@ -7,7 +7,7 @@ use app\models\TestsNames;
 use kartik\form\ActiveForm;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
+$this->title = Yii::t('app', 'Monitoring');
 
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
@@ -56,11 +56,9 @@ use yii\widgets\Pjax;
   </div>
 </div>
 <hr>
-  <?php Pjax::begin(); ?>
     <div>
 	    <canvas id="myChart"></canvas>
     </div>
-  <?php Pjax::end(); ?> 
 
 <style>
   #myChart{

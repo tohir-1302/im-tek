@@ -44,7 +44,7 @@ $user = Yii::$app->user->identity;
 <?php $this->beginBody() ?>
 
 <nav class="sidebar dark_sidebar">
-        <div class="logo d-flex justify-content-between">
+        <div class="logo">
             <a class="large_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/logo_im_tek.png" alt=""></a>
             <a class="small_logo" href="<?= Yii::$app->getUrlManager()->createUrl(['home/index']) ?>"><img src="<?=Yii::getAlias("@img")?>/mini_logo.png" alt=""></a>
             <div class="sidebar_close_icon d-lg-none">
@@ -54,7 +54,7 @@ $user = Yii::$app->user->identity;
         <ul id="sidebar_menu">
            <?php  if (in_array($user->role,[User::Admin])) :?>
                 <li class="">
-                    <a class="<?= $url__ ==  'regions/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['monitoring/monitoring']) ?>" aria-expanded="false">
+                    <a href="<?= Yii::$app->getUrlManager()->createUrl(['monitoring/monitoring']) ?>" aria-expanded="false">
                         <div class="nav_icon_small">
                             <img src="<?=Yii::getAlias("@img")?>/menu-icon/monitoring.svg" alt="">
                         </div>
@@ -64,7 +64,7 @@ $user = Yii::$app->user->identity;
                     </a>
                 </li>
                 <li class="">
-                    <a class="<?= $url__ ==  'regions/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['regions/index']) ?>" aria-expanded="false">
+                    <a href="<?= Yii::$app->getUrlManager()->createUrl(['regions/index']) ?>" aria-expanded="false">
                         <div class="nav_icon_small">
                             <img src="<?=Yii::getAlias("@img")?>/menu-icon/regions.svg" alt="">
                         </div>
@@ -74,7 +74,7 @@ $user = Yii::$app->user->identity;
                     </a>
                 </li>
                 <li class="">
-                    <a class="<?= $url__ ==  'districts/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['districts/index']) ?>" aria-expanded="false">
+                    <a  href="<?= Yii::$app->getUrlManager()->createUrl(['districts/index']) ?>" aria-expanded="false">
                         <div class="nav_icon_small">
                             <img src="<?=Yii::getAlias("@img")?>/menu-icon/districts.svg" alt="">
                         </div>
@@ -86,7 +86,7 @@ $user = Yii::$app->user->identity;
             <?php endif; ?>
             <?php  if (in_array($user->role,[User::Admin, User::Teacher])) :?>
                 <li class="">
-                    <a class="<?= $url__ ==  'classes/index' ? 'active': '' ?> active" href="<?= Yii::$app->getUrlManager()->createUrl(['classes/index']) ?>" aria-expanded="false">
+                    <a  href="<?= Yii::$app->getUrlManager()->createUrl(['classes/index']) ?>" aria-expanded="false">
                         <div class="nav_icon_small">
                             <img src="<?=Yii::getAlias("@img")?>/menu-icon/classes.svg" alt="">
                         </div>

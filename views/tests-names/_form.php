@@ -18,10 +18,10 @@ use kartik\time\TimePicker;
     <?php $form =ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <?= $form->field($model, 'classes_id')->widget(Select2::classname(), [
             'data' => Classes::getList(),
             'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__", ],
@@ -30,7 +30,7 @@ use kartik\time\TimePicker;
             ],
             ]); ?>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <?= $form->field($model, 'sciences_id')->widget(Select2::className(), [
                         'data' => Sciences::getList(),
                         'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__" , ],
@@ -39,7 +39,7 @@ use kartik\time\TimePicker;
                         ],
             ]); ?>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <?= $form->field($model, 'question_count')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
         </div>
         <div class="col-lg-4">
@@ -70,23 +70,56 @@ use kartik\time\TimePicker;
                                                 ]])
              ?>
         </div>
-        <div class="col-lg-2">
-            <?= $form->field($model, 'sertificat_status')->widget(Select2::className(), [
-                        'data' => [1 => 'Berilmaydi', 2 => 'Beriladi'],
-                        'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__" , ],
-                        'pluginOptions' => [
-                            'allowClear' => false
-                        ],
-            ]); ?>
+     
+    </div>
+    <hr>
+    <div class="boshqa_bloc">
+        <div class="row" style="margin-right: 50px;">
+            <div class="col-lg-6">
+                <?= $form->field($model, 'sertificat_status')->widget(Select2::className(), [
+                            'data' => [1 => 'Berilmaydi', 2 => 'Beriladi'],
+                            'options' => ['placeholder' => 'Выберите', 'class'=>"form_input_styles__" , ],
+                            'pluginOptions' => [
+                                'allowClear' => false
+                            ],
+                ]); ?>
+            </div>
+        
+
+            <div class="col-lg-6">
+                <?= $form->field($model, 'sertifikat_foiz')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
+            </div>
         </div>
-        <div class="col-lg-2">
-            <?= $form->field($model, 'sertifikat_foiz')->textInput(['maxlength' => true, 'class'=>"form_input_styles__", ]) ?>
+
+        <div class="row">
+            <div class="col-lg-4" >
+                <p class="maxsus_test">Maxsus test</p>
+                <?= $form->field($model, 'has_special_test')->checkbox(['id' => 's2', 'class' => 'switch'])->label(false) ?>
+            </div>
+            <div class="col-lg-6">
+                <?= $form->field($model, 'special_test_password')->textInput(['maxlength' => true, 'class'=>"form_input_styles__"]) ?>
+            </div>
         </div>
-        <div class="col-lg-2">
-            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+    </div>
+  
+
+    <div class="row">
+        <div class="col-lg-12">
+            <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success', 'style'=>'width: 100%']) ?>
         </div>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<style>
+    .boshqa_bloc{
+        display: flex;
+    }
+    .maxsus_test{
+        font-size: 14px;
+        color: black;
+        margin-bottom: 10px;
+    }
+</style>

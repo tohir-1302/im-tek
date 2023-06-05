@@ -756,7 +756,8 @@ table.dataTable tbody td {
 
 .switch {
     -webkit-appearance: none;
-    background-color: gray;
+    background-color: #f8f4f4;
+    border: 1px solid grey;
     border-radius: 43px;
     position: relative;
     cursor: pointer;
@@ -771,14 +772,14 @@ table.dataTable tbody td {
     content: '';
     width: 15px;
     height: 15px;
-    background-color: #2e4765;
+    background-color: #652e2e;
     position: absolute;
     border-radius: 100%;
     transition: 1s
 }
 
 .switch:checked {
-    background-color: #2e4765 !important
+    background-color: #0c9100  !important
 }
 
 .switch:checked::after {
@@ -3075,7 +3076,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
 .header_iner {
     position: fixed;
     top: 0;
-    z-index: 99;
+    z-index: 1;
     padding: 20px 30px;
     position: relative;
     border-radius: 0;
@@ -3393,7 +3394,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     border-width: 0 11px 12px;
     border-color: transparent transparent #567aed transparent;
     -webkit-box-shadow: 0px 0px 16.83px 0.17px #567aed;
-    z-index: 2
+    z-index: 2 !important
 }
 
 .profile_info .profile_info_iner .profile_author_name {
@@ -3444,7 +3445,6 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
     color: #2e4765;
     border: 1px dashed #2e4765;
     transition: .5s ease-in-out;
-
 }
 
 .profile_info .profile_info_details a:hover i {
@@ -3735,11 +3735,10 @@ table.dataTable {
     height: 100vh;
     left: 0;
     top: 0;
-    z-index: 99;
     padding-bottom: 50px;
     position: fixed;
     width: 150px;
-    z-index: 999;
+    z-index: 2;
     overflow: hidden;
     overflow-y: auto;
     background: #fff;
@@ -3790,12 +3789,12 @@ table.dataTable {
 }
 
 .sidebar .logo .large_logo img {
-    width: 130px;
+    width: 150px;
 }
 
 @media(max-width:991px) {
     .sidebar .logo {
-        padding: 30px
+        /* padding: 30px */
     }
 }
 
@@ -4313,7 +4312,9 @@ body::-webkit-scrollbar {
 }
 
 .sidebar.dark_sidebar .logo {
-    background: 0 0
+    background: 0 0;
+    text-align: center;
+
 }
 
 /* .sidebar.dark_sidebar #sidebar_menu>li ul {
@@ -4603,7 +4604,7 @@ a.active {
     position: relative;
     background: #f6f7fb;
     margin: 0;
-    z-index: 22;
+    z-index: 0;
     border-radius: 0;
     padding: 30px
 }
@@ -11670,7 +11671,6 @@ table.lms_table_active3.dataTable thead .sorting_desc::after {
     min-width: 136px;
     max-width: 136px;
     position: absolute;
-    z-index: 9999999;
     height: auto;
     top: 0;
     bottom: 0;

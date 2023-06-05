@@ -5,6 +5,7 @@ use app\models\TestAnswer;
 use app\models\TestSingUp;
 use app\models\TestsNames;
 use app\models\User;
+use app\models\UsersFilter;
 use kartik\mpdf\Pdf;
 use Yii;
 use yii\filters\VerbFilter;
@@ -77,6 +78,7 @@ use yii\web\Controller;
                     "end_date" => $item['end_date'],
                     "xolat" => $item['xolat'],
                     "sertifikat_foiz" => $item['sertifikat_foiz'],
+                    "has_special_test" => $item['has_special_test'],
                     "sertificat_status" => $item['sertificat_status'],
                     "sing_up_id" => null,
                     "tests_status" => null
@@ -129,6 +131,7 @@ use yii\web\Controller;
                $post = Yii::$app->request->post();
                if ($post['test_names_id']) {
                     $tets_names_id = $post['test_names_id'];
+                    
                     $result = TestSingUp::addSingUp($tets_names_id);
                     if($result){
                         \Yii::$app->session->setFlash('success', "Ro'yxatdan muvaffaqiyatli o'tdingiz !!!" );
@@ -140,6 +143,49 @@ use yii\web\Controller;
                }
             }
         }
+
+
+        public function actionSpecialTest()
+        {
+            $tests_names_id = null;
+            $password = null;
+
+            $get = Yii::$app->request->get();
+            if (isset($get['tests_names_id'])) {
+               $tests_names_id = $get['tests_names_id'];
+            }
+
+            if ($this->request->post()) {
+                $post = $this->request->post();
+                $tests_names_id = $post['tests_names_id'];
+                $password = $post['password'];
+
+                $validate = TestsNames::validateSpecilaTest($tests_names_id, $password);
+                if ($validate) {
+                    $result = TestSingUp::addSingUp($tests_names_id);
+                    if($result){
+                        \Yii::$app->session->setFlash('success', "Ro'yxatdan muvaffaqiyatli o'tdingiz !!!" );
+                        return $this->redirect('index');
+                    }else{
+                        \Yii::$app->session->setFlash('danger', "Xatolik !!! Hisobingizni tekshiring!" );
+                        return $this->redirect('index');
+                    }
+                }else{
+                    \Yii::$app->session->setFlash('danger', "Parol xato !!!" );
+                    return $this->render('special-test', [
+                        'tests_names_id' => $tests_names_id,
+                        'password' => $password
+                    ]);
+                }
+            }
+            
+            return $this->render('special-test', [
+                'tests_names_id' => $tests_names_id,
+                'password' => $password
+            ]);
+            
+        }
+
         
         public function actionTest(){
             if (Yii::$app->request->isPost) {
