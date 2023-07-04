@@ -72,9 +72,7 @@ class TestsNamesController extends RoleController
         if ($user->role != User::Admin) {
             $query = $query->andWhere(['tests_names.user_id' => $user->getId()]);
         }
-
         $query = $query->asArray()->all();
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $query,

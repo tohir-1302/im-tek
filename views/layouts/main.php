@@ -170,11 +170,11 @@ $user = Yii::$app->user->identity;
                         <div class="header_right d-flex justify-content-between align-items-center" style="border-right: 2px #828bb2 solid; padding-right: 10px; margin-right: 10px;">
                             <div class="profile_info" style="text-align: center;">
                                 <img style="border: none;" src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/null/external-Money-achievements-and-badges-flatarticons-blue-flatarticons.png"/>
-                                <p style="font-weight: 650;"><?= pul2(50000,1) ?> so'm</p>
+                                <p style="font-weight: 650;"><?= pul2(0,0) ?> so'm</p>
 
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
-                                        <p style="border-bottom: solid 2px white;">Hisob: <?= pul2(50000,1) ?> so'm</p>
+                                        <p style="border-bottom: solid 2px white;">Hisob: <?= pul2(0,0) ?> so'm</p>
                                     </div>
                                     <div class="profile_info_details">
                                         <a href="<?= \yii\helpers\Url::to(['#']) ?>">Hisobga tushgan pullar</a>

@@ -67,9 +67,8 @@ $this->title = Yii::t('app', 'Imtihonlar');
                                             <?= Html::submitButton('Ro\'yxatdan o\'tish', ['class' => 'btn btn-primary']) ?>
                                 <?php ActiveForm::end(); } ?>
                             <?php } ?>
-                           
-                            <?php if (in_array($item['tests_status'], [1])) { ?>
-                                <?php if ($item['begin_date'] <= date("Y-m-d H:i:s") ) { ?>
+                            <?php if (in_array($item[ 'tests_status'], [1])) { ?>
+                                <?php if ($item['begin_date'] <= date("Y-m-d H:i:s")   ) { ?>
                                     <?php $form = ActiveForm::begin([
                                                     'action' => ['home/test'],
                                                     'method'=> 'post',
@@ -180,8 +179,8 @@ $this->title = Yii::t('app', 'Imtihonlar');
                                     ?>
                                 <?php } ?>
                             <?php } ?>
-                            <?php if ($item['tests_status'] == 4) { ?>
-                                <?= \yii\helpers\Html::a('Qatnashilmadi',Url::to(['#', ]),['class' => 'btn btn-warning', ]); ?>
+                            <?php if ($item['tests_status'] == 4){  ?>
+                                <?= \yii\helpers\Html::a('Qatnashilmadi',Url::to(['index?type=attendees', ]),['class' => 'btn btn-warning', ]); ?>
                             <?php } ?>
                         </td>
                     </tr>
