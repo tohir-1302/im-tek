@@ -67,6 +67,14 @@ use yii\web\Controller;
 
             $gibrit = [];
             foreach ($result as $item) {
+                foreach ($test_sing_up as $data) {
+                    if ($data->tests_names_id == $item['id']) {
+                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4 ) {
+                            $data->tests_status = 1;
+                            $data->save(); 
+                        }
+                    }
+                }
                 $gibrit[$item['id']] =[
                     "id" => $item['id'],
                     "name" => $item['name'],
@@ -87,6 +95,10 @@ use yii\web\Controller;
                 $bor = false;
                 foreach ($test_sing_up as $data) {
                     if ($data->tests_names_id == $item['id']) {
+                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4 ) {
+                            $data->tests_status = 1;
+                            $data->save(); 
+                        }
                         $bor = true;
                         if ($item['xolat'] == "passive" && $data->end_date == null) {
                             $data->tests_status = 4;
@@ -100,10 +112,6 @@ use yii\web\Controller;
                             $gibrit[$item['id']]['sing_up_question_count'] = $data->question_count;
                             $gibrit[$item['id']]['sing_up_answer'] = $data->answer_success;
                             $gibrit[$item['id']]['tests_status'] = $data->tests_status;
-                        }
-                        if ($item['begin_date'] <= date("Y-m-d H:i:s")  && $item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4 ) {
-                            $data->tests_status = 1;
-                            $data->save(); 
                         }
                     }
                 }
