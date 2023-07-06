@@ -95,10 +95,6 @@ use yii\web\Controller;
                 $bor = false;
                 foreach ($test_sing_up as $data) {
                     if ($data->tests_names_id == $item['id']) {
-                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4 ) {
-                            $data->tests_status = 1;
-                            $data->save(); 
-                        }
                         $bor = true;
                         if ($item['xolat'] == "passive" && $data->end_date == null) {
                             $data->tests_status = 4;
@@ -113,13 +109,6 @@ use yii\web\Controller;
                             $gibrit[$item['id']]['sing_up_answer'] = $data->answer_success;
                             $gibrit[$item['id']]['tests_status'] = $data->tests_status;
                         }
-<<<<<<< HEAD
-=======
-                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4) {
-                            $data->tests_status = 1;
-                            $data->save(); 
-                        }
->>>>>>> 8e57dbcadce419b820c5815461ea33dbbd965447
                     }
                 }
 
