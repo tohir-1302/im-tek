@@ -45,7 +45,7 @@ use yii\web\Controller;
             }
             if ($type != 'active' && $type != 'attendees'){
                 $type = 'active';
-            }
+            }   
             $sql = '
                     SELECT
                     tests_names.*,
@@ -113,6 +113,13 @@ use yii\web\Controller;
                             $gibrit[$item['id']]['sing_up_answer'] = $data->answer_success;
                             $gibrit[$item['id']]['tests_status'] = $data->tests_status;
                         }
+<<<<<<< HEAD
+=======
+                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4) {
+                            $data->tests_status = 1;
+                            $data->save(); 
+                        }
+>>>>>>> 8e57dbcadce419b820c5815461ea33dbbd965447
                     }
                 }
 
