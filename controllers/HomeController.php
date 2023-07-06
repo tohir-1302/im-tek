@@ -95,6 +95,10 @@ use yii\web\Controller;
                 $bor = false;
                 foreach ($test_sing_up as $data) {
                     if ($data->tests_names_id == $item['id']) {
+                        if ($item['end_date'] >= date("Y-m-d H:i:s") && $data->tests_status == 4 ) {
+                            $data->tests_status = 1;
+                            $data->save(); 
+                        }
                         $bor = true;
                         if ($item['xolat'] == "passive" && $data->end_date == null) {
                             $data->tests_status = 4;
