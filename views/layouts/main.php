@@ -145,7 +145,6 @@ $user = Yii::$app->user->identity;
         </ul>
     </nav>
 
-
     <section class="main_content dashboard_part large_header_bg">
 
         <div class="container-fluid g-0">

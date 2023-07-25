@@ -45,7 +45,7 @@ use yii\web\Controller;
             }
             if ($type != 'active' && $type != 'attendees'){
                 $type = 'active';
-            }   
+            }     
             $sql = '
                     SELECT
                     tests_names.*,
