@@ -80,7 +80,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Foydalanuvchi nomi',
+            'username' => 'Pochta manzili',
             'password' => 'Parol',
         ];
     }

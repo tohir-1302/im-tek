@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <!-- <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label> -->
-                    <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'id' => "your_name", 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
+                    <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'id' => "your_name", 'class' => 'input_style', "placeholder" => "Pochta manzili"])->label(false) ?>
                 </div>
                 <div class="form-group" style="display: flex;">
                     <!-- <label for="your_pass"><i class="zmdi zmdi-lock"></i></label> -->

@@ -29,9 +29,10 @@ class SignupForm extends Model
     public function rules()
     {
         return [
+            ['username', 'email'],
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu foydalanuvchi nomi orqali ro`yxatdan o`tilgan'],
+            ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'Bu Pochta manzili orqali ro`yxatdan o`tilgan'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             [['last_name', 'father_is_name', 'first_name', 'schools'], 'string', 'max' => 150],
@@ -57,7 +58,7 @@ class SignupForm extends Model
             'first_name' => 'Ism',
             'last_name' => 'Familiya',
             'father_is_name' => 'Sharifi',
-            'username' => 'Foydalanuvchi nomi',
+            'username' => 'Pochta manzili',
             'email' => 'E-pochta',
             'password' => 'Parol',
             'birthday' => 'Tug\'ilgan kun',
