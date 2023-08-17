@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= $form->field($model, 'schools')->textInput([ 'class' => 'input_style', "placeholder" => "Maktab nomi"])->label(false) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Foydalanuvchi nomi"])->label(false) ?>
+                        <?= $form->field($model, 'username')->textInput([ 'class' => 'input_style', "placeholder" => "Pochta manzili"])->label(false) ?>
                     </div>
                     <div class="form-group"  style="display: flex">
                         <?= $form->field($model, 'email')->textInput(['class' => 'input_style', "placeholder" => "+998 12 345 67 89"])->label(false) ?>
